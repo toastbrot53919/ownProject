@@ -1,0 +1,12 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\CharacterCombatController.cs
+The file "CharacterCombatController.cs" is a script that controls the combat actions of the player and units in the game. It provides access to the player's CharacterStats, AbilityController, AnimationController, and IStunnable components. 
+
+During the Start method, the script retrieves the CharacterStats and IStunnable components from the game object. 
+
+The PerformAbility method is responsible for executing an Ability on a target. This method first checks if the character is stunned, and if so, it returns early. Otherwise, it calculates the damage of the Ability using the Ability's base damage, strength scaling, and intelligence scaling, and adds a critical hit chance based on the character's critical chance stat. If the Ability lands a critical hit, the calculated damage is doubled. 
+
+The method then plays the Ability's animation, creates an AbilityData object containing necessary information about the CasterStats, target, and the AbilityController, and then executes the Ability using the AbilityController's CastAbility method. 
+
+Lastly, the GetCharacterStats method returns the character's CharacterStats. 
+
+There is an additional PerformAbility method in the script that is not implemented and currently throws an exception.

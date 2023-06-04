@@ -1,0 +1,8 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\ButtonWithToolTip.cs
+This is a C# script file located at C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\ButtonWithToolTip.cs. It contains the class definition for a button with a tooltip, which implements the IPointerEnterHandler and IPointerExitHandler interfaces from Unity's event system. The class has a public SkillNode variable, a private PlayerController variable, a UIManager variable, and a private GameObject variable for the tooltip object.
+
+In the Awake() method, the script finds the PlayerController and UIManager objects using FindObjectOfType(), sets the tooltip object to inactive, and adds an event listener for the button's click action to the TryLearn() method. If the skillNode variable is not null, the script sets the button's image to the icon from the skillNode.
+
+The OnPointerEnter() and OnPointerExit() methods are called when the mouse pointer enters and exits the button's area, respectively. ShowToolTip() and HideToolTip() are called in these methods to open and close the tooltip, respectively. The ShowToolTip() method passes the skillNode and the current button's position to the OpenToolTip() method of the UIManager object.
+
+The TryLearn() method is called when the button is clicked, and it attempts to unlock the skillNode using the TryUnlockSkillNode() method of the playerController object.

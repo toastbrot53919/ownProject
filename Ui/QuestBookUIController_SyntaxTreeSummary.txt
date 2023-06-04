@@ -1,0 +1,14 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\QuestBookUIController.cs
+QuestBookUIController
+- titleText: TMP_Text
+- descriptionText: TMP_Text
+- objectivesText: TMP_Text
+- questListScrollRect: ScrollRect
+- questListItemPrefab: GameObject
+- questListContent: Transform
+- questSystem: QuestSystem
+
++ Awake()
++ Start()
++ UpdateQuestList()
++ ShowQuestInformation(Quest quest)

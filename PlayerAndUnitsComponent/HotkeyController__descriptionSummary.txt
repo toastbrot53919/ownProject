@@ -1,0 +1,8 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\HotkeyController.cs
+The code file "HotkeyController.cs" in the specified folder contains a class named "HotkeyController" which is a MonoBehaviour script in Unity. It has several public and private variables including a list of hotkeys (each of which contains an ability and item), a combat controller, a hotkey mapping as a dictionary, and a player controller. 
+
+In the Start() method, the script initializes these variables including the hotkey list, each element of which is assigned an empty hotkey. The hotkey mapping dictionary is also initialized, mapping certain keys to specific hotkeys. An example hotkey is also created and assigned an ability from the combat controller's stored abilities.
+
+In the Update() method, the HandleHotkey() method is called, which iterates through the hotkeyMapping dictionary and checks if any keys have been pressed or released. If a hotkey has an ability assigned to it, it will perform that ability through the player controller. If a key assigned to a certain hotkey is released, additional checks are made to stop the corresponding action if required. 
+
+The script also contains three additional internal methods: SwapHotkeys, AssignAbilityToHotkey, and AssignItemToHotkey. These methods allow you to swap the assignments of two hotkeys, assign an ability to a certain hotkey, or assign an item to a certain hotkey respectively.

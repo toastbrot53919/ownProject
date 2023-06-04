@@ -1,0 +1,13 @@
+Class HuntWolvesQuest:
+- CreateAssetMenu
+- Base: Quest
+- AddObjective
+    - KillObjective
+
+Class NewBehaviourScript:
+- using System.Collections
+- using System.Collections.Generic
+- class NewBehaviourScript
+  - MonoBehaviour
+  - method Start()
+  - method Update()

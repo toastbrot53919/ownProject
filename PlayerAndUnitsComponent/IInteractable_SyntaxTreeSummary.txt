@@ -1,0 +1,4 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\IInteractable.cs
+IInteractable: 
+- Interface
+- Method: Interact(Transform interacter)

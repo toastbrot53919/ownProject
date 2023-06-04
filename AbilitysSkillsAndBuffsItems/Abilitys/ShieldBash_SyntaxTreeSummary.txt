@@ -1,0 +1,33 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\ShieldBash.cs
+(S) ShieldBash.cs
+ └──(V) public GameObject prefabAbilityObject
+ └──(V) public float stunDuration = 2f
+ └──(M) ShieldBash()
+     ├──(A) abilityName = "Shield Bash"
+     ├──(A) baseDamage = 50
+     ├──(A) strengthScaling = 0.5f
+     ├──(A) intelligenceScaling = 0.5f
+     └──(A) animationName = "Shield Bash animation"
+ └──(M) public override void OnAbilityObjectHit(AbilityObject abilityObject, GameObject target)
+     └──(M) if (abilityObject.data.CasterStats != null)
+         ├──(V) HealthController targetStats = target.GetComponent<HealthController>()
+         ├──(M) if (targetStats != null)
+         │   ├──(V) float damage = abilityObject.data.damage
+         │   ├──(M) targetStats.TakeDamage(damage, abilityObject.data.CasterStats.gameObject)
+         │   └──(M) if (abilityObject.data.stunDuration >= 0f)
+         │       └──(M) targetStats.GetComponent<IStunnable>().Stun(abilityObject.data.stunDuration)
+         └──(M) RaiseOnObjectHit(abilityObject, target)
+ └──(M) public override void Activate(AbilityData abilityData)
+     ├──(M) if (abilityData.CasterStats == null) return;
+     ├──(V) Transform casterTransform = abilityData.CasterStats.transform;
+     ├──(V) Vector3 forwardDirection = casterTransform.forward;
+     ├──(V) GameObject abilityObjectInstance = Instantiate(prefabAbilityObject, casterTransform.position + forwardDirection, Quaternion.identity);
+     ├──(V) AbilityObject abilityObject = abilityObjectInstance.GetComponent<AbilityObject>();
+     ├──(M) RaiseOnObjectSpawned(abilityObject, null);
+     ├──(V) Rigidbody rb = abilityObjectInstance.GetComponent<Rigidbody>();
+     ├──(V) rb.velocity = forwardDirection * abilityData.projectileSpeed;
+     ├──(V) abilityObject.data = abilityData;
+     ├──(A) abilityData.Target = null;
+     ├──(A) abilityData.projectileSpeed = 0f;
+     ├──(V) abilityObject.ParentAbility = this;
+     └──(A) abilityData.stunDuration = stunDuration;

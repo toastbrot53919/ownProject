@@ -1,0 +1,10 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\Inventory.cs
+This script is called "Inventory" and is located in the directory "C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\". It includes a class with the same name that inherits from MonoBehaviour. The class has a public List of items and a reference to a QuestSystem. 
+
+The Start() method initializes the questSystem reference by getting the QuestSystem component from the current game object. 
+
+The AddItem() method takes an Item parameter, adds it to the items list, and then checks if questSystem is not null. If it is not null, it logs a message to the console and calls the UpdateQuestObjective() method of the questSystem with the ID of the collected item. 
+
+The RemoveItem() method takes an Item parameter and removes it from the items list. 
+
+The HasItem() method takes an Item parameter and returns a boolean indicating whether the item is in the items list.

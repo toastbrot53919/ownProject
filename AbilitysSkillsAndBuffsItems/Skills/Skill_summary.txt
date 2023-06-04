@@ -1,0 +1,6 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Skills\Skill.cs
+The file "Skill.cs" contains an abstract class called Skill that inherits from the ScriptableObject class in Unity. This class defines various parameters such as the skill name, a list of archetype types for which the skill is applicable, and a StatModifier object.
+
+The class also includes three methods, ApplySkill(), RemoveSkill(), and OnSpawnAbilityObject() which can be overridden to implement skill-specific behavior in derived classes.
+
+Additionally, the class includes an enum called Archetype which lists the different archetype types a skill can be applied to, including Strength, Intelligence, Dexterity, Endurance, and Wisdom.

@@ -1,0 +1,13 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\VisualEffectController.cs
+Class: VisualEffectController
+
+Fields:
+- visualEffectManager
+- positionOverHead
+- positionUnderFeet
+- goalTransform
+- effectInstances
+
+Methods:
+- SpawnEffect(effectName, effectDuration, effectPosition)
+- Update()

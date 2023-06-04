@@ -1,0 +1,8 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Skills\FireballMasterySkill.cs
+This code is a script for a Fireball Mastery skill in a Unity game. It is located in the file "FireballMasterySkill.cs" within the "Skills" folder of the project's assets. The script extends from a base "Skill" class and uses the Unity attribute "CreateAssetMenu" to make it usable as an asset in the editor. 
+
+The skill has a serialized GameObject variable called "explosionPrefab". The "ApplySkill" method applies the skill to a player's stats and assigns an event handler to a Fireball ability that explodes on hit. The "RemoveSkill" method removes the event handler from the Fireball ability. 
+
+The "GetFireballAbility" method retrieves the Fireball ability from a player's stats. The "ExplodeOnHit" method applies damage to targets within a certain radius of the explosion and instantiates an explosion prefab at the explosion's position. 
+
+The "ApplyDamageToTargets" method calculates and applies damage to targets within a radius of the explosion. The "InstantiateExplosion" method instantiates an explosion prefab at a given position. If there is no explosion prefab assigned, a warning is logged.

@@ -1,0 +1,154 @@
+Ability class:
+- abilityName: string
+- abilityDescription: string
+- icon: Sprite
+- baseDamage: float
+- strengthScaling: float
+- intelligenceScaling: float
+- cooldown: float
+- animationName: string
+- lastTimeUsed: float = 0
+- ActivateDelayTime: float = 0
+- OnAbilityObjectSpawnedEvent: event (AbilityObject, GameObject)
+- OnAbilityObjectHitEvent: event (AbilityObject, GameObject)
+- OnAbilityActivated: event (Ability)
+- OnAbilityObjectHit: abstract void (AbilityObject, GameObject)
+- Activate: abstract void (AbilityData)
+- PreActivateAbility: virtual void (AbilityData)
+- StartActivation: protected virtual void (AbilityData)
+- UpdateActivation: protected virtual void (AbilityData)
+- EndActivation: protected virtual void (AbilityData)
+- getLastTimeUsed: float
+- setLastTimeUsed: float
+- RaiseOnObjectSpawned: protected void (AbilityObject, GameObject)
+- RaiseOnObjectHit: protected void (AbilityObject, GameObject)
+- RaiseOnAbilityActivated: protected void ()
+
+AbilityData class:
+- Target: GameObject
+- CasterStats: CharacterStats
+- CasterController: AbilityController
+- CasterCombatController: CharacterCombatController
+- damage: float
+- projectileSpeed: float
+- stunDuration: float
+
+AbilityControllData class:
+- type: string
+- direction: Vector3
+- target: GameObject
+- targetPosition: Vector3
+
+AbilityObject class:
+- event OnHit (GameObject)
+- event OnUpdate
+- event OnSpawn
+- event OnDelete
+- data: AbilityData
+- shouldDestroy: bool
+- deleteOnCollision: bool
+- deleteOnTimer: bool
+- timer: float
+- timerMax: float
+- ParentAbility: Ability
+- HandleOnHit(target: GameObject)
+- Update()
+- HandleOnSpawn()
+- HandleOnDelete()
+- Awake()
+- OnTriggerEnter(collision: Collider)
+
+IBouncingAbilityObject interface:
+- BounceIntensity: float
+- BounceDuration: float
+- Bounce(target: GameObject)
+
+IPiercingAbilityObject interface:
+- Pierce(target: GameObject)
+
+IHomingAbilityObject interface:
+- Home(target: GameObject)
+
+BaseProjectileObject class:
+- BounceIntensity: float
+- BounceDuration: float
+- bounceCount: int
+- pierceCount: int
+- HandleOnHit(target: GameObject)
+- Update()
+- HandleOnSpawn()
+- HandleOnDelete()
+- Awake()
+- OnTriggerEnter(collision: Collider)
+
+DefaultComboAbility class:
+- MeelePrefab: GameObject
+- lifeTime: float
+- comboDamage: float[]
+- OnAbilityObjectHit(abilityObject: AbilityObject, target: GameObject): void
+- PreActivateAbility(abilityData: AbilityData): void
+- Activate(abilityData: AbilityData): void
+
+DefaultProjectileAbility class:
+- projectilePrefab: GameObject
+- projectileSpeed: float
+- OnAbilityObjectHit(abilityObject, target)
+- Activate(abilityData)
+
+DefaultSkill class:
+- CreateAssetMenu:
+  - fileName = "Skill"
+  - menuName = "Skill/Skill"
+  - order = 1
+- Skill
+
+FireBall class:
+- CreateAssetMenu(menuName = "Abilities/Fireball")
+- Override OnAbilityObjectHit(abilityObject, target)
+- Override Activate(abilityData)
+
+ShieldBash class:
+- prefabAbilityObject: GameObject
+- stunDuration: float
+- abilityName: "Shield Bash"
+- baseDamage: 50
+- strengthScaling: 0.5f
+- intelligenceScaling: 0.5f
+- animationName: "Shield Bash animation"
+- ShieldBash()
+- OnAbilityObjectHit(AbilityObject abilityObject, GameObject target)
+- Activate(AbilityData abilityData)
+
+SimpleStrike class:
+- MeelePrefab: GameObject
+- lifeTime: float
+- OnAbilityObjectHit(abilityObject: AbilityObject, target: GameObject)
+- Activate(abilityData: AbilityData)
+
+MeleeStrikeObject class:
+- OnTriggerEnter(collision: Collider)
+
+Buff class:
+- buffName: string
+- duration: float
+- stackable: bool
+- maxStacks: int
+- OnApply: event taking BuffInstance parameter
+- OnFade: event taking BuffInstance parameter
+- OnHit: event taking BuffInstance parameter
+- InvokeOnApply(buffInstance: BuffInstance)
+- InvokeOnFade(buffInstance: BuffInstance)
+- InvokeOnHit(buffInstance: BuffInstance)
+- GetEventTypes(): List<string>
+
+BuffInstance class:
+- buff: Buff - UpdateSkillNode(SkillNode skillNode, SkillNodeFactoryDataClass newData):
+    - skillNode.skillName = newData.skillName
+    - skillNode.skillDescription = newData.skillDescription
+    - skillNode.skillPointCost = newData.skillPointCost
+    - skillNode.icon = newData.icon
+    - skillNode.mainStatRequirements = newData.mainStatRequirement
+    - skillNode.mainStatValue = newData.mainStatValue
+    - skillNode.skill = newData.skill
+    - skillNode.prerequisiteSkill = newData.prerequisiteSkill
+    - skillNode.isUnlocked = newData.isUnlocked

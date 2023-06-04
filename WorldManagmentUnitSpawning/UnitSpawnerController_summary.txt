@@ -1,0 +1,6 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\WorldManagmentUnitSpawning\UnitSpawnerController.cs
+The UnitSpawnerController.cs file defines a class that controls the spawning of a unit in a game world. The file includes a number of public variables that specify the characteristics of the unit to be spawned, including its prefab, spawn range, character stats, abilities, AI state, equip manager, and AI controller. 
+
+When the script is started, it gets the transform of the player character in the game world. Then, in the Update() function, it checks if the player is within the spawn range and if the unit has not already been spawned. If both conditions are met, the function spawns the unit using the Instantiate() function, sets all of its properties (stats, abilities, etc.), and destroys the spawner object to prevent further spawns.
+
+Overall, the UnitSpawnerController.cs file provides a simple and flexible way to spawn units in a game world and customize their behavior and abilities.

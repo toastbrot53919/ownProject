@@ -1,0 +1,20 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\MovementController.cs
+MovementController:
+- stunnable: IStunnable
+- target: Transform
+- stoppingDistance: float
+- agent: NavMeshAgent
+
+Start():
+- agent = GetComponent<NavMeshAgent>()
+- stunnable = GetComponent<IStunnable>()
+- Debug.Log("stunnable: " + stunnable)
+
+Update():
+- if target is not null:
+  - agent.SetDestination(target.position)
+  - agent.stoppingDistance = stoppingDistance
+- if stunnable is not null and stunnable.isStunned():
+  - agent.isStopped = true
+- else:
+  - agent.isStopped = false

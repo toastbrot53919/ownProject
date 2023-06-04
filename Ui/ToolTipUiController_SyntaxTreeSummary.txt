@@ -1,0 +1,39 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\ToolTipUiController.cs
+ToolTipUiController:
+
+- SkillName
+- SkillDescription
+- AlreadySkilled
+- SkillpointCost
+- AttrbuteReq
+- SkillIcon
+
+Start()
+
+Awake()
+
+UpdateUI(node)
+
+- SkillName.text
+- SkillDescription.text
+- AlreadySkilled.gameObject.SetActive(bool)
+- SkillpointCost.text
+- AttrbuteReq.text
+- SkillIcon.sprite
+
+UpdateUI(ability)
+
+- SkillName.text
+- SkillDescription.text
+- AlreadySkilled.gameObject.SetActive(false)
+- SkillpointCost.gameObject.SetActive(false)
+- AttrbuteReq.text
+
+UpdateUI(item)
+
+- SkillName.text
+- SkillDescription.text
+- AlreadySkilled.gameObject.SetActive(false)
+- SkillpointCost.gameObject.SetActive(false)
+- AttrbuteReq.text
+- SkillIcon.sprite

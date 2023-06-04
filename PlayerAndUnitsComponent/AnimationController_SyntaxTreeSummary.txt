@@ -1,0 +1,35 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\AnimationController.cs
+Syntax Tree of AnimationController.cs:
+- AnimationController class
+  - MonoBehaviour parent class
+  - Private fields:
+    - Animator animator
+    - List<VisualEffectData> visualEffectDataList
+    - List<(string, float)> animationCastDelays
+    - Private const strings:
+      - attackAnimationName = "attack"
+      - OneHandSwordLightAttack1AnimationName = "1HandSwordLightAttack1"
+      - OneHandSwordLightAttack2AnimationName = "1HandSwordLightAttack2"
+      - OneHandSwordLightAttack3AnimationName = "1HandSwordLightAttack3"
+      - idleAnimationName = "idle"
+    - Dictionary<string, GameObject> visualEffects
+  - Awake() method
+    - Initializes the visualEffects dictionary
+    - Calls initAnimationDelays() method
+    - Loops through each VisualEffectData object in visualEffectDataList, adding the corresponding visual effect prefab to visualEffects dictionary
+  - PlayAnimation() method
+    - If animationName is "attack", sets the animator trigger to "attack" and returns
+    - Otherwise, plays the animation with the given name using the animator Play() method
+  - ApplyVisualEffect() method
+    - If the effectName is found in visualEffects dictionary, instantiates the visualEffectPrefab at the given position and rotation
+    - Otherwise, logs a warning message
+  - initAnimationDelays() method
+    - Initializes the animationCastDelays list with pairs of animation names and corresponding delay times
+  - returnAnimationDelay() method
+    - Loops through each pair in animationCastDelays and returns the delay time corresponding to animationName, or 0 if not found
+
+VisualEffectData class:
+- Serializable class
+- Public fields:
+  - string name
+  - GameObject visualEffectPrefab

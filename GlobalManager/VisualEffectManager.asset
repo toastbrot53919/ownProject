@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09df0fbde70113641bf0cec39bb6cb8d, type: 3}
+  m_Name: VisualEffectManager
+  m_EditorClassIdentifier: 
+  visualEffects:
+  - effectName: Stun
+    effectPrefab: {fileID: 8483675285867483240, guid: 40a71726d51f6d84b91c8beaf01724df, type: 3}
+  - effectName: LightningHitWeak
+    effectPrefab: {fileID: 1183927176803159691, guid: 95838bae7f6f6764dae0f8d1bf69c247, type: 3}

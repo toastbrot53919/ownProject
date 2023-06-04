@@ -1,0 +1,8 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\QuestAction.cs
+Class: QuestAction
+
+- fileName: string = "QuestAction"
+- menuName: string = "QuestSystem/QuestAction"
+- order: int = 1
+- extends: ScriptableObject
+- actionId: string

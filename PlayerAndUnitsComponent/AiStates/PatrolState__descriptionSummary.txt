@@ -1,0 +1,10 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\AiStates\PatrolState.cs
+This is a C# script located in the file path "C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\AiStates\PatrolState.cs". It is a MonoBehaviour that implements the AIState abstract class. It has three public variables: a list of waypoints as Transforms, a patrol speed as a float, and a wait time as a float. It also has two private variables: an integer currentWaypoint and a float waitEndTime. 
+
+The EnterState method sets the NavMeshAgent speed to the patrolSpeed and sets the currentWaypoint to 0. 
+
+The UpdateState method first calls the checkForAggro method of the AIController. Then it gets the NavMeshAgent component and checks if the waypoints list has any elements. If it does, it checks if the agent has reached its current destination and if the waitEndTime has passed. If both conditions are met, it sets the agent's destination to the next waypoint and sets the waitEndTime to the current time plus the waitTime.
+
+The ExitState method does not have any implementation. 
+
+This script is also decorated with the CreateAssetMenu attribute, which allows for the creation of new instances of this script as assets from the Unity Editor's Asset menu.

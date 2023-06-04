@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f1ef95102a94fb479fc5e6f3b1ba24f, type: 3}
+  m_Name: Skill
+  m_EditorClassIdentifier: 
+  skillName: Skill
+  archTypes: 00000000
+  statModifier:
+    attackSpeed: 0.2
+    criticalChance: 0
+    criticalDamage: 0
+    spellCriticalChance: 0
+    spellCriticalDamage: 0
+    cooldown: 0
+    dodgeChance: 0
+    armor: 0
+    magicResistance: 0
+    maxLife: 0
+    maxMana: 0
+    lifeRegen: 0
+    manaRegen: 0

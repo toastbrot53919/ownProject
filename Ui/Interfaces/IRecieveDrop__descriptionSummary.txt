@@ -1,0 +1,2 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\Interfaces\IRecieveDrop.cs
+This code contains a single interface named "IRecieveDrop", located in the file C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\Interfaces\IRecieveDrop.cs. The interface extends three other interfaces: "IPointerEnterHandler", "IPointerExitHandler", and "IDropHandler" from the "UnityEngine.EventSystems" namespace. There are no methods defined within the "IRecieveDrop" interface.

@@ -1,0 +1,31 @@
+Class 1: GameEvent 
+- Inherit from UnityEvent class 
+- Allows event to have parameters of string type 
+- Serialized and saved in Unity editor 
+- Can trigger specific actions/events in game 
+
+Class 2: Calculator 
+- Contains methods for addition, subtraction, multiplication, and division 
+- Takes two numerical input values and returns a result 
+- Expected input and output specified 
+
+Class 3: KillObjective 
+- Subclass of QuestObjective 
+- Contains serialized fields for enemy id, target kills, and current kills 
+- Constructor takes in parameters to initialize instance variables 
+- Overrides methods from superclass for updating progress, getting objective progress, and checking completion status 
+- Uses Unity Debug.LogError() for debugging purposes 
+
+Class 4: QuestAction 
+- ScriptableObject, not a MonoBehaviour 
+- Holds a unique action identifier 
+- Can be instantiated and referenced by other scripts 
+- Simple data container with one responsibility
+
+The QuestGiver class in Unity is an implementation of the IInteractable interface with serialized fields for the quest and interaction indicator. It tracks player proximity using private variables and has methods for interacting and updating. It also includes private methods for detecting player entry and exit from its collider.
+
+The file "QuestObjective.cs" defines an abstract class called QuestObjective with string id, description, and ObjectiveStatus properties, as well as abstract methods for IsCompleted and UpdateProgress. There are also three classes that inherit from QuestObjective: KillObjective, GatherObjective, InspectObjective, and ActivateObjective. Each of these classes has unique properties and methods for tracking progress towards completing the objective. The "QuestSystem.cs" file implements a QuestSystem class that manages quests, using a List to store all the quests and providing functions for adding, removing, and updating them.
+
+The Quest class defines a quest's properties such as ID, objectives, and rewards. It has methods to check and update objectives for completion and to update the quest status. The Reward class defines reward properties and can be used by other scripts/systems to manage rewards. The HuntWolvesQuest class is a scriptableObject for a quest to hunt a certain number of wolves. It inherits from the Quest class and adds a kill objective to the objective list.
+
+Summary: "NewBehaviourScript.cs" is a C# script that serves as a component for a game object in Unity. It has two methods that initialize and update the game object, and it can be modified to add further functionality. It uses built-in Unity classes and interfaces through "using" statements.

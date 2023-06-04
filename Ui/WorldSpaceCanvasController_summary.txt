@@ -1,0 +1,13 @@
+File Name: WorldSpaceCanvasController.cs
+
+Summary: 
+
+The WorldSpaceCanvasController class is an implementation of a MonoBehaviour, which is used to manage the World Space Canvas object in Unity. The class contains a static instance of itself which allows it to be easily accessed from other classes in the game.
+
+Internally, the class also contains a damageNumberPrefab GameObject, which is a prefab that is used to display damage numbers on the World Space Canvas. The class has a method called SpawnDamageNumber, which can be called from other classes to create damage number instances. 
+
+The SpawnDamageNumber method checks if the damageNumberPrefab is assigned to the class. If it is not assigned, it logs an error and returns from the method. If it is assigned, the method instantiates a new damageNumberPrefab object at the specified position and sets the damage value on the DamageNumberController component attached to the object.
+
+If the DamageNumberController component is not found on the instantiated prefab, it logs an error and destroys the object. 
+
+Overall, the class is responsible for managing and displaying damage numbers on the World Space Canvas in Unity.

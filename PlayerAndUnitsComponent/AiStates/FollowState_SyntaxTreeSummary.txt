@@ -1,0 +1,14 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\AiStates\FollowState.cs
+FollowState:
+- target: Transform
+- stoppingDistance: float
+
+EnterState(aiController):
+UpdateState(aiController):
+- distanceToTarget: float = Vector3.Distance(aiController.transform.position, target.position)
+- if distanceToTarget > stoppingDistance:
+  - aiController.GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(target.position)
+- else:
+  - aiController.GetComponent<UnityEngine.AI.NavMeshAgent>().ResetPath()
+
+ExitState(aiController):

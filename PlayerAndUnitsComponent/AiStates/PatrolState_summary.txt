@@ -1,0 +1,6 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\AiStates\PatrolState.cs
+The file is named "PatrolState.cs" and it is a script that defines a patrol state for an AI controller in a game. The script has a list of waypoints that the AI will move between, a patrol speed, and a wait time between each waypoint. The current waypoint and wait end time are stored as private variables.
+
+During the EnterState function, the AI's NavMeshAgent speed is set to the provided patrol speed and the current waypoint is set to 0. In the UpdateState function, the AI will check for any aggro and get its NavMeshAgent. If there are waypoints in the list, the AI will check if it has arrived at its current waypoint and if the wait time has ended. If so, it will set its destination to the next waypoint in the list and set a new wait end time.
+
+The ExitState function is empty and can be used to clean up or reset any variables as needed.

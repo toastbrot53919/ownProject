@@ -1,0 +1,8 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\HealthController.cs
+The HealthController.cs file is responsible for controlling the health of an object in the game. It contains several variables, including Name, maxHealth, currentHealth, damageTextPrefab, and questSystem. 
+
+The Start function sets the currentHealth to equal the maxHealth value and finds the damageTextPrefab in the scene. 
+
+The TakeDamage function reduces the currentHealth by the damage value and calls the ShowDamageNumbers function to display the damage text on the screen. If the currentHealth is less than or equal to zero, the function checks if the object that caused the damage has a QuestSystem component attached and updates the quest objective if it does. The Die function is called to implement any death behavior needed, such as playing a death animation or dropping loot, and ultimately destroys the game object. 
+
+The ShowDamageNumbers function checks if the WorldSpaceCanvasController instance is present in the scene, and if it is, it spawns a damage number text at the current object's position with a small offset in the upward direction.

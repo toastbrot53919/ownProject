@@ -1,0 +1,13 @@
+File Name: SkillTreeMenuController.cs
+
+This file contains the implementation of the SkillTreeMenuController class/component. 
+
+The class has two public variables; an array of GameObjects called skillTrees, and an integer called currentSkillTree which is initially set to 0. 
+
+The Start() method is called when the component is first loaded and it sets the active state of the current skill tree to true.
+
+The SwitchSkillTree(int index) method allows for the changing of the currently displayed skill tree. If the index provided is out of range of the skillTrees array, the method returns without doing anything.
+
+If a valid index is provided, the method first sets the active state of the current skill tree to false, then sets the active state of the new skill tree to true, finally it updates the currentSkillTree index to the new index provided.
+
+In summary, this class/component is responsible for displaying different skill trees and switching between them based on player input.

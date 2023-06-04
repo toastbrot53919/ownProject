@@ -1,0 +1,13 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\GameEvent.cs
+File: GameEvent.cs
+
+Class: GameEvent
+  - [System.Serializable]
+  - : UnityEvent<string>
+    - UnityEvent
+      - UnityEventBase
+        - InvokableCallList
+          - List<BaseInvokableCall>
+        - PersistentCallGroup
+          - List<PersistentCall>
+      - Delegate[] m_InvokeArray

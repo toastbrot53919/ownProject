@@ -1,0 +1,17 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\AiStates\AttackState.cs
+AttackState:
+- target: Transform
+- attackAbility: Ability
+- attackRange: float = 5f
+- attackInterval: float = 1f
+- nextAttackTime: float
+
+EnterState:
+- aiController: AIController
+- nextAttackTime: Time.time
+
+UpdateState:
+- aiController: AIController
+
+ExitState:
+- aiController: AIController

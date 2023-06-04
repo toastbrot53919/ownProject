@@ -1,0 +1,10 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\VisualEffectController.cs
+The file "VisualEffectController.cs" is a script written in C# for a Unity project. The purpose of this script is to control the visual effects used in the game for both players and units. The script includes an enumeration called "effectUnitPosition" which has two values: "overHead" and "underFeet". The class "VisualEffectController" is defined and inherits from Unity's "MonoBehaviour" class. 
+
+The script includes several public and private variables. The public variables are "visualEffectManager" of type "VisualEffectManager" and "positionOverHead" and "positionUnderFeet" of type "Transform". The private variables are "goalTransform" of type "Transform" and "effectInstances" of type "List<(GameObject, float)>". 
+
+The "SpawnEffect" method is defined which takes in a string "effectName", a float "effectDuration", and an enum "effectPosition". The method checks the "effectPosition" and sets the "goalTransform" to either "positionOverHead" or "positionUnderFeet" accordingly. The method then gets the effect prefab from the "visualEffectManager" and instantiates it as an "effectInstance". This instance is added to the "effectInstances" list along with a timestamp of when it should be destroyed. 
+
+The "Update" method is also defined which is called every frame. This method iterates over the "effectInstances" list and checks if any of the instances should be destroyed based on their timestamp. If an effect instance should be destroyed, it is removed from the "effectInstances" list and then destroyed. 
+
+Overall, the "VisualEffectController.cs" script handles the spawning and destruction of visual effects in the game. It keeps track of active effect instances and removes them when they are no longer needed.

@@ -1,0 +1,10 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\AiStates\FollowState.cs
+The FollowState.cs file contains the implementation of a state in an AI system that handles following a target. It is a script that extends the AIState class and is used to define behaviors for AI-controlled units. 
+
+The script contains two public variables, which are the Transform of the target to follow and the minimum distance that must be maintained from it (stoppingDistance). 
+
+The EnterState() and ExitState() methods are left empty, as they allow for actions to be taken when the state is either entered or exited, such as playing animations or sounds. 
+
+The UpdateState() method is where the actual following logic is implemented. It calculates the distance between the AI unit's current position and the target position, and then checks if it is greater than the stoppingDistance. If it is, it uses the NavMeshAgent component to set a destination for the unit, which will allow it to move towards the target. If it is not greater, the NavMeshAgent is reset to stop the unit from moving. 
+
+In summary, the FollowState.cs script contains logic for an AI-controlled unit to follow a target at a defined distance, using the Unity NavMeshAgent component to move towards the target.

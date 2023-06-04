@@ -1,0 +1,15 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\isStunnableController.cs
+Class: isStunnableController
+
+- bool stunned
+- float timeAtStunStart
+- float stunDuration
+- VisualEffectController visualEffectController
+- void Start()
+- void Stun(float duration)
+- bool isStunned()
+
+IStunnable
+- bool stunned
+- float timeAtStunStart
+- float stunDuration

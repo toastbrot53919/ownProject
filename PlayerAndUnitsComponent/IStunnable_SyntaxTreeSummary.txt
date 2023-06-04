@@ -1,0 +1,8 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\IStunnable.cs
+IStunnable.cs:
+- interface IStunnable
+  - bool stunned
+  - float timeAtStunStart
+  - float stunDuration
+  - void Stun(float duration)
+  - bool isStunned()

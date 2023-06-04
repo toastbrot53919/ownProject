@@ -1,0 +1,2 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\UiItemSlot.cs
+The file named "UiItemSlot.cs" contains a class with the same name. This class implements the interfaces ButtonWithToolTip, IRecieveDrop, and IDragable. It also has a public item field of type Item. The methods getDraggedObject, OnBeginDrag, OnDrag, OnDrop, and OnEndDrag are empty and do not provide any functionality. The class is intended to be used for UI item slots, allowing for dragging and dropping of items within the UI.

@@ -1,0 +1,9 @@
+File Name: QuestSystem.cs
+
+Summary: This file contains the implementation of the QuestSystem class, which is responsible for managing quests in the game. It contains functions to add, remove and update quests. It also has a function to get a quest by its ID. 
+
+Internally, the class uses a List to store all the quests, with each quest being an instance of the Quest class. When a quest is added, it is simply added to the list. When removing a quest, the Quest with the matching ID is found using the Find() function and then removed from the list.
+
+To update quest objectives, the UpdateQuestObjective() function loops through all quests and calls the CheckAndUpdateObjectives() function on each quest that is not completed.
+
+Overall, the QuestSystem class provides a simple and efficient way to manage quests in a game.

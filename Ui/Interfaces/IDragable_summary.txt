@@ -1,0 +1,4 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\Interfaces\IDragable.cs
+The file named "IDragable.cs" defines an interface for objects that can be dragged in a Unity UI. The interface includes three methods from the Event System library: IBeginDragHandler, IDragHandler, and IEndDragHandler. This allows the implementation of different behaviors for the beginning, dragging, and ending stages of the drag. 
+
+The interface also includes a custom method, "getDraggedObject()", which returns the object being dragged. By implementing the IDragable interface, objects can easily be made draggable within a Unity project.

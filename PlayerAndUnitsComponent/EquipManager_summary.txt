@@ -1,0 +1,10 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\EquipManager.cs
+The file "EquipManager.cs" contains a class for managing equipment items in a game. It defines an enum for different types of equipment, and a dictionary that stores equipped items of each type. 
+
+The class also has properties for storing the total stats from all equipped items, including TotalStrength, TotalIntelligence, TotalDexterity, TotalEndurance, and TotalWisdom. The class allows for adding more stat properties if needed. 
+
+The class has two methods, EquipItem and UnequipItem, for equipping and unequipping items respectively. If an item is already equipped for a certain type, EquipItem will first unequip the previous item before equipping the new one. Unequipping an item removes its effect from the total stats. 
+
+The class also has two private methods, ApplyItemStats and RemoveItemStats, for adding and removing the effect of an item from the total stats. ApplyItemStats adds the item's stat bonuses to the total stats and adds any sub-stats modifiers to the TotalStatModier property. RemoveItemStats subtracts the item's stat bonuses from the total stats and subtracts any sub-stats modifiers from the TotalStatModier property. 
+
+In short, the EquipManager class manages the equipment items in a game and tracks their stats, allowing for easy equipping and unequipping of items and updating of total stats.

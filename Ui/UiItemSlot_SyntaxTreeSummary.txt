@@ -1,0 +1,11 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\UiItemSlot.cs
+UiItemSlot:
+	- ButtonWithToolTip
+	- IRecieveDrop
+	- IDragable
+	- item: Item
+	- getDraggedObject(): GameObject
+	- OnBeginDrag(eventData: PointerEventData)
+	- OnDrag(eventData: PointerEventData)
+	- OnDrop(eventData: PointerEventData)
+	- OnEndDrag(eventData: PointerEventData)

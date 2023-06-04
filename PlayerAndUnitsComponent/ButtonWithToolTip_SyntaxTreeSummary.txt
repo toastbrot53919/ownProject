@@ -1,0 +1,33 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\ButtonWithToolTip.cs
+Class: ButtonWithToolTip
+
+- skillNode: SkillNode
+- playerController: PlayerController
+- uiManager: UIManager
+- toolTipObject: GameObject
+- button: Button
+
+- Awake()
+  - playerController = FindObjectOfType<PlayerController>()
+  - uiManager = FindObjectOfType<UIManager>()
+  - toolTipObject = uiManager.tooltip
+  - toolTipObject.SetActive(false)
+  - button = GetComponent<Button>()
+  - button.onClick.AddListener(TryLearn)
+  - if (skillNode != null)
+    - GetComponent<Image>().sprite = skillNode.icon
+
+- OnPointerEnter(eventData: PointerEventData)
+  - ShowToolTip()
+
+- OnPointerExit(eventData: PointerEventData)
+  - HideToolTip()
+
+- ShowToolTip()
+  - uiManager.OpenToolTip(skillNode, gameObject.GetComponent<RectTransform>().position)
+
+- HideToolTip()
+  - uiManager.CloseToolTip()
+
+- TryLearn()
+  - playerController.TryUnlockSkillNode(skillNode)

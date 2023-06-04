@@ -1,0 +1,5 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\IInteractable.cs
+File Name: C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\IInteractable.cs
+
+Description:
+This code defines an interface named IInteractable, which is used to implement interactions with game objects. The interface is used in Unity projects and takes a parameter of Unity's Transform data type. The Interact() method defined in the interface takes the Transform of the object that is interacting with the IInteractable object. The implementation of methods in this interface will determine what happens when an object interacts with the IInteractable object.

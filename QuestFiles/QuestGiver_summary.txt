@@ -1,0 +1,11 @@
+Name of File: QuestGiver.cs
+
+Summary: 
+
+The QuestGiver class is a Unity MonoBehaviour that implements the IInteractable interface. It has two serialized fields quest and interactionIndicator which are a Quest object and a GameObject respectively. Additionally, it has private variables playerInRange, playerQuestSystem and uiManager. The playerInRange variable is used to keep track of whether the player is near the QuestGiver or not. The playerQuestSystem variable stores the QuestSystem Component of the player when the player enters the QuestGiver's collider. The uiManager variable is used to find the UIManager instance in the scene.
+
+The QuestGiver has two main methods: Interact() and Update(). Interact() is called when the player interacts with the QuestGiver by pressing the E key. If the questUIPresenter Game Object is active in the hierarchy, hideQuestUiPresenter() method of uiManager instance is called to hide the Quest UI. Otherwise, showQuestUiPresenter(quest) method of uiManager instance is called to show the Quest UI of the quest. 
+
+In the Update() method, if the player is in range and presses the E key, then Interact() method is called. 
+
+Lastly, the QuestGiver class has two private methods: OnTriggerEnter() and OnTriggerExit() which are used to detect when the player enters or exits the QuestGiver's collider. If the player enters the collider, playerInRange is set to true and interactionIndicator is set to active. Additionally, the playerQuestSystem variable is assigned the QuestSystem Component of the player. If the player exits the collider, playerInRange is set to false and interactionIndicator is set to inactive.

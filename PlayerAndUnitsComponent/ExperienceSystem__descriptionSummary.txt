@@ -1,0 +1,10 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\ExperienceSystem.cs
+The code in the file "ExperienceSystem.cs" defines a class called "ExperienceSystem" that represents a system for tracking the experience of a player or unit in a game. It has properties for the current experience points (CurrentXP), the current level (Level), and the experience points needed to reach the next level (XpToNextLevel). 
+
+The class also defines two events - one for when the player/unit levels up (LevelUpEvent) and another for when they gain experience (ExperienceGained). 
+
+When an instance of the class is created, the CurrentXP is set to 0, the Level is set to 1, and the XpToNextLevel is updated based on the current level. 
+
+The AddExperience method can be called to add a specified amount of experience to the player/unit. The method adds the experience amount to the CurrentXP and raises the ExperienceGained event. It then checks if the player/unit has gained enough experience to level up, and if so, it calls the private LevelUp method to update the player's level, update the XpToNextLevel, and raise the LevelUpEvent. 
+
+The CalculateXpForLevel method is a private utility function that calculates how much experience is needed to reach a given level. The actual XP calculation logic is not included in the code, but a placeholder formula is provided that uses a simple mathematical formula to calculate XP based on the player's current level.

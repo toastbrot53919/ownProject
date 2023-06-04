@@ -1,0 +1,14 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\AIController.cs
+The AIController.cs file contains a class that represents the AI controller for non-player characters (NPCs) in a game. It has several public fields for different AI states, such as Idle, Follow, Assist, Patrol, Chase, and Attack. It also has private fields for the navMeshAgent, target, aggroRadius, aggroTag, attackInterval, attackAbility, and attackRange.
+
+The Start() method initializes the AI controller and sets its default state to idle. It also checks if the AI has a patrol state and initializes the patrol waypoints if found.
+
+The Update() method updates the current state of the AI and sets the animator to move if the navMeshAgent is moving. It also updates the state if the NPC detects a player near it using the checkForAggro() method.
+
+The ChangeState() method changes the current state to a new state.
+
+The checkForAggro() method detects if a player is near the NPC within the aggro radius and changes the state to chase if found.
+
+The attack() method executes the attackAbility if the target is within the attack range and the attackInterval has passed. It also changes the state to chase if the target is out of range.
+
+The AIState abstract class defines three abstract methods: EnterState, UpdateState, and ExitState that are implemented by the different AI states that inherit from it.

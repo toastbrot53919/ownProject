@@ -1,0 +1,7 @@
+The file name of this class is "QuestAction". It is a ScriptableObject and can be created in the Unity editor menu under the "QuestSystem/QuestAction" category. 
+
+The purpose of this class is to hold a unique "actionId" string, which can be used to identify and trigger specific actions within a quest system. 
+
+Since this is a ScriptableObject and not a MonoBehaviour, it cannot be attached to game objects directly. Instead, it can be instantiated and referenced by other scripts. 
+
+Overall, this class is a simple data container with the sole responsibility of holding an action identifier.

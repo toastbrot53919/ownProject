@@ -1,0 +1,13 @@
+File Name: CharacterStatsUI.cs
+
+This file contains the implementation of the UI for displaying and updating the character's stats in the game. It uses Unity's UI system to display text and buttons on the screen. The UI displays the character's current stats, including Strength, Intelligence, Dexterity, Endurance, and Wisdom, and also shows the number of unspent stat points the character has.
+
+The class exposes public variables for the UI elements, including the Text objects for displaying the stats and the Button objects for increasing them. It also has a reference to the CharacterStats component, which manages the character's stats.
+
+The Start() method initializes the UI by setting up the button listeners and subscribing to the CharacterStats.StatsChanged event. The event is triggered whenever the character's stats change, and it calls the UpdateUI() method to update the UI with the new values.
+
+The Awake() method sets the cursor to be visible and unlocked, which is useful for UI interaction.
+
+The UpdateUI() method updates the text objects with the current stat values.
+
+The IncreaseStat() method is called whenever the player clicks on a stat button. It calls the CharacterStats.IncreaseStat() method with the appropriate Archetype enum value to increase the corresponding stat by 1.

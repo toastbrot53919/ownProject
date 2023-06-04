@@ -1,0 +1,14 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\AbilityController.cs
+AbilityController:
+- firePoint: Transform
+- learnedAbilitys: List<Ability>
+- lastTimeAbilityUsed: List<(string,float)>
+- statsProvider: IStatsProvider
+- animationController: AnimationController
+
++ Awake()
++ CastAbility(ability: Ability, abilityData: AbilityData)
++ CastAfterDelay(ability: Ability, abilityData: AbilityData): IEnumerator
++ AddAbility(ability: Ability)
++ checkCooldown(abilityName: string, cooldown: float): bool
++ setCooldown(abilityName: string, cooldown: float)

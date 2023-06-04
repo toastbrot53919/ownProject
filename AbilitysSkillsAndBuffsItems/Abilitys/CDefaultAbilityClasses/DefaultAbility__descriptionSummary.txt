@@ -1,0 +1,10 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\CDefaultAbilityClasses\DefaultAbility.cs
+This code is a class named "DefaultAbility" that inherits from a base class called "Ability." The file is located at "C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\CDefaultAbilityClasses\DefaultAbility.cs." 
+
+In the Awake method, the ability's name and description are set to "Default." 
+
+The OnEnable method checks if BaseAbilityStats, TotalAbilityStats, and abilityModifierManager are null and instantiates them if they are. It then calls the updateAbilityStats method. 
+
+The Activate method prints out a message to the console saying "Default Ability." 
+
+The OnAbilityObjectHit method takes in an abilityObject and a target GameObject but does not perform any actions.

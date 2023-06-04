@@ -1,0 +1,12 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\AiStates\ChaseState.cs
+The file, ChaseState.cs, is a script for the AI component of a game that creates the behavior for an AI entity to chase a target. 
+
+The script contains two public variables that can be adjusted from the Inspector panel: chaseSpeed and stoppingDistance. The chaseSpeed determines the speed at which the AI entity moves while chasing the target, while stoppingDistance determines the proximity the AI entity has to the target before stopping to attack.
+
+The script has three methods: EnterState, UpdateState, and ExitState. 
+
+The EnterState method sets the speed of the NavMeshAgent component attached to the AI entity to the chaseSpeed variable. 
+
+The UpdateState method first gets the Transform component of the target assigned to the AI entity. It then calculates the distance between the AI entity and the target. If that distance is greater than the stoppingDistance, the NavMeshAgent component is given the destination of the target's position to move towards. If the distance is less than the stoppingDistance, the AI entity will transition to another state, such as the attack state. 
+
+Finally, the ExitState method is an empty placeholder that allows the developer to clean up or reset any variables.

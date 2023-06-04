@@ -1,0 +1,7 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\UiAbilitySlot.cs
+UiAbilitySlot:
+-ability : Ability
+-icon : Image
+-Start()
+--if(ability != null)
+---icon.sprite = ability.icon

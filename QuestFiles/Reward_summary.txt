@@ -1,0 +1,9 @@
+File Name: Reward.cs
+
+This file contains a class named Reward which is responsible for defining the reward properties. It has three properties, rewardId of type string, rewardName of type string, and quantity of type int. 
+
+The class has a constructor that takes in three parameters, rewardId, rewardName, and quantity, and initializes the class properties with these values. 
+
+This class is marked with [System.Serializable] attribute which indicates that instances of this class can be serialized to be stored persistently or sent over the network.
+
+The Reward class can be utilized by other scripts or systems to manage rewards in a game. For example, a player may earn rewards for completing certain tasks in a game. These rewards can be managed and tracked using the Reward class.

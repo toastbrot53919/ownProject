@@ -1,0 +1,2 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\GlobalManager\VisualEffectManager.cs
+The file "VisualEffectManager.cs" is a ScriptableObject that creates a list of visual effects. It contains a struct "VisualEffect" that includes an effect name and an effect prefab, as well as a list of these visual effects. A "GetEffectPrefab" method is also included, which loops through the list to find a matching effect name. If a match is found, the corresponding effect prefab is returned. If no match is found, an error is logged and a null value is returned.

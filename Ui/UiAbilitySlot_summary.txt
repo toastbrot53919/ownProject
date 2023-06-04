@@ -1,0 +1,10 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\UiAbilitySlot.cs
+The file being discussed is named "UiAbilitySlot.cs" and is located in the "Scripts/Ui" folder of the project. It is a C# script that contains the internal logic for handling Ability Slots for the user interface (UI). 
+
+The script uses three Unity namespaces: UnityEngine.EventSystems, UnityEngine, and UnityEngine.UI. 
+
+The class extends the base class UiBaseDragAndDropFunc and contains two public fields: "ability" of type Ability and "icon" of type Image. 
+
+When the script executes, the "Start()" function checks if an ability is assigned to the slot and, if so, it sets the "icon" sprite to be the one assigned to the "ability". 
+
+Overall, UiAbilitySlot.cs defines the functioning of the UI Ability Slots and ensures that the correct icon is displayed based on the assigned ability.

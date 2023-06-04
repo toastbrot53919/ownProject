@@ -1,0 +1,34 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\QuestObjective.cs
+Syntax Tree of QuestObjective.cs:
+- QuestObjective
+  - string id
+  - string description
+  - ObjectiveStatus status
+  - abstract bool IsCompleted()
+  - abstract void UpdateProgress(string infoId)
+  - abstract string GetObjectiveProgress()
+- enum ObjectiveStatus
+  - Completed
+  - Incomplete
+- GatherObjective : QuestObjective
+  - string itemId
+  - int targetItems
+  - int currentItems
+  - GatherObjective(string id, string description, string itemId, int targetItems)
+  - override void UpdateProgress(string gatheredItemId)
+  - override bool IsCompleted()
+  - override string GetObjectiveProgress()
+- InspectObjective : QuestObjective
+  - string locationId
+  - bool locationInspected
+  - InspectObjective(string id, string description, string locationId)
+  - override void UpdateProgress(string inspectedLocationId)
+  - override bool IsCompleted()
+  - override string GetObjectiveProgress()
+- ActivateObjective : QuestObjective
+  - string altarId
+  - bool altarActivated
+  - ActivateObjective(string id, string description, string altarId)
+  - override void UpdateProgress(string activatedAltarId)
+  - override bool IsCompleted()
+  - override string GetObjectiveProgress()

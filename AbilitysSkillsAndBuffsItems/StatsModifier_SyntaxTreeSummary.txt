@@ -1,0 +1,20 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\StatsModifier.cs
+Class: StatsModifier
+
+-Serializable
+-attackSpeed: float
+-criticalChance: float
+-criticalDamage: float
+-spellCriticalChance: float
+-spellCriticalDamage: float
+-cooldown: float
+-dodgeChance: float
+-armor: float
+-magicResistance: float
+-maxLife: float
+-maxMana: float
+-lifeRegen: float
+-manaRegen: float
+
++Add(other: StatsModifier): void
++Sub(other: StatsModifier): void

@@ -1,0 +1,11 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Gameplay\GameManager.cs
+
+The "GameManager.cs" file is located in the "Gameplay" folder of the Unity project and contains the implementation for the GameManager class. The GameManager class is responsible for managing the overall gameplay of the Unity project.
+
+The GameManager class contains several public variables and private fields that are used for managing the game's state, such as the number of players, the current turn, and the game's difficulty level. These variables are initialized in the Start() method, which is automatically called when the game begins.
+
+The GameManager class also includes several public methods, such as "NextTurn()" and "EndGame()", which are used for advancing the game state and ending the game, respectively. These methods are called by other classes in the project, such as the UI and AI managers.
+
+Additionally, the GameManager class includes several private methods and fields that are used for managing the game's internal logic, such as determining the winner of the game and handling game over conditions.
+
+Overall, the GameManager class serves as the central hub for managing the overall gameplay in the Unity project. It contains several public and private methods and fields that are used for managing the game's state and logic.

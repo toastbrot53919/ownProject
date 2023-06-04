@@ -1,0 +1,8 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\AbilityModifier.cs
+The code located at C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\AbilityModifier.cs defines a class called AbilityModifiers. This class has four properties: modifierName, modifierDescription, operation, and abilityStats. modifierName and modifierDescription are strings that represent the name and description of the ability modifier. operation is a char that indicates the mathematical operation to be performed when applying the modifier. abilityStats is an object representing the attributes affected by the modifier.
+
+The AbilityModifiers class has a constructor that accepts two optional parameters: modifierName and modifierDescription. The constructor sets these properties and initializes the abilityStats object to a new instance of the AbilityStats class.
+
+The class also contains a virtual method called ApplyModifier which takes a reference to an AbilityStats object and applies the modifier to it using the addStats method of the AbilityStats class. This method can be overridden by child classes to apply the modifier in a different way.
+
+Overall, this code defines a flexible template for creating ability modifiers with customizable names, descriptions, and effects on attributes.

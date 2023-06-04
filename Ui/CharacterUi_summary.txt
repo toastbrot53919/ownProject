@@ -1,0 +1,11 @@
+File: CharacterUi.cs
+
+This file contains the implementation of the Character UI class that is responsible for updating the UI elements that display the stats of the character. It has references to various UI elements like Text, Image and Button that are used to display the character's stats and allow the user to interact with the game's interface. The class has a reference to a CharacterStats and UIManager classes which are used to retrieve and display the character's stats and to manage the user interface respectively.
+
+The Start() method is used to set up the UI and event listeners for the UI elements. It assigns a callback function to the onClick event of the openCharacterStatsMenu Button that opens the character stats UI when clicked, and subscribes to the StatsChanged event of the CharacterStats object. Whenever this event is fired, the UpdateUI() method is called to update the UI elements with the new stats.
+
+The Awake() method is used to set the cursor visible and unlock it when the scene starts.
+
+The UpdateUI() method is responsible for updating the Text elements that display the character's stats, and the subStatsPhysical, subStatsSpellCasting, subStatsDefensive, and subStatsUniversal Text elements that display some additional details about the character's stats. It retrieves this information from the CharacterStats object and formats it before setting it as the text content for the UI Text elements.
+
+In summary, the CharacterUi class updates the UI elements that display the character's stats and provides a way for the user to interact with the game's interface. It subscribes to the StatsChanged event of the CharacterStats object to update the UI whenever the character's stats change.

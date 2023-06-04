@@ -1,0 +1,12 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\Inventory.cs
+The file being implemented here is called "Inventory.cs" and it is located in the "PlayerAndUnitsComponent" folder of the Unity project. This file contains a class called "Inventory" which inherits from the MonoBehaviour class. The class has three public fields: a List of "Item" objects, and a QuestSystem object. 
+
+The Start() method initializes the questSystem field by getting the QuestSystem component that is attached to the same GameObject as the Inventory component. 
+
+The AddItem() method adds the given item to the inventory, and if the questSystem object is not null, it logs a message and calls the UpdateQuestObjective() method on the questSystem object to update the quest objective with the item's name. 
+
+The RemoveItem() method removes the given item from the inventory. 
+
+The HasItem() method returns true if the inventory contains the given item. 
+
+Overall, this class provides basic functionality for managing an inventory of items in a game, and also integrates with a quest system to update quest objectives when items are collected.

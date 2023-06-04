@@ -1,0 +1,16 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Buffs\BuffInstance.cs
+BuffInstance:
+- buff: Buff
+- target: GameObject
+- currentStacks: int
+- remainingDuration: float
+
++BuffInstance(buff: Buff, target: GameObject, initialStacks: int, initialDuration: float)
+
++Update()
++Refresh(duration: float)
++AddStack()
++RemoveStack()
++OnBuffApply()
++OnBuffFade()
++OnBuffHit()

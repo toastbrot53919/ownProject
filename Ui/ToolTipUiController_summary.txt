@@ -1,0 +1,5 @@
+File Name: ToolTipUiController.cs
+
+Summary: The ToolTipUiController class is responsible for controlling the user interface (UI) elements of the tooltip that appears when hovering over an in-game skill. The class contains UI elements, such as SkillName, SkillDescription, SkillpointCost, and SkillIcon. The UpdateUI method is called to update these elements based on the skillNode parameter passed in. In addition, the Awake method sets the cursor state and the Start method remains empty.
+
+Intern Logic: This file creates a ToolTipUiController class that manages tooltip UI elements and updates them based on the skillNode passed in. The UpdateUI method updates the skill name, description, skill point cost, attribute requirement, and skill icon based on the skillNode parameter. Meanwhile, the Awake method sets the cursor state and the Start method does nothing.

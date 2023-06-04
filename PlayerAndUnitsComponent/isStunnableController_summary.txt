@@ -1,0 +1,6 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\isStunnableController.cs
+The file "isStunnableController.cs" within the "PlayerAndUnitsComponent" folder is responsible for controlling the stunnable behavior of game objects. The script implements the "IStunnable" interface, which includes three properties: "stunned", "timeAtStunStart" and "stunDuration". The "stunned" property indicates whether the game object is currently stunned or not, while "timeAtStunStart" and "stunDuration" properties represent the start time and duration of the stun effect.
+
+The script provides a "Stun" function, which sets the "stunned" property to true and saves the current time as the starting time for the stun effect. It also saves the input "duration" parameter as the duration of the stun effect. The "isStunned" function returns the current state of the "stunned" property. If the time elapsed since the start of the stun effect is greater than the "stunDuration" property, then the "stunned" property is set to false, indicating the end of the stun effect.
+
+In summary, the "isStunnableController.cs" script allows game objects to be stunned and then recover from the stun effect after a set duration of time.

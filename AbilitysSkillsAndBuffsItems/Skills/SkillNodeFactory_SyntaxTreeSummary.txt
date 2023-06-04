@@ -1,0 +1,29 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Skills\SkillNodeFactory.cs
+Class Name: SkillNodeFactory
+
+- SkillNodeFactoryDataClass:
+    - skillName: string
+    - skillDescription: string
+    - skillPointCost: int
+    - icon: Sprite
+    - mainStatRequirement: List<Archetype>
+    - mainStatValue: List<int>
+    - skill: Skill
+    - prerequisiteSkill: SkillNode
+    - isUnlocked: bool
+    - SkillNodeFactoryDataClass(string skillName, string skillDescription, int skillPointCost, Sprite icon, List<Archetype> mainStatRequirement, List<int> mainStatValue, Skill skill, SkillNode prerequisiteSkill, bool isUnlocked)
+
+- CreateSkillNode(SkillNodeFactoryDataClass data):
+    - skillNode: SkillNode
+        - name: string
+        - skillName: string
+        - skillDescription: string
+        - skillPointCost: int
+        - icon: Sprite
+        - mainStatRequirement: List<Archetype>
+        - mainStatValue: List<int>
+        - skill: Skill
+        - prerequisiteSkill: SkillNode
+        - isUnlocked: bool
+    - AssetDatabase.CreateAsset(skillNode, "Assets/Resources/SkillNodes/"+skillNode.name+".asset")
+    - return skillNode

@@ -1,0 +1,266 @@
+using UnityEngine;
+[CreateAssetMenu(menuName = "Abilities/FrostBolt")]
+public class FrostBolt : DefaultProjectileAbility
+{
+    public Buff chillBuff;
+    public Buff frozenBuff;
+
+    public void OnEnable(){
+        // Create Chill buff
+        chillBuff = BuffFactory.CreateBuff("Chill", 6f, true, 2);
+        chillBuff.buffName = "Chill";
+        chillBuff.OnApply += ApplyChillBuff;
+        chillBuff.OnFade += FadeChillBuff;
+        chillBuff.OnHit += HitChillBuff;
+
+        // Create Frozen buff
+        frozenBuff = BuffFactory.CreateBuff("Frozen", 10f, false, 1);
+        frozenBuff.OnApply += ApplyFrozenBuff;
+        frozenBuff.OnHit += HitFrozenBuff;
+        frozenBuff.buffName = "Frozen";
+
+        abilityName = "Frost Bolt";
+        abilityDescription = "Shoot a frostbolt that applies Chill and Frozen buffs";
+
+
+    }
+
+    public override void Activate(AbilityData abilityData)
+    {
+        base.Activate(abilityData);
+    }
+
+    public override void OnAbilityObjectHit(AbilityObject abilityObject, GameObject target)
+    {
+        base.OnAbilityObjectHit(abilityObject, target);
+
+        if (abilityObject.data.CasterStats != null)
+        {
+            HealthController targetHealth = target.GetComponent<HealthController>();
+            if (targetHealth != null)
+            {
+                float damage = abilityObject.data.damage;
+                targetHealth.TakeDamage(damage, abilityObject.data.CasterStats.gameObject);
+
+                // Apply Chill buff to the target
+                BuffSystem buffSystem = abilityObject.data.CasterStats.gameObject.GetComponent<BuffSystem>();
+                if (buffSystem != null)
+                {
+                    BuffInstance existingChillBuff = buffSystem.GetBuffInstance(chillBuff.name);
+                    if (existingChillBuff != null)
+                    {
+                        // Increase stack count if not at max stacks
+                        if (existingChillBuff.currentStacks < existingChillBuff.buff.maxStacks)
+                        {
+                            existingChillBuff.AddStack();
+                        }
+                        else
+                        {
+                            // Remove all stacks of Chill and add Frozen buff
+                            buffSystem.RemoveBuff(existingChillBuff.buff);
+                            buffSystem.AddBuff(frozenBuff, target);
+                        }
+                    }
+                    else
+                    {
+                        // Apply new Chill buff
+                        buffSystem.AddBuff(chillBuff, target);
+                    }
+                }
+            }
+        }
+    }
+
+    private void ApplyChillBuff(BuffInstance buffInstance)
+    {
+        // Reduce movement speed and attack speed
+        StatsModifier modifier = new StatsModifier
+        {
+            movementSpeed = -0.1f,
+            attackSpeed = -0.05f
+        };
+        buffInstance.target.GetComponent<CharacterStats>().AddStatBonuses(modifier);
+    }
+
+    private void FadeChillBuff(BuffInstance buffInstance)
+    {
+        // Restore movement speed and attack speed
+        StatsModifier modifier = new StatsModifier
+        {
+            movementSpeed = 0.1f,
+            attackSpeed = 0.05f
+        };
+        buffInstance.target.GetComponent<CharacterStats>().RemoveStatBonuses(modifier);
+    }
+
+    private void HitChillBuff(BuffInstance buffInstance)
+    {
+        // Additional actions/effects when Chill buff "hits"
+        // (e.g., play a visual effect)
+        VisualEffectController vfxController = buffInstance.target.GetComponent<VisualEffectController>();
+        if (vfxController != null)
+        {
+            vfxController.SpawnEffect("ChillHit");
+        }
+    }
+
+    private void ApplyFrozenBuff(BuffInstance buffInstance)
+    {
+        // Apply stun effect
+        IStunnable stunController = buffInstance.target.GetComponent<IStunnable>();
+        if (stunController != null)
+        {
+            stunController.Stun(2f);
+        }
+    }
+
+    private void HitFrozenBuff(BuffInstance buffInstance)
+    {
+        // Additional actions/effects when Frozen buff "hits"
+        // (e.g., play a visual effect)
+        VisualEffectController vfxController = buffInstance.target.GetComponent<VisualEffectController>();
+        if (vfxController != null)
+        {
+            vfxController.SpawnEffect("FrozenHit");
+        }
+    }
+}
+
+this was the prompt it recieved: 
+Given the following classes and their properties:
+
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Buffs\BuffInstance.cs
+The file named "BuffInstance.cs" is a script containing a class that represents an instance of a buff in a game. It has four public variables; a Buff object, a target GameObject, an integer representing the current stacks of the buff, and a float representing the remaining duration of the buff.
+
+The constructor of the class takes in a Buff object, a target GameObject, the initial stacks of the buff, and the initial duration of the buff and sets the BuffInstance variables accordingly.
+
+The Update method of the class reduces the remaining duration of the buff by the Time.deltaTime. If the remaining duration is less than or equal to zero, the OnBuffFade method is called, and the method returns. Otherwise, it performs any other update logic specific to the buff.
+
+The Refresh method allows for the refreshing of the buff's duration by updating the remaining duration variable.
+
+The AddStack method increases the current stacks of the buff and calls the OnBuffApply method.
+
+The RemoveStack method decreases the current stacks of the buff and calls the OnBuffFade method if the current stacks are less than or equal to zero.
+
+The OnBuffApply method performs any actions or applies stat changes when the buff is applied.
+
+The OnBuffFade method performs any actions or reverts stat changes when the buff fades.
+
+The OnBuffHit method performs any actions or applies effects when the buff "hits" (e.g., dealing damage or applying a debuff).
+
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\DefaultSelfBuffAbility.cs
+Syntax tree of DefaultSelfBuffAbility class:
+
+DefaultSelfBuffAbility
+- Inherits from Ability
+- has a public Buff variable called buff
+- has an OnEnable method
+  - Sets buff equal to a new Buff object created by BuffFactory's CreateBuff method, passing in the parameters "Default Self Buff", 5f, true, 3, and a new StatsModifier object with criticalDamage set to 10.
+- has an Activate method that overrides the Activate method in Ability
+  - Sets abilityName to "Default Self Buff Ability"
+  - Sets abilityDescription to "This is a default self buff ability"
+  - Sets cooldown to 10
+  - Sets intelligenceScaling to 1
+  - Checks if abilityData.CasterStats is null
+    - If so, logs an error message and returns
+  - Gets the BuffSystem component from abilityData.CasterStats's GameObject
+    - If it doesn't exist, logs an error message and returns
+  - Adds buff to buffSystem, passing in abilityData.CasterStats's GameObject as an argument
+- has an OnAbilityObjectHit method that overrides the OnAbilityObjectHit method in Ability
+  - Takes in an AbilityObject and a GameObject as arguments, but does nothing with them.
+
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\FireBall.cs
+- File name: FireBall.cs
+- Class name: FireBall
+- Inheritance: DefaultProjectileAbility
+
+Syntax Tree:
+FireBall
+- DefaultProjectileAbility
+  - Name: OnAbilityObjectHit
+    - Access Modifier: public
+    - Return Type: void
+    - Parameters: AbilityObject abilityObject, GameObject target
+    - If-Block
+      - If-statement: abilityObject.data.CasterStats != null
+        - Get targetHealth from target's HealthController component
+        - If-statement: targetHealth != null
+          - Set damage as abilityObject.data.damage
+          - Call targetHealth.TakeDamage with parameters damage and abilityObject.data.CasterStats.gameObject
+    - Call RaiseOnObjectHit with parameters abilityObject and target
+  - Name: Activate
+    - Access Modifier: public
+    - Return Type: void
+    - Parameters: AbilityData abilityData
+    - If-statement: abilityData.CasterStats == null, return
+    - Get firePoint from abilityData.CasterStats' AbilityController component
+    - Instantiate projectileInstance using prefab projectilePrefab, position firePoint.position, and rotation firePoint.rotation
+    - Get abilityObject from projectileInstance's BaseProjectileObject component
+    - Call RaiseOnObjectSpawned with parameters abilityObject and null
+    - Get rb from projectileInstance's Rigidbody component
+    - Set rb.velocity as firePoint.forward multiplied by projectileSpeed
+    - Set abilityObject.ParentAbility as this
+    - Set abilityObject.data as abilityData
+    - Set abilityData.projectileSpeed as projectileSpeed
+
+1. Ability
+   - Activate(AbilityData abilityData)
+   - OnAbilityObjectHit(AbilityObject abilityObject, GameObject target)
+   - PreActivateAbility(AbilityData abilityData)
+
+2. AbilityObject
+   - data
+   - ParentAbility
+
+3. AbilityData
+   - CasterStats
+   - damage
+   - CasterCombatController
+
+4. HealthController
+   - TakeDamage(float damage, GameObject source)
+
+5. VisualEffectController
+   - positionStomach
+
+6. ComboController
+   - GetComboCounter(string comboName)
+   - IncreaseComboCounter(string comboName)
+   - ResetComboCounter(string comboName)
+
+7. Buff
+   - buffName
+   - duration
+   - stackable
+   - maxStacks
+   - OnApply
+   - OnFade
+   - OnHit
+
+8. BuffInstance
+   - Buff
+   - target
+   - currentStacks
+   - remainingDuration
+   - Update()
+   - Refresh()
+   - AddStack()
+   - RemoveStack()
+   - OnBuffApply()
+   - OnBuffFade()
+   - OnBuffHit()
+
+And given the DefaultSelfBuffAbility, FireBall, and DefaultComboAbility as examples:
+
+Your task is to generate a new ability based on the following description:
+
+Shoot a frostbold that deals 5 damage on hit adds Buff Chill for 6 secounds:
+Buff Chill can stack 5 times.
+Buff Chill reduces the MovementSpeed 10 % and attackspeed 5%
+if maxStacks are reached remove all stack of Buff Chill and add Buff Frozen
+Buff Frozen can stack 1 time and makes the target Stunned.
+Frozen has a duration of 10 scounds.
+
+This ability should be written in C#, and should make use of the classes and properties listed above. It should include logic for activating the ability, what happens when the ability hits an object, and any additional effects or behaviors described in the ability description. Consider how the ability interacts with other systems in the game, such as the health system, combo system, and buff system. Remember to handle any potential errors or edge cases to ensure the ability functions correctly in all situations.
+
+be critical, there are problems with the buff applies. also, it seams to  be better to not write into onEnable but in the constructor. consider Splitting the buffs out so that other Abilitys also can use the same buff. but theoratical would be the name enough

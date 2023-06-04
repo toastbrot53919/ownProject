@@ -1,0 +1,6 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\CDefaultAbilityClasses\DefaultGroupBuffAbility.cs
+The code is a script for a default group buff ability in a Unity project. It creates a menu option for the ability and extends from another class called "Ability". The script has two public variables, "buff" and "radius". The "OnEnable" method creates a new buff using a "BuffFactory" and assigns it to the "buff" variable. The script also has private variables for "AIController", "PlayerController", and "BuffSystem" which are used for caching. 
+
+The "Activate" method sets the ability name and description, as well as some base ability stats like cooldown and intelligence scaling. It then uses the "OverlapSphere" method to find all the objects within a certain radius of the caster. It then checks if the object has a "BuffSystem" component, and if it does, it adds the "buff" to it using the "AddBuff" method. If the object has an "AIController" component and has an aggro tag of "Player", it skips adding the buff. 
+
+Finally, there's an empty implementation of the "OnAbilityObjectHit" method.

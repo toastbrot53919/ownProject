@@ -1,0 +1,33 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\FireBall.cs
+- File name: FireBall.cs
+- Class name: FireBall
+- Inheritance: DefaultProjectileAbility
+
+Syntax Tree:
+FireBall
+- DefaultProjectileAbility
+  - Name: OnAbilityObjectHit
+    - Access Modifier: public
+    - Return Type: void
+    - Parameters: AbilityObject abilityObject, GameObject target
+    - If-Block
+      - If-statement: abilityObject.data.CasterStats != null
+        - Get targetHealth from target's HealthController component
+        - If-statement: targetHealth != null
+          - Set damage as abilityObject.data.damage
+          - Call targetHealth.TakeDamage with parameters damage and abilityObject.data.CasterStats.gameObject
+    - Call RaiseOnObjectHit with parameters abilityObject and target
+  - Name: Activate
+    - Access Modifier: public
+    - Return Type: void
+    - Parameters: AbilityData abilityData
+    - If-statement: abilityData.CasterStats == null, return
+    - Get firePoint from abilityData.CasterStats' AbilityController component
+    - Instantiate projectileInstance using prefab projectilePrefab, position firePoint.position, and rotation firePoint.rotation
+    - Get abilityObject from projectileInstance's BaseProjectileObject component
+    - Call RaiseOnObjectSpawned with parameters abilityObject and null
+    - Get rb from projectileInstance's Rigidbody component
+    - Set rb.velocity as firePoint.forward multiplied by projectileSpeed
+    - Set abilityObject.ParentAbility as this
+    - Set abilityObject.data as abilityData
+    - Set abilityData.projectileSpeed as projectileSpeed

@@ -1,0 +1,11 @@
+File name: Quest.cs
+
+Summary: The Quest class is a ScriptableObject that contains information about a quest such as its ID, title, description, objectives, rewards, and status. It has methods to add objectives and rewards, and to check and update objectives for completion. It also has a method to check if all objectives are complete and update the quest status accordingly.
+
+Intern logic:
+- The Quest class has public properties for its ID, title, description, objectives, rewards, and status.
+- Upon creation, a Quest object is initialized with its ID, title, description, and lists for objectives and rewards.
+- The CheckAndUpdateObjectives method loops through all objectives in the list and updates their progress if they are incomplete. If an objective is completed, it checks if all objectives are completed using the CheckQuestCompletion method.
+- The CheckQuestCompletion method loops through all objectives and checks if any are not completed. If all objectives are completed, the quest status is updated to completed.
+
+Note: The implementation is missing the definition for the QuestObjective and Reward classes/enums, which would contain information about objectives and rewards for the quest.

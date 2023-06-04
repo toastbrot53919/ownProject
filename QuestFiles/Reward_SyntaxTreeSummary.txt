@@ -1,0 +1,6 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\Reward.cs
+Reward:
+- rewardId: string
+- rewardName: string
+- quantity: int
+- Reward(rewardId: string, rewardName: string, quantity: int)

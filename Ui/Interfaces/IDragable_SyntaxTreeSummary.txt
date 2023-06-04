@@ -1,0 +1,8 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\Interfaces\IDragable.cs
+IDragable:
+- interface
+- IBeginDragHandler
+- IDragHandler
+- IEndDragHandler
+- GameObject
+- getDraggedObject()

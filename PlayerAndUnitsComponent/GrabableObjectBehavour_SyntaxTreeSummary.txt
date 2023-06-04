@@ -1,0 +1,19 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\GrabableObjectBehavour.cs
+GrabableObjectBehavour:
+- bool IsGrabbed
+- Transform Grabber
+- void Grab(Transform grabber)
+    - IsGrabbed = true
+    - Grabber = grabber
+    - transform.SetParent(grabber.GetComponent<CanGrabController>().grabHoldPoint)
+    - transform.localPosition = Vector3.zero
+    - transform.localRotation = Quaternion.identity
+- void Release()
+    - IsGrabbed = false
+    - Grabber = null
+    - transform.SetParent(null)
+- void Interact(Transform interacter)
+    - if (IsGrabbed)
+        - Release()
+    - else
+        - Grab(interacter)

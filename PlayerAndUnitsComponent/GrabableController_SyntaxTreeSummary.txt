@@ -1,0 +1,16 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\GrabableController.cs
+GrabableController
+- bool IsGrabbed
+- Transform Grabber
+- bool canBeGrabbedByAtivaton
+
++ Grab(Transform grabber)
+  - IsGrabbed = true
+  - Grabber = grabber
+  - transform.SetParent(Grabber)
+  - transform.localPosition = Vector3.zero
+
++ Release()
+  - IsGrabbed = false
+  - transform.SetParent(null)
+  - Grabber = null

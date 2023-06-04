@@ -1,0 +1,13 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\QuestSystem.cs
+File: QuestSystem.cs
+
+Class: QuestSystem
+
+- quests : List<Quest>
+- uiManager : UIManager
+
++ GetQuestByID(questID : int) : Quest
+- Start() : void
++ AddQuest(quest : Quest) : void
++ RemoveQuest(questId : int) : void
++ UpdateQuestObjective(objectiveId : string) : void

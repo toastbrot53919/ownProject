@@ -1,0 +1,15 @@
+This code defines a class called "Calculator" containing methods for addition, subtraction, multiplication, and division. The class takes two input parameters and returns the result of the respective calculation. The expected input for each method is two numerical values, and the output is a numerical value representing the result of the calculation. 
+
+Class: Calculator 
+
+Methods: 
+- add(x: int, y: int) -> int 
+- subtract(x: int, y: int) -> int 
+- multiply(x: int, y: int) -> int 
+- divide(x: int, y: int) -> float 
+
+Expected Input: 
+- x, y: two numerical values for each method 
+
+Output:
+- a numerical value representing the result of the calculation

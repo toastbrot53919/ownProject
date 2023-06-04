@@ -1,0 +1,14 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\BuffSystem.cs
+This script is called BuffSystem and is responsible for managing buffs in the game. It uses two dictionaries, activeBuffs and eventHandlers, to keep track of active buffs and their associated events. 
+
+The AddBuff method adds a new buff to a target game object. If the buff already exists, it either refreshes its duration or adds a new stack if the buff is stackable and hasn't reached its maximum number of stacks. If the buff is new, it creates a new BuffInstance and adds it to the activeBuffs dictionary. 
+
+The RemoveBuff method removes a buff from the activeBuffs dictionary. If the buff still has stacks left, it simply removes one stack. If the buff has no remaining stacks, it removes the buff entirely and removes its associated event handlers. 
+
+The GetBuffInstance method returns the BuffInstance associated with a given buff name, if it exists. 
+
+The AddEventHandlers and RemoveEventHandlers methods add and remove event handlers for a given buff. These event handlers are based on the eventType obtained from each buff's GetEventTypes method. 
+
+The CallEventHandlers method calls the event handlers associated with a given eventType and BuffInstance. 
+
+Overall, this script provides a robust system for managing buffs and their associated events in the game.

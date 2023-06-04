@@ -1,0 +1,16 @@
+File Name: QuestLogUIController.cs
+
+Summary: This file represents the Quest Log User Interface Controller class in the game. It is responsible for updating the display of a player's current quests and tracking quests. It has public and private variables that hold text objects and a reference to the QuestSystem class. It also has functions that update the display of quest logs and add or remove quests from tracking.
+
+Components/Variables: 
+- public TMP_Text questLogText: The text object that displays the player's quest log.
+- public TMP_Text trackingText: The text object that displays the player's currently tracking quests.
+- private QuestSystem questSystem: A variable that holds a reference to the QuestSystem class.
+- private List<Quest> trackingQuests: A list that holds the player's currently tracking quests.
+
+Functions:
+- Awake(): Called when the game object is created. It sets the questSystem variable by finding the QuestSystem object in the scene. If there is no QuestSystem object found, it logs an error message.
+- Start(): Called after Awake(). It updates the quest log display.
+- UpdateQuestLog(): A function that updates the display of both the quest log and tracking quests. It loops through all quests in the QuestSystem and adds their information to the quest log string. It also loops through all currently tracking quests and adds their titles to the tracking string. It then updates the text objects with the final strings.
+- AddQuestToTrack(int questID): Adds a quest to the list of currently tracking quests. It first gets the quest object using the questSystem's GetQuestByID() function. If the quest is not already being tracked, it is added to the trackingQuests list and the quest log display is updated.
+- RemoveQuestToTrack(int questID): Removes a quest from the list of currently tracking quests. It first gets the quest object using the questSystem's GetQuestByID() function. If the quest is currently being tracked, it is removed from the trackingQuests list and the quest log display is updated.

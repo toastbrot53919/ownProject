@@ -1,0 +1,11 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\SkillTreeMenuController.cs
+SkillTreeMenuController:
+- GameObject[] skillTrees
+- int currentSkillTree = 0
+- Start():
+	- skillTrees[currentSkillTree].SetActive(true)
+- SwitchSkillTree(int index):
+	- if (index < 0 || index >= skillTrees.Length) return
+	- skillTrees[currentSkillTree].SetActive(false)
+	- skillTrees[index].SetActive(true)
+	- currentSkillTree = index

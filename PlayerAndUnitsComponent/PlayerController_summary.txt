@@ -1,0 +1,36 @@
+File Name: PlayerController.cs
+
+The PlayerController class in Unity is responsible for controlling the character movement, camera, jumping, and handling hotkeys for abilities and items. 
+
+The class contains the following components:
+- BuffSystem: A system for managing buffs
+- ExperienceSystem: A system for managing experience points
+- CharacterStats: A component for managing character stats such as strength, intelligence, and endurance
+- CharacterCombatController: A controller for managing character combat 
+- SkillController: A controller for managing player's skills
+- SkillTree: A component for managing the skill tree
+- IStunnable: An interface for checking whether the character is stunned
+
+The class also contains the following public variables:
+- moveSpeed: A float value for character movement speed
+- rotationSpeed: A float value for character rotation speed
+- jumpForce: A float value for the force applied for jumping
+- groundLayer: A layer mask for detecting ground
+
+Additionally, the class has private variables for managing character movement, camera rotation, and hotkeys. It also uses the Animator component and a Rigidbody for character movement.
+
+The Start() function is responsible for initializing the various components and hotkeys. It also subscribes to the OnSkillUnlocked event in the SkillController component.
+
+The Update() function handles character movement, jumping, camera rotation, and hotkeys. It calls the HandleMovement(), HandleJump(), HandleCamera(), and HandleHotkey() functions respectively.
+
+The HandleHotkey() function is responsible for checking and performing abilities or items assigned to hotkeys using the KeyCode value of each hotkey.
+
+The HandleMovement() function retrieves input values for character movement and sets the character's rotation according to the input direction.
+
+The HandleJump() function checks and applies force for jumping if the character is on the ground.
+
+The HandleCamera() function retrieves input values for camera rotation and sets the camera position and rotation accordingly.
+
+The FixedUpdate() function is used for applying motion to the Rigidbody component for character movement.
+
+The class also contains a method for unlocking and unlearning skill nodes in the SkillTree component.

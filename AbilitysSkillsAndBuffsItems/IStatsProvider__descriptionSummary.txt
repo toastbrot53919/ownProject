@@ -1,0 +1,2 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\IStatsProvider.cs
+This code creates an interface called "IStatsProvider" which has one method called "GetCharacterStats". The method returns an object of the "CharacterStats" class, which is not defined in this code snippet. This interface can be implemented by multiple classes which will provide their own implementation of the "GetCharacterStats" method.

@@ -1,0 +1,17 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Skills\Skill.cs
+Skill.cs 
+- class Skill
+    - string skillName
+    - List<Archetype> archTypes
+    - StatsModifier statModifier
+    - virtual ApplySkill(CharacterStats characterStats)
+        - (implemented in derived classes)
+    - virtual RemoveSkill(CharacterStats characterStats)
+        - (implemented in derived classes)
+    - virtual OnSpawnAbilityObject(AbilityObject abilityObject, AbilityData abilityData)
+- enum Archetype
+    - Strength
+    - Intelligence
+    - Dexterity
+    - Endurance
+    - Wisdom

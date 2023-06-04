@@ -1,0 +1,8 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\IStunnable.cs
+The file name is IStunnable.cs and it is located in the directory Assets\Scripts\PlayerAndUnitsComponent. This file contains an interface called IStunnable that defines certain properties and methods related to the ability of a GameObject to be stunned.
+
+The interface includes a bool property called stunned that indicates whether the GameObject is currently stunned or not. It also includes two float properties: timeAtStunStart, which represents the time at which the GameObject was last stunned, and stunDuration, which represents the duration of the stun.
+
+In addition, the interface defines a method called Stun, which takes in a float parameter called duration and stuns the GameObject for that amount of time. Finally, the interface includes a method called isStunned, which returns a bool indicating whether the GameObject is currently stunned.
+
+Overall, IStunnable.cs provides a flexible and extensible framework for implementing stuns in Unity projects. Developers can easily add the IStunnable interface to any GameObject in their game and customize its behavior as needed, providing a powerful tool for creating compelling gameplay experiences.
