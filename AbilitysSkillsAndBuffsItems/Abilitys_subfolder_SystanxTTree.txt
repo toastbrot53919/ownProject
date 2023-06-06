@@ -1,0 +1,117 @@
+= "Abilities/DefaultSelfBuffAbility")]
+- public class DefaultSelfBuffAbility : Ability
+    - public Buff buff;
+    - public float duration;
+
+    - private BuffSystem buffSystem;
+
+    - private void OnEnable()
+        - buffSystem = GetComponent<BuffSystem>();
+        - if (buffSystem == null)
+            - Debug.LogError("Buff System not found on object!");
+
+    - public override void Activate(AbilityData abilityData)
+        - abilityName = "Default Self Buff";
+        - abilityDescription = "Applies a buff to the caster";
+        - BaseAbilityStats.cooldown = 5f;
+        - BaseAbilityStats.intelligenceScaling = 0.5f;
+
+        - buffSystem.AddBuff(buff, abilityData.CasterStats.gameObject, duration, casterBuffSystem);
+
+    - public override void OnAbilityObjectHit(AbilityObject abilityObject, GameObject target)
+        - // Do nothing. = Reduce wordiness, clarify and format the syntax trees for each class:
+
+(BaseProjectileObject)
+
+- using System.Collections;
+- using UnityEngine;
+
+public class BaseProjectileObject : AbilityObject, IBouncingAbilityObject, IPiercingAbilityObject
+{
+    public float BounceIntensity { get; set; }
+    public float BounceDuration { get; set; }
+    public int bounceCount;
+    public int pierceCount;
+
+    protected override void HandleOnHit(GameObject target)
+    {
+        if (data.CasterStats != null)
+        {
+            HealthController targetStats = target.GetComponent<HealthController>();
+            if (targetStats != null)
+            {
+                float damage = data.damage;
+                targetStats.TakeDamage(damage, data.CasterStats.gameObject);
+            }
+        }
+        shouldDestroy = deleteOnCollision;
+        if (bounceCount > 0)
+        {
+            Bounce(target);
+        }
+        else if (pierceCount > 0)
+        {
+            Pierce(target);
+        }
+        if (shouldDestroy)
+        {
+            HandleOnDelete();
+        }
+    }
+
+    public void Bounce(GameObject target)
+    {
+        shouldDestroy = false;
+        bounceCount--;
+        Vector3 bounceDirection = Vector3.Reflect(transform.forward, target.transform.up);
+        transform.forward = bounceDirection;
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.velocity = bounceDirection * data.projectileSpeed;
+    }
+
+    public void Pierce(GameObject target)
+    {
+        pierceCount--;
+        shouldDestroy = false;
+    }
+}
+
+(DefaultSelfBuffAbility)
+
+- public class DefaultSelfBuffAbility : Ability
+{
+    public Buff buff;
+
+    void OnEnable()
+    {
+        buff = BuffFactory.CreateBuff("Default Self Buff", 5f, true, 3, new StatsModifier(criticalDamage: 10));
+    }
+
+    public override void Activate(AbilityData abilityData)
+    {
+        abilityName = "Default Self Buff Ability";
+        abilityDescription = "This is a default self buff ability";
+        BaseAbilityStats.cooldown = 10;
+        BaseAbilityStats.intelligenceScaling = 1;
+
+        if (abilityData.CasterStats == null)
+        {
+            Debug.LogError("CasterStats is null");
+            return;
+        }
+
+        BuffSystem buffSystem = abilityData.CasterStats.GetComponent<BuffSystem>();
+        if (buffSystem == null)
+        {
+            Debug.LogError("BuffSystem is null");
+            return;
+        }
+
+        buffSystem.AddBuff(buff, abilityData.CasterStats.gameObject,buffSystem);
+    }
+
+    public override void OnAbilityObjectHit(AbilityObject abilityObject, GameObject target)
+    {
+
+    }
+}

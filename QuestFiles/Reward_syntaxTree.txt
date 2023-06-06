@@ -1,0 +1,25 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\Reward.cs
+(S: Reward)
+               |
+         ------------------
+         |                |
+  (M: rewardId)     (M: rewardName)    (M: quantity)
+         |                |                |
+(c: string)      (c: string)        (c: int)
+
+Method Detail:
+1. Reward(string rewardId, string rewardName, int quantity)
+   - Constructor method that takes in three parameters: rewardId (string), rewardName (string), quantity (int) 
+   - Sets the value of the class members rewardId, rewardName, and quantity to the corresponding parameter value.
+
+2. rewardId
+    - Member of the class of string data type
+    - Stores the id of the reward
+
+3. rewardName
+    - Member of the class of string data type
+    - Stores the name of the reward
+
+4. quantity
+    - Member of the class of int data type
+    - Stores the quantity of the reward

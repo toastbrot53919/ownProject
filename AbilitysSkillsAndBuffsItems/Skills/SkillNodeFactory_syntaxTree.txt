@@ -1,0 +1,17 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Skills\SkillNodeFactory.cs
+(S) SkillNodeFactory
+ |
+ |_(M) CreateSkillNode(SkillNodeFactoryDataClass data)
+
+(S) SkillNodeFactoryDataClass
+ |
+ |_(S) SkillNodeFactoryDataClass(string skillName, string skillDescription, int skillPointCost, Sprite icon, List<Archetype> mainStatRequirement, List<int> mainStatValue, Skill skill, SkillNode prerequisiteSkill, bool isUnlocked)
+ |  |_(P) skillName
+ |  |_(P) skillDescription
+ |  |_(P) skillPointCost
+ |  |_(P) icon
+ |  |_(P) mainStatRequirement
+ |  |_(P) mainStatValue
+ |  |_(P) skill
+ |  |_(P) prerequisiteSkill
+ |  |_(P) isUnlocked

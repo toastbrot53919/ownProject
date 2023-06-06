@@ -1,0 +1,118 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\AIController.cs
+AIController:
+
+- Class declaration and inheritance: 
+  - Public class AIController : MonoBehaviour
+
+- Public variables:
+  - public AIState currentState;
+  - public IdleState idleState;
+  - public FollowState followState;
+  - public AssistState assistState;
+  - public PatrolState patrolState;
+  - public ChaseState chaseState;
+  - public AttackState attackState;
+  - public Transform target;
+  - public float aggroRadius;
+  - public string aggroTag;
+  - public float attackInterval;
+  - public Ability attackAbility;
+  - public float attackRange;
+
+- Private variables:
+  - private NavMeshAgent navMeshAgent;
+  - private AnimationController animationController;
+  - private float DelayActionCounter;
+
+- Start method declaration:
+  - private void Start()
+
+  - Inside the Start method:
+    - navMeshAgent is assigned to the NavMeshAgent component of the gameObject this script is attached to.
+    - currentState is set to idleState.
+    - A PatrolStateMonoBehaviour component is fetched from the same gameObject this script is attached to, and if it exists:
+      - patrolState's waypoints field is set to an empty list of Transforms.
+      - A foreach loop is executed over each waypoint GameObject in patrolStateMonoBehaviour's waypoints list.
+        - Each GameObject's transform is added to patrolState's waypoints list.
+    - animationController is assigned to the AnimationController component of this gameObject.
+
+- Public void method:
+  - public void setNextActionDelay(float delay)
+
+  - Inside the setNextActionDelay method:
+    - DelayActionCounter is set to the float parameter delay.
+
+- Public NavMeshAgent method:
+  - public NavMeshAgent getNavMeshAgent()
+
+  - Inside the getNavMeshAgent method:
+    - A NavMeshAgent is returned, which is assigned to navMeshAgent.
+
+- Update method declaration: 
+  - private void Update()
+
+  - Inside the Update method:
+    - Checks if navMeshAgent is null, and if true, returns.
+    - If DelayActionCounter is greater than 0:
+      - DelayActionCounter is reduced by deltaTime.
+      - The method returns.
+    - currentState's UpdateState method is called with this as its argument.
+    - If navMeshAgent's velocity magnitude is greater than 1:
+      - animationController's setAnimatorVariable method is called with "Speed" and 1f as its arguments.
+    - Else:
+      - animationController's setAnimatorVariable method is called with "Speed" and 0f as its arguments.
+
+- Public void method:
+  - public void ChangeState(AIState newState)
+
+  - Inside the ChangeState method:
+    - A log is printed with "Change State From " + currentState + " to " + newState + "" as its argument.
+    - currentState's ExitState method is called with this as its argument.
+    - currentState is set to newState.
+    - newState's EnterState method is called with this as its argument.
+
+- Public void method:
+  - public void checkForAggro()
+
+  - Inside the checkForAggro method:
+    - An array of colliders is obtained through Physics.OverlapSphere with transform.position and aggroRadius as its parameters.
+    - A foreach loop is executed over each collider in the colliders array.
+      - If the collider's tag is not null or empty and it has the aggroTag:
+        - target is assigned to the collider's gameObject's transform.
+        - changeState is called with chaseState as its argument.
+        - The loop is broken.
+
+- Private float variable:
+  - float nextAttackTime = 0;
+
+- Public void method:
+  - public void attack()
+
+  - Inside the attack method:
+    - If target is not null:
+      - distanceToTarget is assigned to the distance between this gameObject's transform position and target's position.
+      - If distanceToTarget is less than or equal to attackRange:
+        - navMeshAgent's isStopped field is set to true.
+        - This gameObject's Animator's "Speed" float value is set to 0.
+        - A direction vector is assigned to the difference between target's position and this gameObject's transform position normalized.
+        - A lookRotation is assigned to a Quaternion created from the x, y, and z values of the direction vector.
+        - This gameObject's transform rotation is set to a Slerp between its current rotation and the lookRotation based on deltaTime multiplied by 5f.
+        - This gameObject's CharacterCombatController's PerformAbility method is called with attackAbility and target.gameObject as its parameters.
+      - Else:
+        - ChangeState is called with chaseState as its argument.
+
+- Internal void method:
+  - internal void SetAIController(AIController aiController)
+
+  - Inside the SetAIController method:
+    - All of the public variables are assigned to the values of their corresponding arguments. 
+
+Public abstract class AIState : ScriptableObject:
+
+- Class declaration and inheritance: 
+  - Public abstract class AIState : ScriptableObject
+
+- Public abstract methods:
+  - public abstract void EnterState(AIController aiController);
+  - public abstract void UpdateState(AIController aiController);
+  - public abstract void ExitState(AIController aiController);

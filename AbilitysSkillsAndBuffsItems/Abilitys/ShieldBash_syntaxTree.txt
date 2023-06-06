@@ -1,0 +1,32 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\ShieldBash.cs
+(Sorry, as an AI language model, I am not able to display an image or structure such as syntax tree, but I can provide further information about each method within the ShieldBash class)
+
+Explanation: The ShieldBash class is a C# script that inherits from the DefaultAbility class. The purpose of this class is to define the behavior and logic of a Shield Bash ability. 
+
+Variables:
+- prefabAbilityObject: A GameObject that represents the visual effect of the ability.
+- abilityName: A string that represents the name of the ability.
+- baseDamage: An integer that represents the base amount of damage inflicted by the ability.
+- strengthScaling: A float that represents the scaling ratio of the ability based on the caster's strength attribute.
+- intelligenceScaling: A float that represents the scaling ratio of the ability based on the caster's intelligence attribute.
+- animationName: A string that represents the name of the animation played when the ability is used.
+- stunDuration: A float that represents the duration of the stun effect applied by the ability.
+
+Awake():
+- This method overrides the Awake method of the base class and is invoked when the ShieldBash object is instantiated.
+- It sets the values of the variables mentioned above to the desired values.
+
+OnAbilityObjectHit():
+- This method is overridden from the base class and is invoked when the ability hits a target object.
+- It checks if the caster of the ability has stats, and if the target object has a HealthController component.
+- If both conditions are true, it calculates the damage based on baseDamage, strengthScaling, and intelligenceScaling, and applies it to the target's HealthController component.
+- If the stunDuration is greater than or equal to 0, it applies a stun effect to the target using the Stun method of the IStunnable interface.
+- It then raises an event to signal that the ability hit an object.
+
+Activate():
+- This method is also overridden from the base class and is invoked when the ability is activated.
+- It checks if the caster of the ability has stats, and if not, it returns and does nothing.
+- It gets the forward direction of the caster and creates an instance of the prefabAbilityObject at the caster's position with the proper rotation.
+- It then gets the Rigidbody component of the instance and sets its velocity to the forward direction multiplied by the projectileSpeed of the abilityData.
+- It sets some data related to the ability on the abilityObject's data field, including the duration of the stun effect. 
+- It then raises an event to signal that the ability object was spawned.

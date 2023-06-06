@@ -1,0 +1,55 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\UIManager.cs
+UIManager:
+- Class definition starts at line 3 and ends at line 111.
+- Inherits from MonoBehaviour.
+
+Variables:
+- public GameObject pauseMenu.
+- public GameObject mainMenu.
+- public GameObject characterIncreaseStatusUI.
+- public GameObject characterUi.
+- public GameObject tooltip.
+- public GameObject skillTreeMenu.
+- public GameObject SpellBookMenu.
+- public GameObject InevntoryMenu.
+- public GameObject questBookUi.
+- public GameObject questListQuickUi.
+- private ToolTipUiController toolTipController.
+- public PresentQuestUiController questUIPresenter.
+- public event eventUi onPlayerHealthManaChange.
+- public delegate void eventUi().
+
+Methods:
+- public void updateQuestBook().
+- public void OpenQuestBookMenu().
+- public void CloseQuestBookMenu().
+- public void showQuestListQuickUi().
+- public void hideQuestListQuickUi().
+- public void showQuestUiPresenter(Quest quest).
+- public void hideQuestUiPresenter().
+- private void Update().
+- public void Awake().
+- public void PauseGame().
+- public void UnpauseGame().
+- public void ShowMainMenu().
+- public void HideMainMenu().
+- public void OpenCharacterStatusUI().
+- public void OpenCharacterUi().
+- public void CloseCharacterUi().
+- public void OpenSkillTreeMenu().
+- public void CloseSkillTreeMenu().
+- public void CloseCharacterStatusUI().
+- public void OpenSpellBookMenu().
+- public void CloseSpellBookMenu().
+- public void OpenInventoryMenu().
+- public void CloseInventoryMenu().
+- public void toggleInventoryMenu().
+- public void toggleSpellBookMenu().
+- public void toggleCharacterMenu().
+- public void toggleSkillTreeMenu().
+- public void toggleQuestBookMenu().
+- public void OpenToolTip(SkillNode node, Vector3 Position).
+- public void OpenToolTip(Hotkey hotkey, Vector3 Position).
+- public void OpenToolTip(Ability ability, Vector3 Position).
+- public void OpenToolTip(Item item, Vector3 Position).
+- public void CloseToolTip().

@@ -1,0 +1,16 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\WorldManagmentUnitSpawning\GlobalUnitController.cs
+File: GlobalUnitController.cs
+
+Class: GlobalUnitController
+
+	- Public Static Elements:
+
+		- List<GameObject> units = new List<GameObject>()
+
+	- Public Static Functions:
+
+		- void addUnit(GameObject unit)
+
+			- Logs the message "Unit added To GlobalUnitController" using the Debug.Log() function
+
+			- Adds the GameObject "unit" to the list "units" using the units.Add() function

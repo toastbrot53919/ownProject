@@ -1,0 +1,13 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\Interfaces\IDragable.cs
+There's only one class in the file, which is the interface IDragable. Here's the syntax tree for it:
+
+IDragable
+├── IBeginDragHandler
+├── IDragHandler
+├── IEndDragHandler
+└── Methods:
+    ├── GameObject getDraggedObject()
+
+The IDragable interface inherits from three other interfaces: IBeginDragHandler, IDragHandler, and IEndDragHandler. These three interfaces are built-in to Unity and define methods that handle the various stages of dragging an object in the UI.
+
+The IDragable interface itself defines a single method, `getDraggedObject()`. This method returns a GameObject that represents the object being dragged. It doesn't take any arguments and doesn't have any internal logic, as it's up to the implementing class to define how the dragged object is determined.

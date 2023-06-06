@@ -1,0 +1,42 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\MovementController.cs
+(S) = statement, (E) = expression, (D) = declaration
+
+File: MovementController.cs
+
+Class: MovementController
+
+(E) using UnityEngine;
+(E) using UnityEngine.AI;
+
+public class MovementController : MonoBehaviour
+{
+    (D) IStunnable stunnable;(S) 
+    (D) public Transform target;(S) 
+    (D) public float stoppingDistance = 2f;(S) 
+
+    (D) private NavMeshAgent agent;(S) 
+    private void Start()
+    {
+        (E) agent = GetComponent<NavMeshAgent>();(S) 
+        (E) stunnable = GetComponent<IStunnable>();(S) 
+        (E) Debug.Log("stunnable: " + stunnable);(S) 
+    }
+
+    private void Update()
+    {
+        (E) if (target != null)(S) 
+        {
+
+            (E) agent.SetDestination(target.position);(S) 
+            (E) agent.stoppingDistance = stoppingDistance;(S) 
+        }
+        (E) if (stunnable != null && stunnable.isStunned())(S) 
+        {
+            (E) agent.isStopped = true;(S) 
+        }
+        else
+        {
+            (E) agent.isStopped = false;(S) 
+        }
+    }
+}

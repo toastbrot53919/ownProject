@@ -1,0 +1,28 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\SkillTree.cs
+Script: SkillTree.cs
+
+Syntax tree:
+
+ScriptableObject
+|- SkillTree 
+   |- List<SkillNode> skillNodes
+   |- SkillTree() 
+   |  |- skillNodes = new List<SkillNode>()
+   |- void AddSkillNode(SkillNode skillNode)
+   |  |- skillNodes.Add(skillNode)
+   |- bool IsVisible(SkillNode skillNode)
+   |  |- return true
+   |- void Awake()
+   |  |- resetAllNodes()
+   |- void resetAllNodes()
+      |- foreach(SkillNode node in skillNodes)
+      |  |- node.isUnlocked = false
+
+
+Internal Logic:
+
+- SkillTree class extends ScriptableObject and has a public List of SkillNodes and a parameterless constructor.
+- SkillTree has a public method AddSkillNode which receives a SkillNode object and add it to the list of skillNodes.
+- SkillTree has an internal method IsVisible which receives a SkillNode object and returns true.
+- SkillTree has a private method Awake which calls resetAllNodes method.
+- SkillTree has a public method resetAllNodes which loops through all SkillNodes in skillNodes list and sets isUnlocked property to false.

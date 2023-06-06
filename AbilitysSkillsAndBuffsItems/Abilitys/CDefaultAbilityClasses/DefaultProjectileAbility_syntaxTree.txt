@@ -1,0 +1,2 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\CDefaultAbilityClasses\DefaultProjectileAbility.cs
+Not included as it is not present in the given file.

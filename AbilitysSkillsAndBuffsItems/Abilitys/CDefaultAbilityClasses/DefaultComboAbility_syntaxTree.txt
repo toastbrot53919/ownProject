@@ -1,0 +1,35 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\CDefaultAbilityClasses\DefaultComboAbility.cs
+(DefaultComboAbility.cs)
+
+Class: DefaultComboAbility
+
+Properties:
+- MeelePrefab: GameObject
+- lifeTime: float
+- comboDamage: float[]
+
+Methods:
++ OnAbilityObjectHit(abilityObject: AbilityObject, target: GameObject): void
++ PreActivateAbility(abilityData: AbilityData): void
++ Activate(abilityData: AbilityData): void
+
+OnAbilityObjectHit(abilityObject, target):
+1. Get the HealthController component from the target GameObject.
+2. If HealthController exists, call its TakeDamage method with parameters of abilityObject's data.damage and abilityObject's data.CasterStats.gameObject.
+
+PreActivateAbility(abilityData):
+1. Get the ComboController component from abilityData's CasterCombatController property.
+2. Set the comboName variable to "ThreeHitComboAbility".
+3. Get the comboCount variable from comboController's GetComboCounter method with parameter of comboName, minus 1.
+4. If comboCount is less than 2, call comboController's IncreaseComboCounter method with parameter of comboName.
+5. Else, call comboController's ResetComboCounter method with parameter of comboName.
+6. Add to abilityData's damage the value of comboDamage at index of comboCount, BaseAbilityStats.baseDamage, and abilityModifierManager's GetAdditionalModifiedValue() method's baseDamage property.
+7. Depending on comboCount value, set animationName variable to "1HandSwordLightAttack1", "1HandSwordLightAttack2", or "1HandSwordLightAttack3".
+
+Activate(abilityData):
+1. Instantiate a new object of MeelePrefab at the position and rotation of abilityData's CasterStats transform location.
+2. Get its AbilityObject component and set its data property to abilityData.
+3. Call RaiseOnObjectSpawned event with parameters of abilityObject and null.
+4. Set abilityObject's ParentAbility to this class instance.
+5. Destroy the meleeStrikeInstance object after lifeTime seconds.
+6. Log "Activate".

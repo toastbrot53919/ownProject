@@ -1,0 +1,28 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\AbilityStats.cs
+AbilityStats class:
+
+                      AbilityStats
+                           |
+                           |
+                 ---------------------
+                 |                   |
+             float               float
+                 |                   |
+       baseDamage         strengthScaling
+                 |                   |
+       -------------------     -------------------
+       |                 |     |                 |
+   float            float       float         float
+       |                 |     |                 |
+intelligenceScaling cooldown     manaCost      range
+       |                                       |
+    float                                 float
+       |                                       |
+  projectileSpeed                         stunDuration
+
+Methods:
+
+- AbilityStats(): constructor method that takes no arguments.
+- setZero(): method that sets all of the AbilityStats' float variables to 0.
+- addStats(): method that takes another AbilityStats object as an argument and adds its values to the current AbilityStats object.
+- printStats(): method that prints out the values of all the non-zero AbilityStats variables, formatted as a string. If a variable has a value of 0, it is not included in the string. Returns the string.

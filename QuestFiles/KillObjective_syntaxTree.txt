@@ -1,0 +1,34 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\KillObjective.cs
+There are no important details in the file path and its information has been ignored.
+
+The syntax tree for the KillObjective class is as follows:
+
+KillObjective
+- QuestObjective
+  - id (string)
+  - description (string)
+  - status (ObjectiveStatus)
+  + UpdateProgress(killedEnemyId: string) (void)
+  + GetObjectiveProgress() (string)
+  + IsCompleted() (bool)
+- enemyId (string)
+- targetKills (int)
+- currentKills (int)
+
+- KillObjective(id: string, description: string, enemyId: string, targetKills: int)
+  - Set id to passed in id
+  - Set description to passed in description
+  - Set enemyId to passed in enemyId
+  - Set targetKills to passed in targetKills
+  - Set currentKills to 0
+  - Set status to ObjectiveStatus.Incomplete
+- UpdateProgress(killedEnemyId: string)
+  - If killedEnemyId equals "kill:"+enemyId and status is not ObjectiveStatus.Completed
+    - Increment currentKills
+    - Log "Current Kills: " + currentKills to Debug
+    - If currentKills is greater than or equal to targetKills
+      - Set status to ObjectiveStatus.Completed
+- GetObjectiveProgress()
+  - Return currentKills concatenated to "/" and targetKills as a string
+- IsCompleted()
+  - Return whether status is ObjectiveStatus.Completed or not

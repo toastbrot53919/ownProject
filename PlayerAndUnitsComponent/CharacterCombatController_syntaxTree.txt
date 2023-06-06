@@ -1,0 +1,36 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\CharacterCombatController.cs
+CharacterCombatController:
+- public CharacterStats characterStats
+- public AbilityController abilityController
+- public AnimationController animationController
+- public IStunnable stunnable
+- public ComboController comboController
+- private AIController aiController
+
+Start():
+- Assign aiController to the AIController component on CharacterCombatController's GameObject
+- Assign characterStats to the CharacterStats component on CharacterCombatController's GameObject
+- Assign stunnable to the IStunnable component on CharacterCombatController's GameObject
+- Assign abilityController to the AbilityController component on CharacterCombatController's GameObject
+- Assign animationController to the AnimationController component on CharacterCombatController's GameObject
+- Assign a new instance of ComboController to comboController
+
+StopAbility():
+- Call the AbortAbility method in abilityController, passing in the ability parameter
+
+PerformAbility():
+- If stunnable's isStunned method returns true, exit the method
+- Logs debug information about the ability's name, TotalAbilityStats, and cooldown
+- If the ability's cooldown is still active, exit the method
+- If the CharacterCombatController also has a PlayerController component, call its faceIndirectionOfCamera method
+- Calculate the damage of the ability using the ability's baseDamage, strengthScaling, and intelligenceScaling, as well as the characterStats' strength and intelligence
+- Calculate the critical hit chance using the characterStats' criticalChance
+- If a random number between 0 and 1 is less than or equal to the critical hit chance, double the damageAbility
+- Create a new AbilityData object with the caster's CharacterStats, target GameObject, damageAbility, AbilityController, CharacterCombatController, projectileSpeed, and stunDuration
+- Set the ability's cooldown to its BaseAbilityStats' cooldown
+- Update the ComboController
+- Call the CastAbility method in abilityController, passing in the ability and abilityData parameters
+- Set the next action delay in aiController to the return value of animationController's returnAnimationLockTiming method, passing in the ability's animationName
+
+GetCharacterStats():
+- Return characterStats

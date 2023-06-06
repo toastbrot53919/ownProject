@@ -1,0 +1,37 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\CDefaultAbilityClasses\DefaultProjectileAbility.cs
+There is no Base Projectile Object class mentioned in the given file.
+
+Syntax Tree of DefaultProjectileAbility class:
+
+DefaultProjectileAbility
+|__Ability
+|  |__ScriptableObject
+|     |__Object
+|
+|__projectilePrefab: GameObject
+|
+|__OnAbilityObjectHit(AbilityObject abilityObject, GameObject target)
+|  |__ if(abilityObject.data.CasterStats != null)
+|  |  |__ targetStats: HealthController = target.GetComponent<HealthController>()
+|  |  |__ if (targetStats != null)
+|  |  |  |__ damage = abilityObject.data.damage
+|  |  |  |__ targetStats.TakeDamage(damage, abilityObject.data.CasterStats.gameObject)
+|  |__ RaiseOnObjectHit(abilityObject, target)
+|
+|__Activate(AbilityData abilityData)
+|  |__ if (abilityData.CasterStats == null) return
+|  |
+|  |__ firePoint: Transform = abilityData.CasterStats.GetComponent<AbilityController>().firePoint
+|  |__ projectileInstance: GameObject = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation)
+|  |__ abilityObject: BaseProjectileObject = projectileInstance.GetComponent<BaseProjectileObject>()
+|  |__ RaiseOnObjectSpawned(abilityObject, null)
+|  |__ playerController: PlayerController = abilityData.CasterStats.GetComponent<PlayerController>()
+|  |__ rb: Rigidbody = projectileInstance.GetComponent<Rigidbody>()
+|  |__ if (playerController != null)
+|  |  |__ projectileInstance.transform.rotation = playerController.GetCamera().transform.rotation
+|  |__ else if (abilityData.Target != null)
+|  |  |__ projectileInstance.transform.LookAt(abilityData.Target.transform)
+|  |__ rb.velocity = projectileInstance.transform.forward * abilityData.projectileSpeed
+|  |
+|  |__ abilityObject.ParentAbility = this
+|  |__ abilityObject.data = abilityData

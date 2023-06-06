@@ -1,0 +1,39 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\AbilityModifierManager.cs
+AbilityModifierManager:
+-ScriptableObject
+--private List<AbilityModifiers> modifierList
+--private AbilityStats abilityStats
+
+--private void OnEnable()
+---abilityStats = new AbilityStats()
+
++public string printAllModifiers()
++public void AddModifier(AbilityModifiers modifiers)
++public void RemoveModifier(AbilityModifiers modifier)
++public AbilityStats GetAdditionalModifiedValue()
++public AbilityStats CalculateModifiedValue()
+
+printAllModifiers:
+-string s
+-foreach (AbilityModifiers modifier in modifierList)
+--s += " - " + modifier.modifierName + " - " + "\n"
+--s += modifier.modifierDescription + "\n"
+--s += modifier.abilityStats.printStats()
+-return s
+
+AddModifier:
+-ModifierList.Add(modifiers)
+-CalculateModifiedValue()
+
+RemoveModifier:
+-modifierList.Remove(modifier)
+-CalculateModifiedValue()
+
+GetAdditionalModifiedValue:
+-return abilityStats
+
+CalculateModifiedValue:
+-abilityStats.setZero()
+-foreach (AbilityModifiers modifier in modifierList)
+--modifier.ApplyModifier(ref abilityStats)
+-return abilityStats

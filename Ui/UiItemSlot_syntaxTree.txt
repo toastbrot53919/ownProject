@@ -1,0 +1,25 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\UiItemSlot.cs
+The syntax tree of the UiItemSlot class is:
+
+UiItemSlot
+├─ MonoBehaviour (from UnityEngine)
+├─ IRecieveDrop (interface)
+└─ IDragable (interface)
+   ├─ getDraggedObject() : GameObject
+   ├─ OnBeginDrag(eventData : PointerEventData) : void
+   ├─ OnDrag(eventData : PointerEventData) : void
+   ├─ OnDrop(eventData : PointerEventData) : void
+   └─ OnEndDrag(eventData : PointerEventData) : void
+      
+
+
+- The UiItemSlot class implements the MonoBehaviour, IRecieveDrop, and IDragable interfaces.
+- It has a public variable called "item" of type Item.
+- The class also has five methods, all of which are from the IDragable interface and are not implemented. These methods are:
+  - getDraggedObject() : GameObject
+  - OnBeginDrag(eventData : PointerEventData) : void
+  - OnDrag(eventData : PointerEventData) : void
+  - OnDrop(eventData : PointerEventData) : void
+  - OnEndDrag(eventData : PointerEventData) : void.
+
+Note: ButtonWithToolTip and Item classes are not provided in the code, so they are not included in the syntax tree.

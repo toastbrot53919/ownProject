@@ -1,0 +1,36 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Skills\FireballMasterySkill.cs
+Here is the detailed syntax tree for the FireballMasterySkill class:
+
+- namespace
+  - UnityEngine
+    - CreateAssetMenuAttribute
+  - AbilitysSkillsAndBuffsItems
+    - Skills
+      - FireballMasterySkill.cs
+        - public class FireballMasterySkill : Skill
+          - [SerializeField]
+            - private GameObject explosionPrefab
+          - public override void ApplySkill(CharacterStats playerStats)
+            - Debug.Log("Apply Skill")
+            - FireBall fireballAbility = GetFireballAbility(playerStats)
+            - if (fireballAbility != null)
+              - Debug.Log("Fireball Ability found")
+              - fireballAbility.OnAbilityObjectHitEvent += ExplodeOnHit
+          - public override void RemoveSkill(CharacterStats playerStats)
+            - FireBall fireballAbility = GetFireballAbility(playerStats)
+            - if (fireballAbility != null)
+              - fireballAbility.OnAbilityObjectHitEvent -= ExplodeOnHit
+          - private FireBall GetFireballAbility(CharacterStats playerStats)
+            - AbilityController abilityController = playerStats.GetComponent<AbilityController>()
+            - return abilityController.learnedAbilitys.Find(a => a is FireBall) as FireBall
+          - private void ExplodeOnHit(AbilityObject abilityObject, GameObject target)
+            - Debug.Log("EXPLODE ON Hit")
+            - ApplyDamageToTargets(abilityObject.transform.position, 2f, abilityObject.data.damage * 0.5f)
+            - InstantiateExplosion(abilityObject.transform.position)
+          - private void ApplyDamageToTargets(Vector3 position, float radius, float damage)
+          - private void InstantiateExplosion(Vector3 position)
+            - if (explosionPrefab != null)
+              - GameObject explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
+              - <additional logic for explosion>
+            - else
+              - Debug.LogWarning("No explosion prefab assigned to FireballMasterySkill.")

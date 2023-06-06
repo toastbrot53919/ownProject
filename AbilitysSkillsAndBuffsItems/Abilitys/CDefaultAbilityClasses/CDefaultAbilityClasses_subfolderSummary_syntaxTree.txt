@@ -1,0 +1,165 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\CDefaultAbilityClasses\DefaultAbility.cs
+(DefaultAbility.cs)
+	
+DefaultAbility
+	|
+	|--- public void Awake()
+	|	|--- Set abilityName to "Default"
+	|	|--- Set abilityDescription to "Default"
+	|
+	|--- public void OnEnable()
+	|	|--- Check if BaseAbilityStats is null, if yes, create an instance of AbilityStats and assign it to BaseAbilityStats
+	|	|--- Check if TotalAbilityStats is null, if yes, create an instance of AbilityStats and assign it to TotalAbilityStats
+	|	|--- Check if abilityModifierManager is null, if yes, create an instance of AbilityModifierManager and assign it to abilityModifierManager
+	|	|--- Call updateAbilityStats()
+	|
+	|--- public override void Activate(AbilityData abilityData)
+	|	|--- Print "Default Ability" to the console using Debug.Log()
+	|
+	|--- public override void OnAbilityObjectHit(AbilityObject abilityObject, GameObject target)
+	|	|--- Do nothing
+	|
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\CDefaultAbilityClasses\DefaultAuraAbility.cs
+(DefaultAuraAbility.cs)
+
+- DefaultAuraAbility
+  - Inherits from DefaultAbility
+  - Public Variables
+    - auraPrefab: GameObject
+    - damageInterval: float
+  - Private Variables
+    - lastDamageTime: float
+    - abilityObject: AbilityObject
+  - Methods
+    - OnEnable(): void
+      - Calls BaseAbilityStats = new AbilityStats()
+      - Calls TotalAbilityStats = new AbilityStats()
+      - Sets BaseAbilityStats.cooldown to 2
+      - Calls updateAbilityStats()
+      - Sets animingMode to AnimingMode.PrePositionPlacement
+    - Activate(abilityData: AbilityData): void
+      - Logs "Activate"
+      - Sets useUpdate to true
+      - Instantiates auraPrefab at the position of abilityData.Target with a Quaternion.identity rotation, and gets the AbilityObject component from it and assigns it to abilityObject
+      - Sets abilityObject.data to abilityData
+      - Sets abilityObject.ParentAbility to this
+      - Subscribes DeactivateUpdate to abilityObject.OnDelete event
+    - OnAbilityObjectHit(abilityObject: AbilityObject, target: GameObject): void
+      - If timestart is 0, sets it to Time.time
+      - Gets HealthController component from target as healthController variable
+      - If healthController is not null, calls healthController.TakeDamage with parameters abilityObject.data.damage and abilityObject.data.CasterStats.gameObject
+    - OnUpdate(): void
+    - DeactivateUpdate(): void
+      - Sets useUpdate to false
+    - Deactivate(): void
+      - If abilityObject is not null, calls abilityObject.Delete()
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\CDefaultAbilityClasses\DefaultComboAbility.cs
+(DefaultComboAbility.cs)
+
+Class: DefaultComboAbility
+
+Properties:
+- MeelePrefab: GameObject
+- lifeTime: float
+- comboDamage: float[]
+
+Methods:
++ OnAbilityObjectHit(abilityObject: AbilityObject, target: GameObject): void
++ PreActivateAbility(abilityData: AbilityData): void
++ Activate(abilityData: AbilityData): void
+
+OnAbilityObjectHit(abilityObject, target):
+1. Get the HealthController component from the target GameObject.
+2. If HealthController exists, call its TakeDamage method with parameters of abilityObject's data.damage and abilityObject's data.CasterStats.gameObject.
+
+PreActivateAbility(abilityData):
+1. Get the ComboController component from abilityData's CasterCombatController property.
+2. Set the comboName variable to "ThreeHitComboAbility".
+3. Get the comboCount variable from comboController's GetComboCounter method with parameter of comboName, minus 1.
+4. If comboCount is less than 2, call comboController's IncreaseComboCounter method with parameter of comboName.
+5. Else, call comboController's ResetComboCounter method with parameter of comboName.
+6. Add to abilityData's damage the value of comboDamage at index of comboCount, BaseAbilityStats.baseDamage, and abilityModifierManager's GetAdditionalModifiedValue() method's baseDamage property.
+7. Depending on comboCount value, set animationName variable to "1HandSwordLightAttack1", "1HandSwordLightAttack2", or "1HandSwordLightAttack3".
+
+Activate(abilityData):
+1. Instantiate a new object of MeelePrefab at the position and rotation of abilityData's CasterStats transform location.
+2. Get its AbilityObject component and set its data property to abilityData.
+3. Call RaiseOnObjectSpawned event with parameters of abilityObject and null.
+4. Set abilityObject's ParentAbility to this class instance.
+5. Destroy the meleeStrikeInstance object after lifeTime seconds.
+6. Log "Activate".
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\CDefaultAbilityClasses\DefaultGroupBuffAbility.cs
+(DefaultGroupBuffAbility) -> Ability
+  -buff: Buff
+  -radius: float
+  +Activate(abilityData: AbilityData): void
+  +OnAbilityObjectHit(abilityObject: AbilityObject, target: GameObject): void
+  +OnEnable(): void
+  -aIController: AIController
+  -playerController: PlayerController
+  -buffSystem: BuffSystem
+
+Activate(abilityData: AbilityData): void
+  -abilityName: string = "DefaultGroupBuffAbility"
+  -abilityDescription: string = "This is a DefaultGroupBuffAbility"
+  -BaseAbilityStats.cooldown: int = 10
+  -BaseAbilityStats.intelligenceScaling: int = 1
+  -colliders: Collider[] = Physics.OverlapSphere(abilityData.CasterStats.transform.position, radius)
+  -casterBuffSystem: BuffSystem = abilityData.CasterStats.GetComponent<BuffSystem>()
+  foreach (Collider collider in colliders)
+  {
+    buffSystem = collider.gameObject.GetComponent<BuffSystem>()
+    if (buffSystem == null)
+    {
+      continue
+    }
+    aIController = collider.gameObject.GetComponent<AIController>()
+    playerController = collider.gameObject.GetComponent<PlayerController>()
+    if (aIController != null)
+    {
+      if (aIController.aggroTag == "Player")
+      {
+        continue
+      }
+      buffSystem.AddBuff(buff, collider.gameObject, casterBuffSystem)
+      continue
+    }
+    else if (playerController != null)
+    {
+      buffSystem.AddBuff(buff, collider.gameObject, casterBuffSystem)
+      continue
+    }
+  }
+
+OnEnable(): void
+  buff = BuffFactory.CreateBuff("Default Self Buff", 5f, true, 3, new StatsModifier(criticalDamage: 10))
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\CDefaultAbilityClasses\DefaultProjectileAbility.cs
+Not included as it is not present in the given file.
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\CDefaultAbilityClasses\DefaultSelfBuffAbility.cs
+The syntax tree for DefaultSelfBuffAbility.cs:
+
+- using UnityEngine;
+  - imports the UnityEngine package
+
+- [CreateAssetMenu(menuName = "Abilities/DefaultSelfBuffAbility")]
+  - a custom editor attribute that creates a menu item in the Unity editor for creating a new DefaultSelfBuffAbility asset
+
+- public class DefaultSelfBuffAbility : Ability
+  - a public class that inherits from the Ability class
+
+- public Buff buff;
+  - a public Buff variable representing the buff that this ability will apply
+
+- void OnEnable()
+  - an event method that is called when the script is enabled
+  - creates a new Buff object with the name "Default Self Buff", duration of 5 seconds, true for self-targeting, 3 as the maximum stack count, and a StatsModifier object with a critical damage value of 10
+
+- public override void Activate(AbilityData abilityData)
+  - a public method that overrides the Activate method of the Ability class
+  - assigns values to the abilityName, abilityDescription, BaseAbilityStats.cooldown, and BaseAbilityStats.intelligenceScaling variables
+  - checks if the CasterStats attribute of the abilityData object is null, logs an error and returns if it is
+  - gets the BuffSystem component from the caster's stats, logs an error and returns if it is null
+  - adds the buff to the BuffSystem component of the caster's stats game object
+
+- public override void OnAbilityObjectHit(AbilityObject abilityObject, GameObject target)
+  - a public method that overrides the OnAbilityObjectHit method of the Ability class, but does not contain any logic

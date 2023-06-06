@@ -1,0 +1,33 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\WorldManagmentUnitSpawning\UnitSpawnerController.cs
+UnitSpawnerController:
+- class
+- public visibility
+  - GameObject unitPrefab: type GameObject
+    - public visibility
+  - float spawnRange: type float
+    - public visibility
+  - CharacterStats stats: type CharacterStats
+    - public visibility
+  - Ability[] abilities: type Ability array
+    - public visibility
+  - AIState aiState: type AIState
+    - public visibility
+  - EquipManager equipManager: type EquipManager
+    - public visibility
+  - AIController aiController: type AIController
+    - public visibility
+  - private Transform playerTransform: type Transform
+- void Start(): no return value
+  - public visibility
+  - no parameters
+  - playerTransform = GameObject.FindGameObjectWithTag("Player").transform
+- bool spawned = false: type boolean, value false
+- void Update(): no return value
+  - public visibility
+  - no parameters
+  - if playerTransform is null, return
+  - if spawned is true, return
+  - if the distance between the position of transform and playerTransform is less than or equal to spawnRange
+    - GameObject unit = Instantiate(unitPrefab, transform.position, transform.rotation)
+    - destroy this game object
+  - end if

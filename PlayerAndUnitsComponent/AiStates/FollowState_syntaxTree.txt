@@ -1,0 +1,19 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\AiStates\FollowState.cs
+File: FollowState.cs
+
+Class: FollowState
+
+- Inherits from: AIState
+
+- Public Variables:
+    - target: Transform - stores the target's transform
+    - stoppingDistance: float - stores the distance at which the AI will stop following the target
+
+- Methods:
+  - EnterState(AIController aiController): override method that runs when the AI enters the FollowState. Takes an AIController parameter, but in this case does nothing.
+  - UpdateState(AIController aiController): override method that runs every frame when the AI is in FollowState. Takes an AIController parameter.
+        - Declare and initialize a float variable called distanceToTarget and set it to the distance between the AI's position and the target's position using Vector3.Distance() method.
+        - Check if the distanceToTarget is greater than the stoppingDistance:
+            - If it is, get the NavMeshAgent component attached to the AI via aiController.GetComponent<UnityEngine.AI.NavMeshAgent>(), and use the SetDestination() method to set the destination to the target's position.
+            - If it is not, reset the path of the NavMeshAgent by using the ResetPath() method.
+  - ExitState(AIController aiController): override method that runs when the AI exits FollowState. Takes an AIController parameter, but in this case does nothing.

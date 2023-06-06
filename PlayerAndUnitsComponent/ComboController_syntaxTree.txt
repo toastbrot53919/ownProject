@@ -1,0 +1,58 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\ComboController.cs
+ComboController:
+- public class ComboController
+    - [Serializable]
+    - public List<ComboCounter> comboCounterList
+        - List<ComboCounter>
+    - public ComboController()
+        - constructor, initializes comboCounterList as a new empty List<ComboCounter>
+    - **public void UpdateComboController()**
+        - void
+        - foreach ComboCounter comboCounter in comboCounterList
+            - calls comboCounter.UpdateComboCounter()
+    - **public void IncreaseComboCounter(string comboName)**
+        - void
+        - bool found initialized as false
+        - foreach ComboCounter comboCounter in comboCounterList
+            - if comboCounter.ComboName is equal to comboName
+                - call comboCounter.IncreaseComboCounter()
+                - set found to true
+        - if found is false
+            - add a new ComboCounter to comboCounterList with a time limit of 1f and the passed in comboName
+    - **public int GetComboCounter(string comboName)**
+        - int
+        - foreach ComboCounter comboCounter in comboCounterList
+            - if comboCounter.ComboName is equal to comboName
+                - return comboCounter.GetComboCounter()
+        - return 0
+    - **internal void ResetComboCounter(string comboName)**
+        - void
+        - foreach ComboCounter comboCounter in comboCounterList
+            - if comboCounter.ComboName is equal to comboName
+                - call comboCounter.ResetComboCounter()
+ComboCounter:
+- public class ComboCounter
+    - [Serializable]
+    - public string ComboName
+    - public int comboCounter
+    - public float comboTimer
+    - public float comboTimeLimit
+    - public ComboCounter(float comboTimeLimit, string comboName)
+        - constructor, initializes comboTimeLimit as passed in, comboCounter as 0, comboTimer as 0, and ComboName as passed in
+    - **public void UpdateComboCounter()**
+        - void
+        - increment comboTimer by Time.deltaTime
+        - if comboTimer is greater than or equal to comboTimeLimit
+            - set comboCounter to 0
+    - **public void IncreaseComboCounter()**
+        - void
+        - calls UpdateComboCounter()
+        - increment comboCounter
+        - set comboTimer to 0
+    - **public int GetComboCounter()**
+        - int
+        - return comboCounter
+    - **public void ResetComboCounter()**
+        - void
+        - set comboCounter to 0
+        - set comboTimer to 0

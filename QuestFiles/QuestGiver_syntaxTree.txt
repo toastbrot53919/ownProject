@@ -1,0 +1,22 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\QuestGiver.cs
+(S) QuestGiver.cs
+├──(F) Start()
+│   └──(F) FindObjectOfType<UIManager>()
+├──(M) Update()
+│   └──(C) playerInRange && Input.GetKeyDown(KeyCode.E)
+│       └──(F) Interact(Interacts.transform)
+├──(M) Interact(Transform interactFrom)
+│   └──(C) uiManager.questUIPresenter.gameObject.activeInHierarchy
+│       ├──(F) uiManager.hideQuestUiPresenter()
+│       └──Else
+│           └──(F) uiManager.showQuestUiPresenter(quest)
+├──(M) OnTriggerEnter(Collider other)
+│   ├──(C) other.CompareTag("Player")
+│   ├──(A) playerInRange = true
+│   ├──(A) Interacts = other.gameObject
+│   ├──(A) interactionIndicator.SetActive(true)
+│   └──(A) playerQuestSystem = other.GetComponent<QuestSystem>()
+└──(M) OnTriggerExit(Collider other)
+    ├──(C) other.CompareTag("Player")
+    ├──(A) playerInRange = false
+    └──(A) interactionIndicator.SetActive(false)

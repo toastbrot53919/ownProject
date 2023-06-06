@@ -1,0 +1,63 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\VisualEffectController.cs
+VisualEffectController:
+
+- public VisualEffectManager visualEffectManager; (public field)
+
+- public Transform positionOverHead; (public field)
+- public Transform positionUnderFeet; (public field)
+- public Transform positionStomach; (public field)
+
+- private Transform goalTransform; (private field)
+- private List<(GameObject,float)> effectInstances = new List<(GameObject,float)>(); (private field)
+
++ public void SpawnEffect(string effectName, float effectDuration = 0, effectUnitPosition effectPosition = effectUnitPosition.overHead) (method)
+    - if(effectPosition == effectUnitPosition.overHead){ (if statement)
+        - goalTransform = positionOverHead; (assignment)
+    }
+    - if(effectPosition == effectUnitPosition.underFeet){ (if statement)
+        - goalTransform = positionUnderFeet; (assignment)
+    }
+    - if(effectPosition == effectUnitPosition.stomach){ (if statement)
+        - goalTransform = positionStomach; (assignment)
+    }
+    - if(findEffect(effectName) != null){ (if statement)
+        - updateDurrationOfEffect(effectName,effectDuration); (method call)
+        - return; (return statement)
+    }
+    - GameObject effectPrefab = visualEffectManager.GetEffectPrefab(effectName); (assignment)
+    - if (effectPrefab != null) (if statement)
+        - GameObject effectInstance = Instantiate(effectPrefab, Vector3.zero, Quaternion.identity, goalTransform); (assignment)
+        - effectInstance.transform.localPosition = Vector3.zero; (assignment)
+        - effectInstances.Add((effectInstance,Time.time+effectDuration)); (addition to list)
+    - else{ (else statement)
+        - Debug.LogWarning($"Visual effect '{effectName}' not found."); (debug message)
+
++ public GameObject findEffect(string effectName) (method)
+    - for (int i = effectInstances.Count - 1; i >= 0; i--) (for loop)
+        - (GameObject, float) effectInstance = effectInstances[i]; (assignment)
+        - if (effectInstance.Item1.name == effectName) (if statement)
+            - return effectInstance.Item1; (return statement)
+    - return null; (return statement)
+
++ public void RemoveEffect(string effectName) (method)
+    - for (int i = effectInstances.Count - 1; i >= 0; i--) (for loop)
+        - (GameObject, float) effectInstance = effectInstances[i]; (assignment)
+        - if (effectInstance.Item1.name == effectName) (if statement)
+            - Destroy(effectInstance.Item1); (destruction)
+            - effectInstances.RemoveAt(i); (removal from list)
+            - Debug.Log("effect removed"); (debug message)
+
++ public void updateDurrationOfEffect(string effectName,float effectDuration) (method)
+    - for (int i = effectInstances.Count - 1; i >= 0; i--) (for loop)
+        - (GameObject, float) effectInstance = effectInstances[i]; (assignment)
+        - if (effectInstance.Item1.name == effectName) (if statement)
+            - effectInstances[i] = (effectInstance.Item1,Time.time+effectDuration); (assignment)
+            - Debug.Log("effect updated"); (debug message)
+
+- void Update() (method)
+    - for (int i = effectInstances.Count - 1; i >= 0; i--) (for loop)
+        - (GameObject, float) effectInstance = effectInstances[i]; (assignment)
+        - if (effectInstance.Item2 < Time.time) (if statement)
+            - Destroy(effectInstance.Item1); (destruction)
+            - effectInstances.RemoveAt(i); (removal from list)
+            - Debug.Log("effect removed"); (debug message)

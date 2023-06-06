@@ -1,0 +1,12 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Skills\SkillNode.cs
+ FILE: SkillNode.cs
+ 
+                                             SkillNode
+                                                  |
+      -------------------------------------------------------------------------------
+      |       |     |       |           |           |            |              |    
+ skillName  skill- skill- skillPoint-   icon      mainStat-     skill-     prerequisite- isUnlocked
+                     Description    cost                 Requirement     name        SkillNode
+
+METHODS:
+    No internal methods are present in this class.

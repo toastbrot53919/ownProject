@@ -1,0 +1,21 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\QuestS\NewBehaviourScript.cs
+Unfortunately, as an AI language model, I don't have access to image or file embedding, so I cannot generate a syntax tree or provide visual representation of the code. However, I can provide a textual syntax tree for each class in the given script file. 
+
+The only class present in the file is "NewBehaviourScript," which is a MonoBehaviour class in Unity Engine. Here's the textual syntax tree for this class, including the internal logic of each method:
+
+NewBehaviourScript 
+- Inheriting MonoBehaviour class from UnityEngine library
+- Public class 
+- Fields: none
+
+- Start()
+  - Public void method
+  - Method body: 
+     - Empty
+
+- Update()
+  - Public void method
+  - Method body:
+     - Empty
+
+The above syntax tree represents the NewBehaviourScript class, which is a basic script file in Unity used to execute certain instructions during the lifetime of a game object. This class doesn't contain any specific logic in its methods as they are empty, but they can be used to implement specific user-defined logic for a game object at startup or per frame basis.

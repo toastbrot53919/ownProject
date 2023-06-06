@@ -1,0 +1,32 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\ButtonWithToolTip.cs
+- Root node: ButtonWithToolTip.cs
+  - Using: UnityEngine
+  - Using: UnityEngine.EventSystems
+  - Using: UnityEngine.UI
+  - Public class: ButtonWithToolTip
+    - Inherits from MonoBehaviour
+    - Implements IPointerEnterHandler
+    - Implements IPointerExitHandler
+    - Public variable: SkillNode skillNode
+    - Private variable: PlayerController playerController
+    - Public variable: UIManager uiManager
+    - Private variable: GameObject toolTipObject
+    - Private variable: Button button
+    - Private void method: Awake()
+      - Sets playerController to FindObjectOfType<PlayerController>()
+      - Sets uiManager to FindObjectOfType<UIManager>()
+      - Sets toolTipObject to uiManager.tooltip
+      - Sets toolTipObject to inactive
+      - Sets button to GetComponent<Button>()
+      - Adds TryLearn method as a listener for button.onClick event
+      - If skillNode is not null, sets the button's Image component sprite to skillNode.icon
+    - Public void method: OnPointerEnter(PointerEventData eventData)
+      - Calls ShowToolTip method
+    - Public void method: OnPointerExit(PointerEventData eventData)
+      - Calls HideToolTip method
+    - Private void method: ShowToolTip()
+      - Calls uiManager.OpenToolTip method with skillNode and gameObject's RectTransform position as arguments
+    - Private void method: HideToolTip()
+      - Calls uiManager.CloseToolTip method
+    - Private void method: TryLearn()
+      - Calls playerController.TryUnlockSkillNode method with skillNode as an argument.

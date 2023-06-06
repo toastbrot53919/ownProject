@@ -1,0 +1,91 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\GameManager.cs
+TOP
+ |
+ |
+ +––– namespace UnityEngine
+       |
+       +––– public class GameManager : MonoBehaviour
+
+GameManager:
+    - public static GameManager Instance
+    - public enum GameState { InMenu, Playing, Paused, GameOver }
+    - public GameState currentState
+    - private void Awake()
+    - private void Update()
+    - private void UpdateCursorVisibility()
+    - private void HandleGameState()
+    - public void ChangeGameState(GameState newState)
+    - public void SaveGame()
+    - public void LoadGame()
+    - ...
+
+Awake:
+    - private void Awake()
+      |
+      +––– if (Instance == null)
+      |     |
+      |     +––– Instance = this
+      |     +––– DontDestroyOnLoad(gameObject)
+      |     
+      +––– else
+            |
+            +––– Destroy(gameObject)
+                   |
+                   +––– return
+
+Update:
+    - private void Update()
+      |
+      +––– HandleGameState()
+      |
+      +––– UpdateCursorVisibility()
+
+UpdateCursorVisibility:
+    - private void UpdateCursorVisibility()
+      |
+      +––– if (currentState == GameState.Paused || currentState == GameState.InMenu)
+      |     |
+      |     +––– Cursor.visible = true
+      |     +––– Cursor.lockState = CursorLockMode.None
+      |     
+      +––– else if (currentState == GameState.Playing)
+            |
+            +––– Cursor.visible = false
+                   |
+                   +––– Cursor.lockState = CursorLockMode.Locked
+
+HandleGameState:
+    - private void HandleGameState()
+      |
+      +––– switch (currentState)
+            |
+            +––– case GameState.InMenu:
+            |         |
+            |         +––– // Handle main menu logic
+            |         
+            +––– case GameState.Playing:
+            |         |
+            |         +––– // Handle playing state logic
+            |
+            +––– case GameState.Paused:
+            |         |
+            |         +––– // Handle paused state logic
+            |
+            +––– case GameState.GameOver:
+                      |
+                      +––– // Handle game over logic
+
+ChangeGameState:
+    - public void ChangeGameState(GameState newState)
+      |
+      +––– currentState = newState
+
+SaveGame:
+    - public void SaveGame()
+      |
+      +––– // Implement save game logic
+
+LoadGame:
+    - public void LoadGame()
+      |
+      +––– // Implement load game logic

@@ -1,0 +1,31 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\WorldSpaceCanvasController.cs
+```
+WorldSpaceCanvasController
+├──- Fields:
+│   ├──+ Instance : static WorldSpaceCanvasController
+│   ├──+ damageNumberPrefab : GameObject
+│   
+├──- Methods:
+│   ├──+ void Awake()
+│   │   ├──- If (Instance == null) then
+│   │   │   ├──+ Instance = this
+│   │   │   └──# Else if (Instance exists) then Destroy this gameObject
+│   │   └──#
+│   │
+│   ├──+ void SpawnDamageNumber(float damage, Vector3 position)
+│   │   ├──- If (damageNumberPrefab == null) then
+│   │   │   ├──+ Debug.LogError("DamageNumberPrefab is not assigned in the WorldSpaceCanvasController component.")
+│   │   │   └──# return
+│   │   │
+│   │   ├──+ GameObject damageNumberInstance = Instantiate(damageNumberPrefab, position, Quaternion.identity, transform)
+│   │   ├──+ damageNumberInstance.gameObject.SetActive(true)
+│   │   ├──+ DamageNumberController damageNumberController = damageNumberInstance.GetComponent<DamageNumberController>()
+│   │   │
+│   │   ├──- If (damageNumberController exists) then
+│   │   │   ├──+ damageNumberController.SetDamageValue(damage)
+│   │   │   └──# Else Debug.LogError("DamageNumberController component is missing on the DamageNumberPrefab.") and Destroy(damageNumberInstance)
+│   │   │
+│   │   └──#
+│   │
+```
+Note: The "+" and "-" symbols before the method/field indicate respectively if they are public or private. The "#" symbol indicates the end of the branch, meaning no further nodes are connected to that point.

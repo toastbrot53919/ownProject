@@ -1,0 +1,80 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\PlateProviderController.cs
+```
+PlateProviderController
+|
+|-- GameObject namePlateTemplate;
+|-- float OffsetY = 4.0f;
+|-- float FadingDinstanceMin = 15f;
+|-- float FadingDinstanceMax = 45;
+|-- float ScaleStart = 0.2f;
+|-- float ScaleEnd = 0.05f;
+|-- float ScaleDistanceMin = 5f;
+|-- float ScaleDistanceMax = 20f;
+|-- Canvas ScreenSpaceCanvas;
+|-- Transform PlateTransform;
+|-- RectTransform PlateRectTransform;
+|-- Slider healthSlider;
+|-- Slider manaSlider;
+|-- Image panelImage;
+|-- HealthController healthController;
+|-- ManaController manaController;
+|-- CharacterStats characterStats;
+|-- AIController aIController;
+|-- GameObject namePlate;
+|
+|-- PlateProviderController() // constructor
+|
+|-- Start()
+|   |-- GetComponent<HealthController>()
+|   |-- GetComponent<ManaController>()
+|   |-- GetComponent<CharacterStats>()
+|   |-- GetComponent<AIController>()
+|
+|-- distanceIsVisible()
+|
+|-- raycastIsVisible(GameObject player)
+|
+|-- CreateNamePlate()
+|   |-- Instantiate(namePlateTemplate, position, rotation)
+|   |-- SetActive(true)
+|   |-- transform.SetParent(ScreenSpaceCanvas.transform)
+|   |-- GetComponentInChildren<RectTransform>()
+|
+|-- DestroyNamePlate()
+|   |-- Destroy(namePlate)
+|
+|-- Update()
+    |-- CreateNamePlate()
+    |-- DestroyNamePlate()
+    |-- distanceIsVisible()
+    |-- raycastIsVisible(GameObject.Find("Player"))
+    |-- if (newShouldBeVisible != shouldBeVisible)
+        |-- namePlate.SetActive(shouldBeVisible)
+    |-- if (namePlate.gameObject.activeSelf == false && shouldBeVisible)
+        |-- namePlate.gameObject.SetActive(true)
+    |-- if (namePlate != null)
+        |-- if (healthController != null)
+            |-- healthSlider.value = healthController.currentHealth / healthController.maxHealth;
+        |-- else
+            |-- healthSlider.value = 1;
+        |-- if (manaController != null)
+            |-- manaSlider.value = manaController.currentMana / manaController.maxMana;
+        |-- else
+            |-- manaSlider.value = 1;
+    |-- PlateRectTransform.localPosition = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, OffsetY, 0))
+    |-- float distance = Vector3.Distance(Camera.main.transform.position, transform.position)
+    |-- float scale = ScaleStart
+    |-- if (distance > ScaleDistanceMin)
+        |-- scale = Mathf.Lerp(ScaleStart, ScaleEnd, (distance - ScaleDistanceMin) / (ScaleDistanceMax - ScaleDistanceMin))
+    |-- PlateRectTransform.localScale = new Vector3(scale, scale, scale)
+    |-- float alpha = 1
+    |-- if (distance > FadingDinstanceMin)
+        |-- alpha = Mathf.Lerp(1, 0, (distance - FadingDinstanceMin) / (FadingDinstanceMax - FadingDinstanceMin))
+    |-- namePlate.GetComponentInChildren<CanvasGroup>().alpha = alpha
+    |-- if(aIController!=null)
+        |-- if (aIController.aggroTag == "Player")
+            |-- panelImage.color = Color.red
+        |-- else if (aIController.aggroTag == "NONE")
+            |-- panelImage.color = Color.gray
+        |-- else if(aIController.aggroTag == "Enemy")
+            |-- panelImage.color = Color.green

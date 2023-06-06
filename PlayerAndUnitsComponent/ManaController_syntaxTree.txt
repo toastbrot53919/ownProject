@@ -1,0 +1,22 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\ManaController.cs
+ManaController:
+           /    |   \
+public class  float  float
+         ManaController  maxMana  currentMana
+              /     |    \
+private      void   CharacterStats   
+           Start()   characterStats 
+                   /       |      \
+                  +=  updateMaxMana () 
+                                  |
+                                currentMana = maxMana
+                                              /   |     \
+                             public   void  updateMana() UseMana(float manaCost)  bool HasSufficientMana(float manaCost)
+                                                 /  |  \  
+                                            if  currentMana >= manaCost
+                                            /   \
+                                       currentMana -= manaCost 
+                                                |
+                                 public   void   RegenerateMana(float manaAmount) 
+                                                 /            |           \
+                                          currentMana += manaAmount    if currentMana > maxMana    currentMana = maxMana

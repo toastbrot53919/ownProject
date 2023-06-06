@@ -1,0 +1,6 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\QuestAction.cs
+ScriptableObject
+    |
+    |----QuestAction
+            |
+            |----public string actionId;

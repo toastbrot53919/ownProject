@@ -1,0 +1,36 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\AbilityModifier.cs
+File: AbilityModifier.cs
+
+Class: AbilityModifiers
+- public string modifierName;
+- public string modifierDescription;
+- public char operation;
+- public AbilityStats abilityStats;
+
+- public AbilityModifiers(string modifierName="Default", string modifierDescription="")
+    - this.modifierName = modifierName;
+    - this.modifierDescription = modifierDescription;
+    - abilityStats = new AbilityStats();
+
+- public virtual void ApplyModifier(ref AbilityStats abilityStats)
+    - abilityStats.addStats(this.abilityStats);
+
+Syntax Tree:
+AbilityModifiers
+├── modifierName
+├── modifierDescription
+├── operation
+├── abilityStats
+│   ├── AbilityStats
+│   ├── ...
+│   └── ...
+├── AbilityModifiers(string modifierName="Default", string modifierDescription="")
+│   ├── this.modifierName = modifierName
+│   ├── this.modifierDescription = modifierDescription
+│   ├── abilityStats = new AbilityStats()
+│   ├── ...
+│   └── ...
+└── ApplyModifier(ref AbilityStats abilityStats)
+    ├── abilityStats.addStats(this.abilityStats)
+    ├── ...
+    └── ...

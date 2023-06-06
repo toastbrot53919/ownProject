@@ -1,0 +1,178 @@
+
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Skills\FireballMasterySkill.cs
+Here is the detailed syntax tree for the FireballMasterySkill class:
+
+- namespace
+  - UnityEngine
+    - CreateAssetMenuAttribute
+  - AbilitysSkillsAndBuffsItems
+    - Skills
+      - FireballMasterySkill.cs
+        - public class FireballMasterySkill : Skill
+          - [SerializeField]
+            - private GameObject explosionPrefab
+          - public override void ApplySkill(CharacterStats playerStats)
+            - Debug.Log("Apply Skill")
+            - FireBall fireballAbility = GetFireballAbility(playerStats)
+            - if (fireballAbility != null)
+              - Debug.Log("Fireball Ability found")
+              - fireballAbility.OnAbilityObjectHitEvent += ExplodeOnHit
+          - public override void RemoveSkill(CharacterStats playerStats)
+            - FireBall fireballAbility = GetFireballAbility(playerStats)
+            - if (fireballAbility != null)
+              - fireballAbility.OnAbilityObjectHitEvent -= ExplodeOnHit
+          - private FireBall GetFireballAbility(CharacterStats playerStats)
+            - AbilityController abilityController = playerStats.GetComponent<AbilityController>()
+            - return abilityController.learnedAbilitys.Find(a => a is FireBall) as FireBall
+          - private void ExplodeOnHit(AbilityObject abilityObject, GameObject target)
+            - Debug.Log("EXPLODE ON Hit")
+            - ApplyDamageToTargets(abilityObject.transform.position, 2f, abilityObject.data.damage * 0.5f)
+            - InstantiateExplosion(abilityObject.transform.position)
+          - private void ApplyDamageToTargets(Vector3 position, float radius, float damage)
+          - private void InstantiateExplosion(Vector3 position)
+            - if (explosionPrefab != null)
+              - GameObject explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
+              - <additional logic for explosion>
+            - else
+              - Debug.LogWarning("No explosion prefab assigned to FireballMasterySkill.")
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Skills\FrostBoltMastery.cs
+FrostBoltMastery.cs:
+
+[CreateAssetMenu(fileName = "FrostBoltMastery", menuName = "Skill/FrostBoltMastery", order = 1)]
+public class FrostBoltMastery : Skill
+{
+    [SerializeField]
+    private Buff frozenBuff;
+
+    public void OnEnable()
+    {
+        skillName = "FrostBoltMastery";
+        frozenBuff = BuffFactory.CreateBuff("Frozen", 5f, true, 3, new StatsModifier());
+        frozenBuff.AddInvokeOnApply(OnApplyFrozen);
+    }
+
+    public void OnApplyFrozen(BuffInstance instance, GameObject target)
+    {
+        Debug.Log("OnApplyFrozen" + skillName);
+        IStunnable stunnable = target.GetComponent<IStunnable>();
+        if (stunnable != null)
+        {
+            stunnable.Stun(10f);
+        }
+    }
+
+    public override void ApplySkill(CharacterStats playerStats)
+    {
+        base.ApplySkill(playerStats);
+        playerStats.GetComponent<BuffSystem>().AddEventForBuff("Chill", "OnApply", OnApplyCheckForChillStacks);
+    }
+
+    public override void RemoveSkill(CharacterStats playerStats)
+    {
+        base.RemoveSkill(playerStats);
+        playerStats.GetComponent<BuffSystem>().RemoveEventForBuff("Chill", "OnApply", OnApplyCheckForChillStacks);
+    }
+
+    public void OnApplyCheckForChillStacks(BuffInstance instance, GameObject target)
+    {
+        Debug.Log("OnApplyCheckForChillStacks");
+
+        if (instance.buff.buffName == "Chill")
+        {
+            if (instance.currentStacks >= instance.buff.maxStacks)
+            {
+                Debug.Log("OnApplyCheckForChillStacks" + "Triggerd");
+                instance.currentStacks = 0;
+                instance.target.GetComponent<BuffSystem>().RemoveBuff(instance.buff, instance.buffSystemCaster);
+                instance.target.GetComponent<BuffSystem>().AddBuff(frozenBuff, instance.target, instance.buffSystemCaster);
+            }
+        }
+    }
+}
+
+Syntax tree:
+
+1. FrostBoltMastery: Skill
+   - frozenBuff: Buff
+   - OnEnable(): void
+       - skillName = "FrostBoltMastery"
+       - frozenBuff = BuffFactory.CreateBuff("Frozen", 5f, true, 3, new StatsModifier())
+       - frozenBuff.AddInvokeOnApply(OnApplyFrozen)
+   - OnApplyFrozen(instance: BuffInstance, target: GameObject): void
+       - Debug.Log("OnApplyFrozen" + skillName)
+       - stunnable = target.GetComponent<IStunnable>()
+       - if (stunnable != null)
+           - stunnable.Stun(10f)
+   - ApplySkill(playerStats: CharacterStats): void
+       - base.ApplySkill(playerStats)
+       - playerStats.GetComponent<BuffSystem>().AddEventForBuff("Chill", "OnApply", OnApplyCheckForChillStacks)
+   - RemoveSkill(playerStats: CharacterStats): void
+       - base.RemoveSkill(playerStats)
+       - playerStats.GetComponent<BuffSystem>().RemoveEventForBuff("Chill", "OnApply", OnApplyCheckForChillStacks)
+   - OnApplyCheckForChillStacks(instance: BuffInstance, target: GameObject): void
+       - Debug.Log("OnApplyCheckForChillStacks")
+       - if (instance.buff.buffName == "Chill")
+           - if (instance.currentStacks >= instance.buff.maxStacks)
+               - Debug.Log("OnApplyCheckForChillStacks" + "Triggerd")
+               - instance.currentStacks = 0
+               - instance.target.GetComponent<BuffSystem>().RemoveBuff(instance.buff, instance.buffSystemCaster)
+               - instance.target.GetComponent<BuffSystem>().AddBuff(frozenBuff, instance.target, instance.buffSystemCaster)
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Skills\SkillNodeFactory.cs
+(S) SkillNodeFactory
+ |
+ |_(M) CreateSkillNode(SkillNodeFactoryDataClass data)
+
+(S) SkillNodeFactoryDataClass
+ |
+ |_(S) SkillNodeFactoryDataClass(string skillName, string skillDescription, int skillPointCost, Sprite icon, List<Archetype> mainStatRequirement, List<int> mainStatValue, Skill skill, SkillNode prerequisiteSkill, bool isUnlocked)
+ |  |_(P) skillName
+ |  |_(P) skillDescription
+ |  |_(P) skillPointCost
+ |  |_(P) icon
+ |  |_(P) mainStatRequirement
+ |  |_(P) mainStatValue
+ |  |_(P) skill
+ |  |_(P) prerequisiteSkill
+ |  |_(P) isUnlocked
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Skills\SkillNode.cs
+ FILE: SkillNode.cs
+ 
+                                             SkillNode
+                                                  |
+      -------------------------------------------------------------------------------
+      |       |     |       |           |           |            |              |    
+ skillName  skill- skill- skillPoint-   icon      mainStat-     skill-     prerequisite- isUnlocked
+                     Description    cost                 Requirement     name        SkillNode
+
+METHODS:
+    No internal methods are present in this class.
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Skills\Skill.cs
+File: Skill.cs
+
+Syntax Tree:
+- abstract class Skill : ScriptableObject
+  - public string skillName
+  - public List<Archetype> archTypes
+  - public StatsModifier statModifier
+  - public virtual void ApplySkill(CharacterStats characterStats)
+    - Debug.Log("Applying skill: " + skillName)
+    - // Implement skill-specific behavior in derived classes
+  - public virtual void RemoveSkill(CharacterStats characterStats)
+    - Debug.Log("Removing skill: " + skillName)
+    - // Implement skill-specific behavior in derived classes
+  - public virtual void OnSpawnAbilityObject(AbilityObject abilityObject, AbilityData abilityData)
+    - // no implementation
+- enum Archetype
+  - Strength
+  - Intelligence 
+  - Dexterity
+  - Endurance 
+  - Wisdom
+
+Explanation:
+- The Skill class is an abstract class that inherits from ScriptableObject.
+- It has three public properties: skillName, archTypes (which is a list of Archetype enum), and statModifier (which is a StatsModifier object).
+- It has three virtual methods that can be overridden by derived classes: ApplySkill, RemoveSkill, and OnSpawnAbilityObject.
+- The ApplySkill and RemoveSkill methods are empty in the base class but can be implemented in derived classes to provide skill-specific behavior.
+- The OnSpawnAbilityObject method has no implementation in the base class.
+- The Archetype enum is defined with five values: Strength, Intelligence, Dexterity, Endurance, and Wisdom.

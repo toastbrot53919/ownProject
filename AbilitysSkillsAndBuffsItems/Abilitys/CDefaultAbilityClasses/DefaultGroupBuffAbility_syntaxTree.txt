@@ -1,0 +1,45 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\CDefaultAbilityClasses\DefaultGroupBuffAbility.cs
+(DefaultGroupBuffAbility) -> Ability
+  -buff: Buff
+  -radius: float
+  +Activate(abilityData: AbilityData): void
+  +OnAbilityObjectHit(abilityObject: AbilityObject, target: GameObject): void
+  +OnEnable(): void
+  -aIController: AIController
+  -playerController: PlayerController
+  -buffSystem: BuffSystem
+
+Activate(abilityData: AbilityData): void
+  -abilityName: string = "DefaultGroupBuffAbility"
+  -abilityDescription: string = "This is a DefaultGroupBuffAbility"
+  -BaseAbilityStats.cooldown: int = 10
+  -BaseAbilityStats.intelligenceScaling: int = 1
+  -colliders: Collider[] = Physics.OverlapSphere(abilityData.CasterStats.transform.position, radius)
+  -casterBuffSystem: BuffSystem = abilityData.CasterStats.GetComponent<BuffSystem>()
+  foreach (Collider collider in colliders)
+  {
+    buffSystem = collider.gameObject.GetComponent<BuffSystem>()
+    if (buffSystem == null)
+    {
+      continue
+    }
+    aIController = collider.gameObject.GetComponent<AIController>()
+    playerController = collider.gameObject.GetComponent<PlayerController>()
+    if (aIController != null)
+    {
+      if (aIController.aggroTag == "Player")
+      {
+        continue
+      }
+      buffSystem.AddBuff(buff, collider.gameObject, casterBuffSystem)
+      continue
+    }
+    else if (playerController != null)
+    {
+      buffSystem.AddBuff(buff, collider.gameObject, casterBuffSystem)
+      continue
+    }
+  }
+
+OnEnable(): void
+  buff = BuffFactory.CreateBuff("Default Self Buff", 5f, true, 3, new StatsModifier(criticalDamage: 10))

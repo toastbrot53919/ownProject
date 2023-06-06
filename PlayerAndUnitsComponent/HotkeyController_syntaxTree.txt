@@ -1,0 +1,63 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\HotkeyController.cs
+HotkeyController class:
+
+                            ┌───────────────────┐ 
+                            │ HotkeyController  │
+                            └───────────────────┘
+                                            │
+                            ┌───────────────────┐ 
+                            │ ┌─ public List<Hotkey> hotkeys          
+                            │ ├─ private CharacterCombatController combatController
+                            │ ├─ public Dictionary<KeyCode,Hotkey> hotkeyMapping
+                            │ ├─ private PlayerController playerController
+                            │ │
+                            │ ├─ void Update()
+                            │ ├─ void Start()
+                            │ ├─ private void HandleHotkey()
+                            │ ├─ internal void SwapHotkeys(int hotkeyIndex1, int hotkeyIndex2)
+                            │ ├─ internal void AssignAbilityToHotkey(int hotkeyIndex, Ability assignedAbility)
+                            │ └─ internal void AssignItemToHotkey(int hotkeyIndex, Item assignedItem)
+                            │ 
+                            │         
+           ┌──────────────────┴───────────────────┐
+           │                                      │
+ ┌───────────────┐                      ┌───────────────┐                  
+ │  Character-  │                      │ Player-       │    
+ │CombatController  │                      │ Controller    │
+ └───────────────┘                      └───────────────┘
+ 
+
+Hotkey Class:
+
+                            ┌───────────┐ 
+                            │   Hotkey   │
+                            └───────────┘
+                                            │
+                            ┌───────────┐ 
+                            │─ public Ability ability
+                            │─ public Item item
+                            │ 
+                            │                                       
+                            │         
+           ┌──────────────────┴───────────────────┐
+           │                                      │
+ ┌───────────────┐                      ┌───────────────┐                  
+ │     Ability    │                      │      Item     │    
+ └───────────────┘                      └───────────────┘
+ 
+
+Internal Logic:
+
+1. The HotkeyController class has a public list of hotkeys, which is a list of Hotkey objects, a private CharacterCombatController object called combatController, a public dictionary called hotkeyMapping with KeyCode objects as keys and Hotkey objects as values, and a private PlayerController object called playerController.
+
+2. The Start method initializes the hotkeys list with nine empty Hotkey objects, initializes the hotkeyMapping dictionary with KeyCode objects as keys and the corresponding Hotkey object, and assigns the first learned ability to the first hotkey.
+
+3. The HandleHotkey method listens for key presses using the hotkeyMapping dictionary, and performs the corresponding ability or stops it if the key is released based on the current state of the ability.
+
+4. The SwapHotkeys method swaps the positions of two hotkeys in the hotkeys list.
+
+5. The AssignAbilityToHotkey method assigns an ability to a specific hotkey in the hotkeys list and removes any item that may have been assigned to that hotkey.
+
+6. The AssignItemToHotkey method assigns an item to a specific hotkey in the hotkeys list and removes any ability that may have been assigned to that hotkey.
+
+7. The Hotkey class stores either an Ability or an Item object, which can be accessed and assigned by the HotkeyController class.

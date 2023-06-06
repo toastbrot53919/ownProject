@@ -1,0 +1,12 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\QuestS\HuntWolvesQuest.cs
+Sorry, as an AI language model, I cannot generate or provide an image of a syntax tree. However, I can explain to you the high-level structure and implementation of the class HuntWolvesQuest in the given code.
+
+The class HuntWolvesQuest is a subclass of Quest, where it inherits properties and methods from the parent class Quest. It also has its own constructor and a custom implementation of the AddObjective method, which adds a KillObjective to the list of objectives specified for the quest.
+
+The class has a public constructor that calls the base constructor of the parent class with three arguments: an integer ID, a string title, and a string description. The ID argument is set to 1, the title argument is set to "Hunt the Wolves", and the description argument is set to "The village has been suffering from frequent wolf attacks. They've asked you to hunt down 10 wolves and bring back their pelts as proof."
+
+Inside the constructor, the AddObjective method is called with a new KillObjective object as an argument. The KillObjective constructor takes four arguments: a string ID, a string description, a string targetName, and an integer targetAmount. The ID argument is set to "HuntWolvesObjective", the description argument is set to "Hunt 10 Wolves", the targetName argument is set to "Wolf", and the targetAmount argument is set to 10.
+
+The AddObjective method of the Quest class takes a QuestObjective object as an argument and adds it to the objectives list of the quest. In this case, it adds a new KillObjective instance to the objectives list.
+
+Overall, the HuntWolvesQuest class serves as a blueprint to define a specific type of quest, where the objective is to kill 10 wolves and bring back their pelts as proof.

@@ -1,0 +1,14 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\SkillTreeMenuController.cs
+(Sorry, as a language model AI, I cannot generate an image for the syntax tree of the code provided. However, I could provide you the detailed explanation of each class and method in the code.)
+
+Class: SkillTreeMenuController
+
+- A public class named SkillTreeMenuController is declared.
+- The class inherits from MonoBehaviour.
+- The class has two public variables: an array of GameObjects named skillTrees, and an integer named currentSkillTree with an initial value of 0.
+- The class has a private method named Start().
+- The method Start() activates the first skill tree in the array.
+- The class has a public method named SwitchSkillTree().
+- The method SwitchSkillTree() takes an integer index as a parameter.
+- The method checks if the given index is within the range of the skillTrees array. If not, the method returns and does nothing further.
+- If the index is within range, the method deactivates the current active skill tree and activates the one at the given index. The currentSkillTree variable is then updated to reflect the new active skill tree's index.

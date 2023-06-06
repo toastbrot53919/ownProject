@@ -1,0 +1,20 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\ScreenSpaceUiController.cs
+File: ScreenSpaceUiController.cs
+
+----Class Definition----
+Access Modifier: Public
+Class Name: ScreenSpaceUiController
+Inheritance: MonoBehaviour
+
+----Class Members----
+Access Modifier: Public
+Member Type: Field
+Field Type: Canvas
+Field Name: canvas
+
+Access Modifier: Private
+Member Type: Method
+Return Type: N/A
+Method Name: N/A
+Parameters: N/A
+Internal Logic: N/A

@@ -1,0 +1,31 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\CDefaultAbilityObejcts\BaseProjectileObject.cs
+BaseProjectileObject:
+- public class
+- Inherits from AbilityObject, IBouncingAbilityObject, IPiercingAbilityObject
+- Implements BounceIntensity and BounceDuration properties
+
+Methods:
+- HandleOnHit(target: GameObject)
+  - Protected method
+  - Takes in a target GameObject parameter
+  - Applies damage to the target if available
+  - Determines whether bounceCount or pierceCount is greater, then executes Bounce or Pierce methods respectively
+  - Handles object deletion if necessary
+
+- Bounce(target: GameObject)
+  - Public method
+  - Takes in a target GameObject parameter
+  - Reflects transform forward based on target transform up
+  - Sets Rigidbody velocity based on new transform forward and projectile speed
+  - Decrements bounceCount
+
+- Pierce(target: GameObject)
+  - Public method
+  - Takes in a target GameObject parameter
+  - Decrements pierceCount
+
+Properties:
+- BounceIntensity: float
+- BounceDuration: float
+- bounceCount: int
+- pierceCount: int

@@ -1,0 +1,18 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\GameEvent.cs
+GameEvent
+ |
+ +--- [System.Serializable]
+ |
+ +--- UnityEvent<string>
+        |
+        +--- [Serializable]
+        |
+        +--- m_InvokeArray
+        |       |
+        |       +--- Array<string>
+        |
+        +--- AddListener(UnityAction<string> listener)
+        |
+        +--- RemoveListener(UnityAction<string> listener)
+        |
+        +--- Invoke(string arg0)

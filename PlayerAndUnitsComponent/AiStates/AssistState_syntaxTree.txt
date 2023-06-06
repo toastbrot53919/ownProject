@@ -1,0 +1,37 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\AiStates\AssistState.cs
+AssistState:
+
+    -using UnityEngine;
+    
+    -[CreateAssetMenu(menuName = "AI/States/AssistState")]
+    -public class AssistState : AIState
+    {
+        -public Transform target;
+        -public Ability assistAbility;
+        -public float assistRange = 10f;
+        
+        +public override void EnterState(AIController aiController)
+        {
+            // No internal logic here
+        }
+        
+        +public override void UpdateState(AIController aiController)
+        {
+            +float distanceToTarget = Vector3.Distance(aiController.transform.position, target.position);
+            
+            +if (distanceToTarget <= assistRange)
+            {
+                // aiController.GetComponent<AbilityController>().UseAbility(assistAbility);
+                // Commented out because we don't have the code for AbilityController
+            }
+            +else
+            {
+                aiController.ChangeState(aiController.followState);
+            }
+        }
+        
+        +public override void ExitState(AIController aiController)
+        {
+            // No internal logic here
+        }
+    }

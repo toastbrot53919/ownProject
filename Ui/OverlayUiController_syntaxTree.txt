@@ -1,0 +1,32 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\OverlayUiController.cs
+OverlayUiController:
+- Public keyword indicates that the class is accessible anywhere.
+- Class name is OverlayUiController.
+- Inherits from MonoBehaviour class.
+
+Fields:
+- Private field UIManager of UIManager class.
+- Public field Text characterNameText.
+- Public field Slider healthBar.
+- Public field Slider manaBar.
+- Public field Text levelText.
+- Private field GameObject player.
+- Private field HealthController of HealthController class.
+- Private field ManaController of ManaController class.
+
+Methods:
+- Private method updateHealthBar.
+    - healthBar.value is set to HealthController.currentHealth.
+    - healthBar.maxValue is set to HealthController.maxHealth.
+- Private method updateManaBar.
+    - manaBar.value is set to ManaController.currentMana.
+    - manaBar.maxValue is set to ManaController.maxMana.
+- Private method updateHealthAndMana.
+    - Calls updateHealthBar and updateManaBar methods.
+- Private method Start.
+    - UIManager is assigned the result of FindObjectOfType<UIManager>().
+    - player is assigned the result of FindObjectOfType<PlayerController>().gameObject.
+    - HealthController is assigned the result of player.GetComponent<HealthController>().
+    - ManaController is assigned the result of player.GetComponent<ManaController>().
+- Public method Update.
+    - Calls updateHealthAndMana method.

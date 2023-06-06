@@ -1,0 +1,35 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\ExperienceSystem.cs
+- File: ExperienceSystem.cs
+    - Class: ExperienceSystem
+        - Public Property: CurrentXP (int)
+            - Getter
+            - Private Setter
+        - Public Property: Level (int)
+            - Getter
+            - Private Setter
+        - Public Property: XpToNextLevel (int)
+            - Getter
+            - Private Setter
+        - Public Event: LevelUpEvent (Action)
+        - Public Event: ExperienceGained (Action<int>)
+        - Public Method: ExperienceSystem()
+            - Initializes CurrentXP to 0
+            - Initializes Level to 1
+            - Calls UpdateXpToNextLevel() method
+        - Public Method: AddExperience(amount:int)
+            - Parameter: amount (int)
+            - Adds amount to CurrentXP
+            - Invokes ExperienceGained event with amount as a parameter
+            - While loop (CurrentXP >= XpToNextLevel)
+                - Subtracts XpToNextLevel from CurrentXP
+                - Calls LevelUp() method
+        - Private Method: LevelUp()
+            - Increases Level by 1
+            - Calls UpdateXpToNextLevel() method
+            - Invokes LevelUpEvent event
+        - Private Method: UpdateXpToNextLevel()
+            - Calls CalculateXpForLevel(Level) method
+            - Assigns result to XpToNextLevel
+        - Private Method: CalculateXpForLevel(level:int)
+            - Parameter: level (int)
+            - Returns (int)Math.Floor(Math.Pow(level, 2) * 100)

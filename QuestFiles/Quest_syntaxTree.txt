@@ -1,0 +1,44 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\Quest.cs
+(Quest.cs)
+- Class: Quest
+  - Inherits from: ScriptableObject
+  - Attributes:
+    - id: integer
+    - title: string
+    - description: string
+    - objectives: List of type QuestObjective
+    - rewards: List of type Reward
+    - status: QuestStatus enum value
+  - Methods:
+    - Quest constructor
+      - Parameters: id (integer), title (string), description (string)
+      - Logic:
+        - Sets the id attribute to the parameter id
+        - Sets the title attribute to the parameter title
+        - Sets the description attribute to the parameter description
+        - Initializes the objectives attribute to a new empty list of QuestObjective objects
+        - Initializes the rewards attribute to a new empty list of Reward objects
+        - Sets the status attribute to QuestStatus.NotStarted
+    - AddObjective method
+      - Parameters: objective (QuestObjective object)
+      - Logic: Adds the objective parameter to the objectives list attribute
+    - AddReward method
+      - Parameters: reward (Reward object)
+      - Logic: Adds the reward parameter to the rewards list attribute
+    - CheckAndUpdateObjectives method
+      - Parameters: objectiveId (string)
+      - Logic:
+        - Loop through each QuestObjective in the objectives list attribute
+        - If the objective's status attribute is ObjectiveStatus.Incomplete
+          - Call the UpdateProgress method on the objective object, passing the objectiveId parameter
+          - If the objective's status attribute is now ObjectiveStatus.Completed, call the CheckQuestCompletion method
+          - Break out of the loop
+    - CheckQuestCompletion method
+      - Logic:
+        - Initialize a boolean variable allObjectivesComplete to true
+        - Loop through each QuestObjective in the objectives list attribute
+        - If the objective's status attribute is not ObjectiveStatus.Completed, set allObjectivesComplete to false and break out of the loop
+        - If allObjectivesComplete is still true, set the status attribute to QuestStatus.Completed
+  - Enums:
+    - QuestStatus
+      - Values: NotStarted, InProgress, Completed

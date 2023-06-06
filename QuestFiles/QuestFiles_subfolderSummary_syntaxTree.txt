@@ -1,0 +1,124 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\GameEvent.cs
+GameEvent
+ |
+ +--- [System.Serializable]
+ |
+ +--- UnityEvent<string>
+        |
+        +--- [Serializable]
+        |
+        +--- m_InvokeArray
+        |       |
+        |       +--- Array<string>
+        |
+        +--- AddListener(UnityAction<string> listener)
+        |
+        +--- RemoveListener(UnityAction<string> listener)
+        |
+        +--- Invoke(string arg0)
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\KillObjective.cs
+There are no important details in the file path and its information has been ignored.
+
+The syntax tree for the KillObjective class is as follows:
+
+KillObjective
+- QuestObjective
+  - id (string)
+  - description (string)
+  - status (ObjectiveStatus)
+  + UpdateProgress(killedEnemyId: string) (void)
+  + GetObjectiveProgress() (string)
+  + IsCompleted() (bool)
+- enemyId (string)
+- targetKills (int)
+- currentKills (int)
+
+- KillObjective(id: string, description: string, enemyId: string, targetKills: int)
+  - Set id to passed in id
+  - Set description to passed in description
+  - Set enemyId to passed in enemyId
+  - Set targetKills to passed in targetKills
+  - Set currentKills to 0
+  - Set status to ObjectiveStatus.Incomplete
+- UpdateProgress(killedEnemyId: string)
+  - If killedEnemyId equals "kill:"+enemyId and status is not ObjectiveStatus.Completed
+    - Increment currentKills
+    - Log "Current Kills: " + currentKills to Debug
+    - If currentKills is greater than or equal to targetKills
+      - Set status to ObjectiveStatus.Completed
+- GetObjectiveProgress()
+  - Return currentKills concatenated to "/" and targetKills as a string
+- IsCompleted()
+  - Return whether status is ObjectiveStatus.Completed or not
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\QuestAction.cs
+ScriptableObject
+    |
+    |----QuestAction
+            |
+            |----public string actionId;
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\QuestGiver.cs
+(S) QuestGiver.cs
+├──(F) Start()
+│   └──(F) FindObjectOfType<UIManager>()
+├──(M) Update()
+│   └──(C) playerInRange && Input.GetKeyDown(KeyCode.E)
+│       └──(F) Interact(Interacts.transform)
+├──(M) Interact(Transform interactFrom)
+│   └──(C) uiManager.questUIPresenter.gameObject.activeInHierarchy
+│       ├──(F) uiManager.hideQuestUiPresenter()
+│       └──Else
+│           └──(F) uiManager.showQuestUiPresenter(quest)
+├──(M) OnTriggerEnter(Collider other)
+│   ├──(C) other.CompareTag("Player")
+│   ├──(A) playerInRange = true
+│   ├──(A) Interacts = other.gameObject
+│   ├──(A) interactionIndicator.SetActive(true)
+│   └──(A) playerQuestSystem = other.GetComponent<QuestSystem>()
+└──(M) OnTriggerExit(Collider other)
+    ├──(C) other.CompareTag("Player")
+    ├──(A) playerInRange = false
+    └──(A) interactionIndicator.SetActive(false)
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\Quest.cs
+(Quest.cs)
+- Class: Quest
+  - Inherits from: ScriptableObject
+  - Attributes:
+    - id: integer
+    - title: string
+    - description: string
+    - objectives: List of type QuestObjective
+    - rewards: List of type Reward
+    - status: QuestStatus enum value
+  - Methods:
+    - Quest constructor
+      - Parameters: id (integer), title (string), description (string)
+      - Logic:
+        - Sets the id attribute to the parameter id
+        - Sets the title attribute to the parameter title
+        - Sets the description attribute to the parameter description
+        - Initializes the objectives attribute to a new empty list of QuestObjective objects
+        - Initializes the rewards attribute to a new empty list of Reward objects
+        - Sets the status attribute to QuestStatus.NotStarted
+    - AddObjective method
+      - Parameters: objective (QuestObjective object)
+      - Logic: Adds the objective parameter to the objectives list attribute
+    - AddReward method
+      - Parameters: reward (Reward object)
+      - Logic: Adds the reward parameter to the rewards list attribute
+    - CheckAndUpdateObjectives method
+      - Parameters: objectiveId (string)
+      - Logic:
+        - Loop through each QuestObjective in the objectives list attribute
+        - If the objective's status attribute is ObjectiveStatus.Incomplete
+          - Call the UpdateProgress method on the objective object, passing the objectiveId parameter
+          - If the objective's status attribute is now ObjectiveStatus.Completed, call the CheckQuestCompletion method
+          - Break out of the loop
+    - CheckQuestCompletion method
+      - Logic:
+        - Initialize a boolean variable allObjectivesComplete to true
+        - Loop through each QuestObjective in the objectives list attribute
+        - If the objective's status attribute is not ObjectiveStatus.Completed, set allObjectivesComplete to false and break out of the loop
+        - If allObjectivesComplete is still true, set the status attribute to QuestStatus.Completed
+  - Enums:
+    - QuestStatus
+      - Values: NotStarted, InProgress, Completed

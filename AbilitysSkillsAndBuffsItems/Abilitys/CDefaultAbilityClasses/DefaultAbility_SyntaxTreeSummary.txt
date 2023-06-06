@@ -1,0 +1,18 @@
+C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\CDefaultAbilityClasses\DefaultAbility.cs
+(DefaultAbility.cs)
+- class DefaultAbility : Ability
+    - public void Awake()
+        - set abilityName to "Default"
+        - set abilityDescription to "Default"
+    - public void OnEnable()
+        - if BaseAbilityStats is null
+            - set BaseAbilityStats to new instance of AbilityStats
+        - if TotalAbilityStats is null
+            - set TotalAbilityStats to new instance of AbilityStats
+        - if abilityModifierManager is null
+            - set abilityModifierManager to new instance of AbilityModifierManager
+        - call updateAbilityStats() method
+    - public override void Activate(AbilityData abilityData)
+        - print "Default Ability" message to console using Debug.Log()
+    - public override void OnAbilityObjectHit(AbilityObject abilityObject, GameObject target)
+        - do nothing
