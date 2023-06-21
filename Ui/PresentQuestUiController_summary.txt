@@ -1,9 +1,0 @@
-File name: PresentQuestUiController.cs
-
-This class is responsible for controlling the UI elements related to presenting a quest. It contains private fields for the quest title, description, and two buttons (accept and decline). Additionally, it has a reference to the QuestSystem class.
-
-The Start() method is called once when the object is created and it finds the QuestSystem object in the scene and assigns it to the internal reference.
-
-The showQuestInfo(Quest quest, UIManager UIManager) method is where the main logic occurs. It takes in a Quest object and a UIManager object, and sets the quest title and description text accordingly. It also sets up the accept and decline button listeners to handle the respective actions. When the accept button is clicked, it adds the current quest to the QuestSystem instance and hides the Quest UI Presenter via the UIManager. When the decline button is clicked, it only hides the presenter.
-
-This class utilizes the Unity Engine's UI components including TMP_Text and Button.

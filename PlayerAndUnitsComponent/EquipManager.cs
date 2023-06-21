@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 [Serializable]
-public class EquipManager : MonoBehaviour
+public class EquipManager : MonoBehaviour,ICanStoreAndLoad<EquipManagerSaveData>
 {
     public enum EquipmentType { Weapon, Shield, Helmet, ChestArmor, LegArmor, Boots, Ring, Wrist }
 
@@ -75,4 +75,32 @@ public class EquipManager : MonoBehaviour
         
 
     }
+    public EquipManagerSaveData GetSaveData()
+    {
+        return new EquipManagerSaveData(this);
+    }
+    public void LoadFromSaveData(EquipManagerSaveData saveData)
+    {
+        foreach(KeyValuePair<EquipmentType, string> item in saveData.equippedItems){
+            EquipableItem equipableItem = ItemManager.getItemyString(item.Value) as EquipableItem;
+            if(equipableItem != null){
+                equippedItems.Add(item.Key, equipableItem);
+            }
+            else{
+                Debug.Log("Item not found: " + item.Value);
+            }
+        }
+    }
+    
+}
+[Serializable]
+public class EquipManagerSaveData{
+    public Dictionary<EquipManager.EquipmentType, string> equippedItems;
+    public EquipManagerSaveData(EquipManager equipManager){
+        equippedItems = new Dictionary<EquipManager.EquipmentType, string>();
+        foreach(KeyValuePair<EquipManager.EquipmentType, EquipableItem> item in equipManager.equippedItems){
+            equippedItems.Add(item.Key, item.Value.name);
+        }
+    }
+    
 }

@@ -1,6 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\AiStates\ChaseState.cs
-This code is the implementation of the "ChaseState" AI state in a game. It contains three public variables "chaseSpeed" (set to 6f), "stoppingDistance" (set to 5f), and "target" (not shown). The class extends the abstract class "AIState" and implements its three methods: "EnterState," "UpdateState," and "ExitState." 
-
-The "EnterState" method updates the speed of the AI's NavMeshAgent component to the chaseSpeed variable. The "UpdateState" method checks whether there is a target to chase. If there is, it calculates the distance to the target. If the distance is greater than the stoppingDistance, the NavMeshAgent is set to follow the target's position. If the distance is less than or equal to the stoppingDistance, the AI is transitioned to another state (e.g., attack). The "ExitState" method currently does not do anything. 
-
-This code is a script for an AI-controlled unit that chases targets in a game using Unity's NavMesh system. It can be added as a component to any game object and customized through its public variables.

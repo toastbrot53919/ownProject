@@ -1,2 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\QuestS\HuntWolvesQuest.cs
-This is a C# script named HuntWolvesQuest.cs, located at C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\QuestS folder, used for creating a hunt wolves quest in a Unity game. It inherits from the Quest class. In the constructor, the quest's ID, name, and description are set, along with a KillObjective which requires the player to hunt and kill 10 wolves and collect their pelts as proof.

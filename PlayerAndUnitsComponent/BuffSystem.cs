@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuffSystem : MonoBehaviour
+public class BuffSystem : MonoBehaviour, ICanStoreAndLoad<BuffSystemSaveData>
 {
     public Dictionary<string, BuffInstance> activeBuffs;
     public List<string> buffsToRemove;
@@ -29,6 +29,7 @@ public class BuffSystem : MonoBehaviour
         onBuffFromBuffSystemApplying = new Dictionary<string, List<Action<BuffInstance,GameObject>>>();
         onBuffFromBuffSystemFading = new Dictionary<string, List<Action<BuffInstance,GameObject>>>();
         onBuffFromBuffSystemHitting = new Dictionary<string, List<Action<BuffInstance,GameObject>>>();
+        TotalstatsModifier = new StatsModifier();
     }
 
     private void Update()
@@ -246,6 +247,31 @@ public class BuffSystem : MonoBehaviour
             Debug.LogError("Invalid eventType");
         }
     }
-
+    public void LoadFromSaveData(BuffSystemSaveData saveData)
+    {
+        foreach (BuffInstanceSaveData buffInstanceSaveData in saveData.activeBuffsInstances)
+        {
+            BuffInstance buffInstance = new BuffInstance(null,null,null,1,1);
+            buffInstance.LoadFromSaveData(buffInstanceSaveData);
+            activeBuffs.Add(buffInstance.buff.buffName, buffInstance);
+        }
+    }
+    public BuffSystemSaveData GetSaveData()
+    {
+        return new BuffSystemSaveData(this);
+    }
     
+}
+[System.Serializable]
+public class BuffSystemSaveData{
+
+    public List<BuffInstanceSaveData> activeBuffsInstances;
+    public BuffSystemSaveData(BuffSystem buffSystem)
+    {
+        activeBuffsInstances = new List<BuffInstanceSaveData>();
+        foreach (BuffInstance buffInstance in buffSystem.activeBuffs.Values)
+        {
+            activeBuffsInstances.Add(new BuffInstanceSaveData(buffInstance));
+        }
+    }
 }

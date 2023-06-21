@@ -1,6 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\IIsGrabable.cs
-IIsGrabable:
- - bool IsGrabbed
- - Transform Grabber
- - void Grab(Transform grabber)
- - void Release()

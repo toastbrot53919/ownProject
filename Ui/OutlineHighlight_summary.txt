@@ -1,9 +1,0 @@
-File Name: OutlineHighlight.cs
-
-Summary: 
-
-The OutlineHighlight class is a MonoBehavior script that allows for highlighting outlines of a specific object with a particular color. Attributes include a highlight material, highlight color, outline thickness, and target transform. The class utilizes a Camera object, CommandBuffer, and RenderTexture to achieve its desired effect.
-
-Internally, the OnRenderImage function is utilized to render an image with the highlight and outline effect. A check for a null target helps prevent errors. The RenderTexture variable is then created with temporary properties. The CommandBuffer is used to clear the render target, retrieve the target's mesh filter, and draw the mesh with the highlight material. The color and thickness properties of the highlight material are set before the final command buffer is executed and blitted to the destination texture. Finally, the temporary render texture is released.
-
-Overall, this class is important for adding visual depth to games or applications where a highlighted outline of a particular object is desired.

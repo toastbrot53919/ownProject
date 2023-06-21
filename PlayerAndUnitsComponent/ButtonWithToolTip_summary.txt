@@ -1,8 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\ButtonWithToolTip.cs
-This script is called "ButtonWithToolTip" and is used in the "PlayerAndUnitsComponent" folder of the project. It contains several public variables, including a SkillNode, a PlayerController, a UIManager, a GameObject, and a Text. It also has a private variable for a Button component.
-
-In the Awake method, the script gets the Button component and sets its onClick listener to call the TryLearn method. It also sets the image sprite to the SkillNode's icon.
-
-The script implements the IPointerEnterHandler and IPointerExitHandler interfaces, which allow it to show and hide a tooltip when the mouse pointer enters or exits the button. The ShowToolTip method calls the UIManager's OpenToolTipSkill method, passing in the SkillNode and the position of the button on the screen. The HideToolTip method calls the UIManager's CloseToolTipSkill method.
-
-The TryLearn method is called when the player clicks the button and attempts to unlock the associated SkillNode using the PlayerController's TryUnlockSkillNode method.

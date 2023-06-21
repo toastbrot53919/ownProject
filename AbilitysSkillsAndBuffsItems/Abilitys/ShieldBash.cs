@@ -3,9 +3,11 @@ using UnityEngine;
 public class ShieldBash : DefaultAbility
 {
     public GameObject prefabAbilityObject;
+
+    public override void init()
+    {
     
-    public new void Awake(){
-        base.Awake();
+        base.init();
         abilityName = "Shield Bash";
         BaseAbilityStats.baseDamage = 50;
         BaseAbilityStats.strengthScaling = 0.5f;
@@ -16,13 +18,13 @@ public class ShieldBash : DefaultAbility
 
     public override void OnAbilityObjectHit(AbilityObject abilityObject, GameObject target)
     {
-        if (abilityObject.data.CasterStats != null)
+        if (abilityObject.data.casterStats != null)
         {
             HealthController targetStats = target.GetComponent<HealthController>();
             if (targetStats != null)
             {
                 float damage = abilityObject.data.damage;
-                targetStats.TakeDamage(damage,abilityObject.data.CasterStats.gameObject);
+                targetStats.TakeDamage(damage,abilityObject.data.casterStats.gameObject);
 
                 if (abilityObject.data.stunDuration >= 0f)
                 {
@@ -35,9 +37,9 @@ public class ShieldBash : DefaultAbility
 
     public override void Activate(AbilityData abilityData)
     {
-        if (abilityData.CasterStats == null) return;
+        if (abilityData.casterStats == null) return;
 
-        Transform casterTransform = abilityData.CasterStats.transform;
+        Transform casterTransform = abilityData.casterStats.transform;
         Vector3 forwardDirection = casterTransform.forward;
 
         GameObject abilityObjectInstance = Instantiate(prefabAbilityObject, casterTransform.position + forwardDirection, Quaternion.identity);
@@ -48,7 +50,7 @@ public class ShieldBash : DefaultAbility
         rb.velocity = forwardDirection * abilityData.projectileSpeed;
 
         abilityObject.data = abilityData;
-        abilityData.Target = null;
+        abilityData.target = null;
         abilityData.projectileSpeed = 0f;
         abilityObject.ParentAbility = this;
         abilityData.stunDuration = stunDuration;

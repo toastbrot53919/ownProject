@@ -1,2 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Skills\Skill.cs
-This is a script for a Unity game that defines an abstract class called "Skill". It contains properties for skill name, a list of archetypes, and a stats modifier. The class has three virtual methods: ApplySkill, RemoveSkill, and OnSpawnAbilityObject. These methods can be implemented in derived classes to define skill-specific behavior. The class also defines an enum called "Archetype" that lists different types of archetypes.

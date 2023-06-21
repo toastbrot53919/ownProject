@@ -1,9 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\AiStates\IdleState.cs
-Summary:
-The IdleState.cs script is responsible for representing the idle behavior of AI-controlled characters in the game. It is a derived class of the base AIState class and comes with an assigned menu item of "AI/States/IdleState." This script has two public variables: idleDuration and idleTime.
-
-The idleDuration variable holds the duration of idle behavior, which is set to 3 seconds by default. idleTime is the real-life time when the AI character will go out of idle mode and start patrolling. During the EnterState function, the idleTime is set by adding idleDuration to the current time.
-
-The UpdateState function checks if the current time is greater than the idleTime. If it is, then the AIController of the character is commanded to ChangeState to the patrolState (which must be defined elsewhere). The ExitState function doesn't do anything specific during the character's leaving of the IdleState.
-
-Overall, the IdleState.cs script is instrumental in maintaining consistency and balance in AI-controlled characters' idle behavior.

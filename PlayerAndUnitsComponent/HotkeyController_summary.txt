@@ -1,8 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\HotkeyController.cs
-The file "HotkeyController.cs" contains a script in Unity that handles the hotkeys for a player and units. It includes a list of hotkeys, a combat controller, and a dictionary that maps the hotkeys to their respective abilities. 
-
-In the Start function, the script initializes the hotkeys list with a capacity of nine, and populates the dictionary with the corresponding hotkeys. Additionally, it assigns a test ability to the first hotkey in the list. 
-
-In the Update function, the script calls the HandleHotkey function which checks for a key press from the player. If a hotkey is mapped to the pressed key and is assigned an ability, the script performs the ability using the combat controller. 
-
-The Hotkey class defines a hotkey object that contains an ability.

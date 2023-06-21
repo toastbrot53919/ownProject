@@ -1,8 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\Ui\OverlayUiController.cs
-The file "OverlayUiController.cs" is responsible for managing the overlay UI elements in the game. It contains public fields for the character's name, health bar, mana bar, and level text. These fields are linked to the respective UI elements in the scene using the SerializeField attribute.
-
-In addition, the controller has a reference to the CharacterStats script that holds information about the player's character's health, mana, and level. This reference is initialized in the Start() method.
-
-The Start() method also sets the maximum values of the health and mana bars, as well as the character name, using the information from the CharacterStats script. The UpdateUI() method, which is called both in Start() and Update(), sets the current values of the health and mana bars and updates the character's level text.
-
-Overall, the OverlayUiController.cs script provides dynamic display of the character's stats to the player while playing the game.

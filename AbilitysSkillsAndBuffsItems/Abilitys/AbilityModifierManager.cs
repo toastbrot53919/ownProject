@@ -1,13 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
-public class AbilityModifierManager : ScriptableObject
+public class AbilityModifierManager
 {
     private List<AbilityModifiers> modifierList = new List<AbilityModifiers>();
     private AbilityStats abilityStats;
 
-    private void OnEnable()
+public AbilityModifierManager()
     {
-        abilityStats = new AbilityStats();
+        this.abilityStats = new AbilityStats();
     }
     
     public string printAllModifers()

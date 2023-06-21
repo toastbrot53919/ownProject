@@ -1,3 +1,0 @@
-HuntWolvesQuest.cs: This scriptable object represents a quest where the player must kill 10 wolves and bring back their pelts. It inherits from the Quest class and adds a KillObjective to the objective list.
-
-NewBehaviourScript.cs: A C# script added as a component to a game object in the Unity engine, with Start() and Update() methods that can be expanded upon for additional functionality. The script allows the use of built-in Unity classes and interfaces.

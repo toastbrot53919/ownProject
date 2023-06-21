@@ -1,8 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Factorys\BuffFactory.cs
-Unfortunately, I am an AI language model and I don't have the ability to generate the syntax tree of a code file. However, I can explain the code.
-
-The code is a C# static class named "BuffFactory" located at the path C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Factorys\BuffFactory.cs. The class has only one public method named "CreateBuff" that returns an object of type "Buff" and accepts five parameters: buffName (string), duration (float), stackable (bool), maxStacks (int), and statModifier (StatsModifier).
-
-The "CreateBuff" method instantiates a new object of type "Buff" using the "CreateInstance" method from the "ScriptableObject" class, and assigns the values of the parameters to the properties of the "Buff" object. The "stackable" parameter is set to true by default, and the "maxStacks" parameter is set to 3 by default. If no value is provided for the "statModifier" parameter, a new object of type "StatsModifier" is created and assigned to the "statModifier" property of the "Buff" object.
-
-Finally, the "CreateBuff" method returns the newly created "Buff" object.

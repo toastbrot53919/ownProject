@@ -23,7 +23,8 @@ public abstract class Ability : ScriptableObject
     public bool useUpdate = false;
     public AnimingMode animingMode = AnimingMode.Default;
 
-
+    
+    public abstract void init();
     public void updateAbilityStats()
     {
         TotalAbilityStats.setZero();
@@ -98,17 +99,17 @@ public abstract class Ability : ScriptableObject
 
 public class AbilityData
 {
-    public GameObject Target;
-    public CharacterStats CasterStats;
-    public AbilityController CasterController;
-    public CharacterCombatController CasterCombatController;
+    public GameObject target;
+    public CharacterStats casterStats;
+    public AbilityController casterController;
+    public CharacterCombatController casterCombatController;
 
-    public Vector3 TargetDirection;
-    public Vector3 TargetPosition;
+    public Vector3 targetDirection;
+    public Vector3 targetPosition;
     public float damage;
     public float projectileSpeed;
     public float stunDuration;
-    public float OnHitInterval = 0.5f;
+    public float onHitInterval = 0.5f;
     AbilityData clone()
     {
         return (AbilityData)MemberwiseClone();

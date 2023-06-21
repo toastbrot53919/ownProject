@@ -1,7 +1,0 @@
-The code contains a class named "Calculator" which has four methods - "add", "subtract", "multiply", and "divide". These methods take two arguments of type "float" and return the result of the corresponding mathematical operation. 
-
-The "add" method adds the two numbers, "subtract" subtracts the second number from the first, "multiply" multiplies the two numbers, and "divide" divides the first number by the second. 
-
-The expected input for each method is two numbers of type "float". The output of each method is the result of the corresponding mathematical operation. 
-
-Overall, the code is a basic implementation of a calculator with four simple mathematical operations.

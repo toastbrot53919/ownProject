@@ -114,7 +114,7 @@ public class AIController : MonoBehaviour
 
 
                 // Use attack ability
-                
+                setNextActionDelay(animationController.returnAnimationLockTiming(attackAbility.animationName));
                 GetComponent<CharacterCombatController>().PerformAbility(attackAbility, target.gameObject);
 
 

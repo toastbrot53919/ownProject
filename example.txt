@@ -1,3 +1,0 @@
-This is an example text file.
-It contains some sentences to be indexed.
-We will use LlamaIndex to query this file.

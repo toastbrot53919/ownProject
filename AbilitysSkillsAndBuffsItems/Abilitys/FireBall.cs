@@ -3,20 +3,20 @@ using UnityEngine;
 class FireBall : DefaultProjectileAbility {
     //Expecting BaseProjectileObject to be a prefab
   public override void OnAbilityObjectHit(AbilityObject abilityObject, GameObject target) {
-    if (abilityObject.data.CasterStats != null) {
+    if (abilityObject.data.casterStats != null) {
       HealthController targetHealth = target.GetComponent<HealthController>();
       if (targetHealth != null) {
         float damage = abilityObject.data.damage;
-        targetHealth.TakeDamage(damage,abilityObject.data.CasterStats.gameObject);
+        targetHealth.TakeDamage(damage,abilityObject.data.casterStats.gameObject);
       }
     }
     RaiseOnObjectHit(abilityObject, target);
   }
 
     public override void Activate(AbilityData abilityData) {
-    if (abilityData.CasterStats == null) return;
+    if (abilityData.casterStats == null) return;
 
-    Transform firePoint = abilityData.CasterStats.GetComponent<AbilityController>().firePoint;
+    Transform firePoint = abilityData.casterStats.GetComponent<AbilityController>().firePoint;
 
     GameObject projectileInstance = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
     BaseProjectileObject abilityObject = projectileInstance.GetComponent<BaseProjectileObject>();

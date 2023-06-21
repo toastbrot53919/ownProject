@@ -11,13 +11,17 @@ public class DefaultAuraAbility : DefaultAbility
 
     
 
-    
-    private new void OnEnable(){
-        BaseAbilityStats = new AbilityStats();
-        TotalAbilityStats = new AbilityStats();
+    public new void Awake()
+    {
+        base.Awake();
+        abilityName = "Default Aura Ability";
+        abilityDescription = "This is a default aura ability";
         BaseAbilityStats.cooldown = 2;
-        updateAbilityStats();
-        animingMode = AnimingMode.PrePositionPlacement;
+        BaseAbilityStats.intelligenceScaling = 1;
+    }
+    public new void init(){
+        base.init();
+        animingMode = AnimingMode.Default;
 
     }
     public override void Activate(AbilityData abilityData)
@@ -25,10 +29,10 @@ public class DefaultAuraAbility : DefaultAbility
         Debug.Log("Activate");
         useUpdate = true;
 
-         abilityObject = Instantiate(auraPrefab, abilityData.Target.transform.position, Quaternion.identity).GetComponent<AbilityObject>();
+         abilityObject = Instantiate(auraPrefab, abilityData.target.transform.position, Quaternion.identity).GetComponent<AbilityObject>();
+         abilityObject.data.onHitInterval = damageInterval;
         abilityObject.data = abilityData;
         abilityObject.ParentAbility = this;
-        abilityObject.OnDelete+=DeactivateUpdate;
 
     }
     float timestart=0;
@@ -41,22 +45,20 @@ public class DefaultAuraAbility : DefaultAbility
             HealthController healthController = target.GetComponent<HealthController>();
             if (healthController != null) 
             {
-                healthController.TakeDamage(abilityObject.data.damage, abilityObject.data.CasterStats.gameObject);
+                healthController.TakeDamage(abilityObject.data.damage, abilityObject.data.casterStats.gameObject);
             }
 
         
     }
     public override void OnUpdate()
     {
-       // abilityObject.transform.position = abilityObject.data.CasterStats.transform.position;
+        abilityObject.transform.position = abilityObject.data.casterController.transform.position;
     }
-    public  void DeactivateUpdate(){
-        useUpdate = false;
-    }
+
     public override void Deactivate()
     {
         if(abilityObject!=null){
-          //  abilityObject.Delete();
+          abilityObject.Delete();
         }
 
         

@@ -71,12 +71,14 @@ public class GameManager : MonoBehaviour
     }
     public void SaveGame()
     {
-        // Implement save game logic
+       GameObject player = GameObject.FindGameObjectWithTag("Player");
+       SerializeManager.SavePlayer(player);
     }
 
     public void LoadGame()
     {
-        // Implement load game logic
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        SerializeManager.LoadPlayer(player);
     }
     // Implement other methods as needed, such as SaveGame, LoadGame, etc.
 }

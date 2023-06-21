@@ -3,19 +3,19 @@ using UnityEngine;
 
 // Base Projectile Ability class
 [CreateAssetMenu(menuName = "Abilities/DefaultProjectileAbility")]
-public class DefaultProjectileAbility : Ability
+public class DefaultProjectileAbility : DefaultAbility
 {
     public GameObject projectilePrefab;
 
     public override void OnAbilityObjectHit(AbilityObject abilityObject, GameObject target)
     {
-        if(abilityObject.data.CasterStats != null)
+        if(abilityObject.data.casterStats != null)
         {
             HealthController targetStats = target.GetComponent<HealthController>();
             if (targetStats != null)
             {
                 float damage = abilityObject.data.damage;
-                targetStats.TakeDamage(damage,abilityObject.data.CasterStats.gameObject);
+                targetStats.TakeDamage(damage,abilityObject.data.casterStats.gameObject);
             }
         }
          RaiseOnObjectHit(abilityObject,target);
@@ -25,23 +25,23 @@ public class DefaultProjectileAbility : Ability
 
     public override void Activate(AbilityData abilityData)
     {
-        if (abilityData.CasterStats == null) return;
+        if (abilityData.casterStats == null) return;
 
-        Transform firePoint = abilityData.CasterStats.GetComponent<AbilityController>().firePoint;
+        Transform firePoint = abilityData.casterStats.GetComponent<AbilityController>().firePoint;
 
 
         GameObject projectileInstance = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         BaseProjectileObject abilityObject = projectileInstance.GetComponent<BaseProjectileObject>();
         RaiseOnObjectSpawned(abilityObject,null);
-        PlayerController playerController = abilityData.CasterStats.GetComponent<PlayerController>();
+        PlayerController playerController = abilityData.casterStats.GetComponent<PlayerController>();
         Rigidbody rb = projectileInstance.GetComponent<Rigidbody>();
         if(playerController != null)
         {
             projectileInstance.transform.rotation = playerController.GetCamera().transform.rotation;
         }
-        else if (abilityData.Target != null)
+        else if (abilityData.target != null)
         {
-            projectileInstance.transform.LookAt(abilityData.Target.transform);
+            projectileInstance.transform.LookAt(abilityData.target.transform);
         }
    
 

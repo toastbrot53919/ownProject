@@ -1,6 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\AiStates\IdleState.cs
-The code represents an AI state called IdleState that extends AIState. The class is marked with [CreateAssetMenu] and can be accessed through the AI/States/IdleState menu. The IdleState has a public float variable called idleDuration that is set to 3 seconds by default. There is also a private float variable called idleTime that keeps track of how long the AI has been idle.
-
-The class has three methods: EnterState(), UpdateState(), and ExitState(), all of which override the methods inherited from AIState. The EnterState() method sets the idleTime variable to the current Time.time plus the idleDuration variable. UpdateState() checks if the current time is greater than idleTime and changes the AI's state to the patrol state if true. The ExitState() method does not do anything.
-
-Overall, the IdleState AI state controls the behavior of the AI when it is idle, setting a duration for how long it remains idle before moving onto the next state.

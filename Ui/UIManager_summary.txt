@@ -1,9 +1,0 @@
-The UIManager.cs file defines a class named UIManager, which is responsible for managing various UI elements in the game. The class has public variables for different game objects that represent UI elements, such as pauseMenu, mainMenu, characterStatusUI, characterUi, tooltipSkills, and skillTreeMenu.
-
-There are also private variables, including toolTipSkillsController and presentQuestUiController. The former is used to control the tooltip UI for skills, while the latter is used to present quest information to the player.
-
-The class has various methods for showing and hiding different UI elements, such as showQuestUiPresenter and hideQuestUiPresenter for presenting/hiding quest information, and OpenCharacterStatusUI, OpenCharacterUi, OpenSkillTreeMenu, CloseCharacterUi, and CloseSkillTreeMenu for showing/hiding different menus.
-
-The class also has methods for pausing/unpausing the game, showing/hiding the main menu, and opening/closing the tooltip UI for skills. These methods change the game state accordingly using the GameManager.Instance.ChangeGameState method.
-
-The Update method checks for user input to pause/unpause the game and open/close the character status UI and skill tree menu. The Awake method initializes the Tooltip UI controller.

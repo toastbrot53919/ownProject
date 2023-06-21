@@ -33,4 +33,14 @@ public class isStunnableController : MonoBehaviour,IStunnable{
         return stunned;
         
     }
+    public StunnableSaveData GetSaveData()
+    {
+        return new StunnableSaveData(this);
+    }
+    public void LoadFromSaveData(StunnableSaveData saveData)
+    {
+        stunned = saveData.stunned;
+        timeAtStunStart = saveData.timeAtStunStart;
+        stunDuration = saveData.stunDuration;
+    }
 }

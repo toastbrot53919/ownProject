@@ -1,4 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\QuestS\NewBehaviourScript.cs
-The file "NewBehaviourScript.cs" is a C# script that is added as a component to a game object in the Unity engine. It contains two methods, "Start()" and "Update()", which are automatically executed by Unity when the game object is created and each frame thereafter, respectively. 
-
-As it stands, this script does not do anything specific; it simply initializes the game object on creation and updates it each frame. The internal logic of the script can be expanded upon by the developer to add additional functionality, such as checking for user input or updating the game state. The "using" statements at the top of the script allow the use of built-in Unity classes and interfaces.

@@ -1,8 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\GrabableController.cs
-This code defines a script named "GrabableController" that can be attached to a game object in a Unity scene. The script implements the interface "IIsGrabable", which requires the definition of two properties: "IsGrabbed" and "Grabber". The "IsGrabbed" property is a boolean that determines whether the object is currently being held by a player. The "Grabber" property is a Transform that defines the game object holding the grabbed object. 
-
-The script also includes a public boolean variable named "canBeGrabbedByActivation", which is not used in the current version of the code. 
-
-The script contains two methods: "Grab" and "Release". The "Grab" method takes a single argument, a Transform that represents the game object that is grabbing the object, and sets the "IsGrabbed" and "Grabber" properties accordingly. It then sets the parent of the grabbed object to the grabber and sets the local position to Vector3.zero. 
-
-The "Release" method sets the "IsGrabbed" property to false, removes the object from its parent, and sets the "Grabber" property to null.

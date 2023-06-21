@@ -1,6 +1,6 @@
 using UnityEngine;
-
-public class ManaController : MonoBehaviour
+[System.Serializable]
+public class ManaController : MonoBehaviour,ICanStoreAndLoad<ManaControllerSaveData>
 {
     public float maxMana;
     public float currentMana;
@@ -43,6 +43,26 @@ public class ManaController : MonoBehaviour
             currentMana = maxMana;
         }
     }
+    public ManaControllerSaveData GetSaveData()
+    {
+        return new ManaControllerSaveData(this);
+    }
+    public void LoadFromSaveData(ManaControllerSaveData saveData)
+    {
+        currentMana = saveData.mana;
+        maxMana = saveData.maxMana;
+    }
 
 
+}
+[System.Serializable]
+public class ManaControllerSaveData
+{
+    public float mana;
+    public float maxMana;
+    public ManaControllerSaveData(ManaController manaController)
+    {
+        mana = manaController.currentMana;
+        maxMana = manaController.maxMana;
+    }
 }

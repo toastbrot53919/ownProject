@@ -1,8 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Buffs\Buff.cs
-Summary:
-
-The Buff.cs script is a ScriptableObject that contains variables for a buff's name, duration, whether it is stackable or not, and the maximum number of stacks allowed. It also has three events, OnApply, OnFade, and OnHit, that can be triggered by BuffInstance objects.
-
-The script contains three methods: InvokeOnApply, InvokeOnFade, and InvokeOnHit, which are used to trigger the events. There is also a method, GetEventTypes, which returns a list of strings that correspond to the event types that have been assigned to the Buff object.
-
-Overall, the Buff.cs script defines the properties and events of a buff object and contains methods to trigger those events.

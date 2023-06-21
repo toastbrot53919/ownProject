@@ -112,7 +112,7 @@ public void hideQuestUiPresenter(){
     {
         GameManager.Instance.ChangeGameState(GameManager.GameState.Playing);
         Time.timeScale = 1f;
-        pauseMenu.SetActive(false);
+       // pauseMenu.SetActive(false);
     }
 
     public void ShowMainMenu()
@@ -255,5 +255,13 @@ public void hideQuestUiPresenter(){
     public void CloseToolTip()
     {
         tooltip.gameObject.SetActive(false);
+    }
+    public void SaveGameButton()
+    {
+        GameManager.Instance.SaveGame();
+    }
+    public void LoadGameButton()
+    {
+        GameManager.Instance.LoadGame();
     }
 }

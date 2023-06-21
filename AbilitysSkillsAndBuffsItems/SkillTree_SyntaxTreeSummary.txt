@@ -1,8 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\SkillTree.cs
-SkillTree
-- skillNodes: List<SkillNode>
-- SkillTree()
-- AddSkillNode(SkillNode)
-- IsVisible(SkillNode)
-- Awake()
-- resetAllNodes()

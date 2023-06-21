@@ -13,14 +13,14 @@ public class SimpleStrike : DefaultAbility
         if (healthController != null)
         {
 
-            healthController.TakeDamage(abilityObject.data.damage,abilityObject.data.CasterStats.gameObject);
+            healthController.TakeDamage(abilityObject.data.damage,abilityObject.data.casterStats.gameObject);
         }
     }
 
 
     public override void Activate(AbilityData abilityData)
     {
-        GameObject meleeStrikeInstance = Instantiate(MeelePrefab, abilityData.CasterController.firePoint.position, Quaternion.identity);
+        GameObject meleeStrikeInstance = Instantiate(MeelePrefab, abilityData.casterController.firePoint.position, Quaternion.identity);
         AbilityObject abilityObject = meleeStrikeInstance.GetComponent<AbilityObject>();
 
         abilityObject.ParentAbility = this;

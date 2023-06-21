@@ -1,2 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Skills\SkillNode.cs
-This code defines a class called "SkillNode" which derives from "ScriptableObject". It has various properties such as a name, description, point cost, a sprite icon, requirements for main stats, a skill, a prerequisite skill, and a boolean value indicating whether the skill is unlocked. It also includes a "CreateAssetMenu" attribute that allows for the creation of a new "SkillNode" asset in the Unity editor.

@@ -1,2 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\SkillTree.cs
-This code defines a SkillTree object which is a ScriptableObject. It has a list of SkillNode objects and a constructor that initializes the list. The code provides a method to add skill nodes to the list and a method to check whether a skill node is visible or not (always returns true). Additionally, the code has an Awake method that calls a method to reset all the nodes by setting their "isUnlocked" value to false.

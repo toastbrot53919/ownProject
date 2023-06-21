@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Abilities/DefaultComboAbility")]
-public class DefaultComboAbility : Ability
+public class DefaultComboAbility : DefaultAbility
 {
     // SimpleStrike specific properties, if any
     public GameObject MeelePrefab;
@@ -14,12 +14,12 @@ public class DefaultComboAbility : Ability
         if (healthController != null)
         {
 
-            healthController.TakeDamage(abilityObject.data.damage,abilityObject.data.CasterStats.gameObject);
+            healthController.TakeDamage(abilityObject.data.damage,abilityObject.data.casterStats.gameObject);
         }
     }
     public override void PreActivateAbility(AbilityData abilityData)
     {
-        ComboController comboController = abilityData.CasterCombatController.comboController;
+        ComboController comboController = abilityData.casterCombatController.comboController;
 
         // Use the name of this ability (ThreeHitComboAbility) to manage combo count
         string comboName = "ThreeHitComboAbility";
@@ -55,7 +55,7 @@ public class DefaultComboAbility : Ability
     public override void Activate(AbilityData abilityData)
     {
         Debug.Log("Activate");
-        GameObject meleeStrikeInstance = Instantiate(MeelePrefab, abilityData.CasterStats.transform.position, abilityData.CasterStats.transform.rotation);
+        GameObject meleeStrikeInstance = Instantiate(MeelePrefab, abilityData.casterStats.transform.position, abilityData.casterStats.transform.rotation);
        
         AbilityObject abilityObject = meleeStrikeInstance.GetComponent<AbilityObject>();
         abilityObject.data = abilityData;

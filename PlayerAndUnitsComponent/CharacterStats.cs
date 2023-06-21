@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 [Serializable]
-public class CharacterStats : MonoBehaviour
+public class CharacterStats : MonoBehaviour, ICanStoreAndLoad<CharacterStatsSaveData>
 {
     // MainStats
     public float strength;
@@ -189,5 +189,75 @@ public class CharacterStats : MonoBehaviour
         wisdom = stats.wisdom;
         equipManager = GetComponent<EquipManager>();
         UpdateSubStats();
+    }
+    public void LoadFromSaveData(CharacterStatsSaveData data)
+    {
+        strength = data.strength;
+        intelligence = data.intelligence;
+        dexterity = data.dexterity;
+        endurance = data.endurance;
+        wisdom = data.wisdom;
+        criticalChance = data.criticalChance;
+        criticalDamage = data.criticalDamage;
+        attackSpeed = data.attackSpeed;
+        spellCriticalChance = data.spellCriticalChance;
+        spellCriticalDamage = data.spellCriticalDamage;
+        cooldown = data.cooldown;
+        maxLife = data.maxLife;
+        maxMana = data.maxMana;
+        lifeRegen = data.lifeRegen;
+        manaRegen = data.manaRegen;
+        armor = data.armor;
+        magicResistance = data.magicResistance;
+        dodgeChance = data.dodgeChance;
+        unspentStatPoints = data.unspentStatPoints;
+        UpdateSubStats();
+    }
+    public CharacterStatsSaveData GetSaveData()
+    {
+        return new CharacterStatsSaveData(this);
+    }
+}
+[System.Serializable]
+public class CharacterStatsSaveData{
+    public float strength;
+    public float intelligence;
+    public float dexterity;
+    public float endurance;
+    public float wisdom;
+    public float criticalChance;
+    public float criticalDamage;
+    public float attackSpeed;
+    public float spellCriticalChance;
+    public float spellCriticalDamage;
+    public float cooldown;
+    public float maxLife;
+    public float maxMana;
+    public float lifeRegen;
+    public float manaRegen;
+    public float armor;
+    public float magicResistance;
+    public float dodgeChance;
+    public int unspentStatPoints;
+    public CharacterStatsSaveData(CharacterStats characterStats){
+        strength = characterStats.strength;
+        intelligence = characterStats.intelligence;
+        dexterity = characterStats.dexterity;
+        endurance = characterStats.endurance;
+        wisdom = characterStats.wisdom;
+        criticalChance = characterStats.criticalChance;
+        criticalDamage = characterStats.criticalDamage;
+        attackSpeed = characterStats.attackSpeed;
+        spellCriticalChance = characterStats.spellCriticalChance;
+        spellCriticalDamage = characterStats.spellCriticalDamage;
+        cooldown = characterStats.cooldown;
+        maxLife = characterStats.maxLife;
+        maxMana = characterStats.maxMana;
+        lifeRegen = characterStats.lifeRegen;
+        manaRegen = characterStats.manaRegen;
+        armor = characterStats.armor;
+        magicResistance = characterStats.magicResistance;
+        dodgeChance = characterStats.dodgeChance;
+        unspentStatPoints = characterStats.unspentStatPoints;
     }
 }

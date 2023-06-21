@@ -1,6 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\MovementController.cs
-The file "MovementController.cs" is responsible for controlling the movement of a player or unit in the game. It utilizes the NavMeshAgent component to navigate a NavMesh surface towards a given target position. The stopping distance for the unit can be set using the "stoppingDistance" variable. 
-
-The script initializes the NavMeshAgent and IStunnable components in the "Start()" function. The IStunnable component is used to check if the unit is currently stunned. If it is, the NavMeshAgent is stopped. If the unit is not stunned, the NavMeshAgent will resume moving towards the target position in the "Update()" function. 
-
-Overall, the script ensures that the unit moves towards the target position while accounting for any stuns that may occur during the game.

@@ -1,8 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\CharacterStats.cs
-The "CharacterStats.cs" file contains a script that defines the main and sub-stats of a character in a Unity game. The main stats include strength, intelligence, dexterity, endurance, and wisdom, while the sub-stats include critical chance and damage, attack speed, spell critical chance and damage, cooldowns, max life and mana, life and mana regeneration, armor, magic resistance, and dodge chance.
-
-The script also includes functions to update the sub-stats based on changes to the main stats, equipment bonuses, and skill modifiers. The script allows for the addition of stat points to the main stats, and provides a switch-case function to increase the specific stat type based on the inputted value.
-
-The script initializes unspent stat points and tracks them as they are gained or used. Additionally, the script contains event actions that are triggered when stats are changed, as well as functions to apply stat bonuses from equipment and skills.
-
-Overall, the "CharacterStats.cs" file is crucial in managing the attributes and abilities of the player character, allowing for a flexible and customizable gaming experience.

@@ -1,9 +1,0 @@
-File name: SkillController.cs
-
-Summary: This class handles the management of skills for a character in the game. It contains a list of currently active skills, a skill tree, the character's available skill points, a modifier for the character's overall stats, and two events for when a skill is learned or unlearned. 
-
-The LearnSkill method adds a new skill to the character's active skills list, applies the skill's effects to the character's stats, subtracts the skill's point cost from the available skill points, and invokes the OnSkillUnlocked event.
-
-The UnlearnSkill method removes a skill from the character's active skills list, removes the skill's effects from the character's stats, adds the skill's point cost back to the available skill points, and invokes the OnSkillUnlearnd event.
-
-Overall, this class allows the player to manage their character's skills and progress through the game's skill tree.

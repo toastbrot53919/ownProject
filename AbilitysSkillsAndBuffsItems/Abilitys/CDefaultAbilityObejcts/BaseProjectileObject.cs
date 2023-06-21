@@ -12,13 +12,13 @@ public class BaseProjectileObject : AbilityObject, IBouncingAbilityObject, IPier
     protected override void HandleOnHit(GameObject target)
     {
     // Apply damage to the target
-        if (data.CasterStats != null)
+        if (data.casterStats != null)
         {
             HealthController targetStats = target.GetComponent<HealthController>();
             if (targetStats != null)
             {
                 float damage = data.damage;
-                targetStats.TakeDamage(damage, data.CasterStats.gameObject);
+                targetStats.TakeDamage(damage, data.casterStats.gameObject);
             }
         }
 

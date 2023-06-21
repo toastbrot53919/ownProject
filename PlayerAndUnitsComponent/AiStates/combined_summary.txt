@@ -1,9 +1,0 @@
-AssistState.cs creates an AI State in a Unity project that assists a target within a certain range using a specified assist ability. AttackState.cs defines AI behavior when the unit is in the attack state, with a target to attack and an attack ability. ChaseState.cs creates behavior for an AI entity to chase a target, with adjustable chase speed and stopping distance. All three classes have EnterState, UpdateState, and ExitState methods with specific functionalities.
-
-FollowState.cs: A script that defines behaviors for AI-controlled units to follow a target at a specified distance using the Unity NavMeshAgent component. 
-
-IdleState.cs: A derived class of the base AIState class that represents the idle behavior of AI-controlled characters. It has two public variables: idleDuration and idleTime, which manage when the character exits idle mode and starts patrolling.
-
-PatrolStateMonoBehaviour.cs: A script that manages the patrol behavior of an AI-controlled player unit in a Unity game by storing an array of patrol waypoints and updating the unit's destination to the next waypoint in the array as the unit reaches each waypoint in the patrol.
-
-The "PatrolState.cs" script creates a patrol state for an AI controller in a game. It includes a list of waypoints for the AI to move between, a patrol speed, and a wait time between waypoints. The script sets the current waypoint and wait end time as private variables, and during the EnterState function, the AI's NavMeshAgent speed is set to the patrol speed and the current waypoint is set to 0. In the UpdateState function, the AI checks for aggro and gets its NavMeshAgent. If there are waypoints in the list, the AI checks if it has arrived at its current waypoint and if the wait time has ended. If so, it sets the destination to the next waypoint and sets a new wait end time. The ExitState function is empty and used to reset any variables.

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HealthController : MonoBehaviour
+public class HealthController : MonoBehaviour,ICanStoreAndLoad<HealthControllerSaveData>
 {
     private CharacterStats characterStats;
     public string Name;
@@ -62,5 +62,24 @@ public class HealthController : MonoBehaviour
 
         WorldSpaceCanvasController.Instance.SpawnDamageNumber(damage, transform.position + Vector3.up * 2f);
     }
+    public void LoadFromSaveData(HealthControllerSaveData saveData)
+    {
+        currentHealth = saveData.health;
+        maxHealth = saveData.maxHealth;
+    }
+    public HealthControllerSaveData GetSaveData()
+    {
+        return new HealthControllerSaveData(this);
+    }
 
+}
+[System.Serializable]
+public class HealthControllerSaveData{
+    public float health;
+    public float maxHealth;
+
+    public HealthControllerSaveData(HealthController healthController){
+        health = healthController.currentHealth;
+        maxHealth = healthController.maxHealth;
+    }
 }

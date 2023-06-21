@@ -30,11 +30,9 @@ public class CharacterCombatController : MonoBehaviour, IStatsProvider
         {
             return;
         }
-        Debug.Log(ability.name);
-        Debug.Log(ability.TotalAbilityStats);
-        Debug.Log(ability.TotalAbilityStats.cooldown);
         if(!abilityController.checkCooldown(ability.name,ability.TotalAbilityStats.cooldown))
         {
+            Debug.Log("Ability on cooldown" + ability.name);
             return;
         }
         PlayerController playerController = GetComponent<PlayerController>();
@@ -55,11 +53,11 @@ public class CharacterCombatController : MonoBehaviour, IStatsProvider
 
         AbilityData abilityData = new AbilityData
         {
-            CasterStats = characterStats,
-            Target = target,
+            casterStats = characterStats,
+            target = target,
             damage = damageAbility,
-            CasterController = abilityController,
-            CasterCombatController = this,
+            casterController = abilityController,
+            casterCombatController = this,
             projectileSpeed = ability.TotalAbilityStats.projectileSpeed,
             stunDuration = ability.TotalAbilityStats.stunDuration,
             
@@ -71,7 +69,10 @@ public class CharacterCombatController : MonoBehaviour, IStatsProvider
         abilityController.setCooldown(ability.name,ability.BaseAbilityStats.cooldown);
         comboController.UpdateComboController();
         abilityController.CastAbility(ability, abilityData);
-        aiController.setNextActionDelay(animationController.returnAnimationLockTiming(ability.animationName));
+        if(aiController != null){
+            aiController.setNextActionDelay(animationController.returnAnimationLockTiming(ability.animationName));
+        }
+
     }
     public CharacterStats GetCharacterStats()
     {

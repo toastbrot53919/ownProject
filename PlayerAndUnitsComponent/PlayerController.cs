@@ -4,21 +4,22 @@ using UnityEngine;
 
 
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, ICanStoreAndLoad<PlayerSaveData>
 {
 
     public GameObject AOEAimingTemplate;
     [Header("Controller")]
-    BuffSystem buffSystem;
-    ExperienceSystem experienceSystem;
-    CharacterStats characterStats;
-    CharacterCombatController combatController;
-    SkillController skillController;
-    SkillTree skillTree;
-    IStunnable stunnable;
-    HotkeyController hotkeyController;
-    CanGrabController canGrabController;
-    TargetingSystem targetingSystem;
+    private BuffSystem buffSystem;
+    private ExperienceController experienceSystem;
+    private CharacterStats characterStats;
+    private CharacterCombatController combatController;
+    private SkillController skillController;
+    private SkillTree skillTree;
+    private IStunnable stunnable;
+    private HotkeyController hotkeyController;
+    private CanGrabController canGrabController;
+    private TargetingSystem targetingSystem;
+    private InputController inputController;
 
 
 
@@ -56,7 +57,7 @@ public class PlayerController : MonoBehaviour
         characterStats = GetComponent<CharacterStats>();
         skillController = GetComponent<SkillController>();
         targetingSystem = GetComponent<TargetingSystem>();
-
+        inputController = GetComponent<InputController>();
         //EDITOR CODE
         skillController.skillTree.resetAllNodes();
 
@@ -79,6 +80,84 @@ public class PlayerController : MonoBehaviour
         HandleJump();
         HandleCamera();
         HandleActions();
+        handleInputControllerOfPlayer();
+    }
+    public void handleInputControllerOfPlayer()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            inputController.setLeftPressed(true);
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            inputController.setLeftPressed(false);
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            inputController.setRightPressed(true);
+        }
+        else if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            inputController.setRightPressed(false);
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            inputController.setUpPressed(true);
+        }
+        else if (Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            inputController.setUpPressed(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            inputController.setDownPressed(true);
+        }
+        else if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            inputController.setDownPressed(false);
+        }
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            inputController.setJumpPressed(true);
+        }
+        else if(Input.GetKeyUp(KeyCode.Space))
+        {
+            inputController.setJumpPressed(false);
+        }
+        if(Input.GetKeyDown(KeyCode.A)){
+            inputController.setLeftPressed(true);
+        }
+        else if(Input.GetKeyUp(KeyCode.A))
+        {
+            inputController.setLeftPressed(false);
+        }
+        if(Input.GetKeyDown(KeyCode.D))
+        {
+            inputController.setRightPressed(true);
+        }
+        else if(Input.GetKeyUp(KeyCode.D))
+        {
+            inputController.setRightPressed(false);
+        }
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+            inputController.setUpPressed(true);
+        }
+        else if(Input.GetKeyUp(KeyCode.W))
+        {
+            inputController.setUpPressed(false);
+        }
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            inputController.setDownPressed(true);
+        }
+        else if(Input.GetKeyUp(KeyCode.S))
+        {
+            inputController.setDownPressed(false);
+        }
+        
+
     }
     private void UpdateToSkillEvents(SkillNode node)
     {
@@ -102,7 +181,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
- 
+
     }
 
     private void HandleMovement()
@@ -207,7 +286,8 @@ public class PlayerController : MonoBehaviour
                 // Move the templateObject to the hit position
                 templateObject.transform.position = hitPosition;
             }
-            if (Input.GetMouseButton(0)){
+            if (Input.GetMouseButton(0))
+            {
                 combatController.PerformAbility(ability, templateObject);
                 Debug.Log(ability.TotalAbilityStats.cooldown);
                 Destroy(templateObject);
@@ -316,4 +396,48 @@ public class PlayerController : MonoBehaviour
         return true;
     }
 
+    public void LoadFromSaveData(PlayerSaveData saveData)
+    {
+        transform.position = saveData.position;
+        transform.rotation = saveData.rotation;
+        moveSpeed = saveData.moveSpeed;
+        rotationSpeed = saveData.rotationSpeed;
+        jumpForce = saveData.jumpForce;
+        cameraDistance = saveData.cameraDistance;
+        cameraHeight = saveData.cameraHeight;
+        cameraRotationSpeed = saveData.cameraRotationSpeed;
+
+    }
+
+    public PlayerSaveData GetSaveData()
+    {
+        return new PlayerSaveData(this);
+    }
+}
+[System.Serializable]
+public class PlayerSaveData{
+
+    public Vector3 position;
+    public Quaternion rotation;
+
+    public float moveSpeed;
+    public float rotationSpeed;
+    public float jumpForce;
+
+    [Header("Camera")]
+    public float cameraDistance; 
+    public float cameraHeight ;
+    public float cameraRotationSpeed;
+
+    public PlayerSaveData(PlayerController playerController){
+        position = playerController.transform.position;
+        rotation = playerController.transform.rotation;
+        moveSpeed = playerController.moveSpeed;
+        rotationSpeed = playerController.rotationSpeed;
+        jumpForce = playerController.jumpForce;
+        cameraDistance = playerController.cameraDistance;
+        cameraHeight = playerController.cameraHeight;
+        cameraRotationSpeed = playerController.cameraRotationSpeed;
+    }
+    
 }

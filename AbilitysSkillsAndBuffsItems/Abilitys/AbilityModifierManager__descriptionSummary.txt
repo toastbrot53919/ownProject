@@ -1,6 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Abilitys\AbilityModifierManager.cs
-This code defines a class called "AbilityModifierManager" that extends "ScriptableObject". The class includes a private List of "AbilityModifiers" called "modifierList" and an object of "AbilityStats" called "abilityStats". In the "OnEnable" method, the "abilityStats" object is initialized. 
-
-There are four public methods in the class. The "printAllModifiers" method iterates through the "modifierList" and returns a string with the name, description, and modified stats of each modifier. The "AddModifier" method adds a modifier to the "modifierList" and calls the "CalculateModifiedValue" method. The "RemoveModifier" method removes a modifier from the "modifierList" and calls the "CalculateModifiedValue" method. The "GetAdditionalModifiedValue" method returns the "abilityStats" object. 
-
-Finally, the "CalculateModifiedValue" method sets the stats of the "abilityStats" object to zero and then applies each modifier in the "modifierList" to the "abilityStats" object using the "ApplyModifier" method of each "AbilityModifier" object. The modified "abilityStats" object is returned at the end of the method.

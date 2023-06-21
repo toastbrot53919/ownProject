@@ -1,6 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\SkillTree.cs
-The file "SkillTree.cs" is a script for implementing a skill tree in a game. It is a class that inherits from the "ScriptableObject" class, which allows it to be created as an asset in the Unity editor. The script defines a list of "skillNodes," which are objects that represent individual skills in the skill tree.
-
-The class contains methods for adding new skill nodes to the list and resetting all nodes to their default state. The internal method "IsVisible" is not currently being used, but likely would be used to determine if a skill node should be shown to the player based on certain conditions.
-
-When the script is instantiated, the "Awake" method is called, which calls the "resetAllNodes" method to initialize all skill nodes as locked.

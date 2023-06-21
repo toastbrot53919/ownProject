@@ -1,6 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\Skills\SkillNodeFactory.cs
-The file SkillNodeFactory.cs is a static class that contains a method called CreateSkillNode, which creates a SkillNode object and sets its properties based on a SkillNodeFactoryDataClass object passed in as a parameter. The properties of the SkillNode include its name, description, point cost, associated icon, main stat requirement, main stat value, skill, prerequisite skill, and whether or not it is unlocked. 
-
-The SkillNode object that is created is then saved as an asset within the Assets/Resources/SkillNodes/ directory using AssetDatabase.CreateAsset. The SkillNodeFactoryDataClass contains the various properties that are used to create the SkillNode object. 
-
-In summary, the SkillNodeFactory.cs file provides a way to create new SkillNode objects with specific properties, and the SkillNodeFactoryDataClass is used to pass in the necessary parameters needed to create these objects. This implementation allows for easy creation and management of different skill nodes within the game.

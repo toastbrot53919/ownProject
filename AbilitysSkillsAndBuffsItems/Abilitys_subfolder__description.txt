@@ -1,8 +1,0 @@
-This summary contains descriptions of six different classes located in a Unity project for abilities, skills, and buffs. 
-
-1. "DefaultAbility" class that inherits from a base class called "Ability" and sets the ability's name and description to "Default." 
-2. "DefaultAuraAbility" class that defines a default aura ability that can be activated and instantiates an aura prefab upon activation. 
-3. "DefaultComboAbility" class that creates a combo ability with an array of combo damage values that vary based on the name of the ability. 
-4. "DefaultGroupBuffAbility" class that creates a script for a group buff ability that adds a buff to objects within a certain radius of the caster. 
-5. "DefaultProjectileAbility" class that creates a projectile ability with a public GameObject field, "projectilePrefab." 
-6. "BaseProjectileObject" class that extends the "AbilityObject" class and implements the "IBouncingAbilityObject" and "IPiercingAbilityObject" interfaces.

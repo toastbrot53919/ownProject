@@ -1,2 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\QuestS\NewBehaviourScript.cs
-The file is located at "C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\QuestFiles\QuestS\NewBehaviourScript.cs". The code imports necessary libraries and defines a class called "NewBehaviourScript" that inherits from "MonoBehaviour". The class has two empty methods, "Start()" and "Update()", that are automatically called before the first frame and each frame, respectively.

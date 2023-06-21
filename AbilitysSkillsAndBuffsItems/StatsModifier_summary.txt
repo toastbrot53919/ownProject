@@ -1,4 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\AbilitysSkillsAndBuffsItems\StatsModifier.cs
-The file name is "StatsModifier.cs" and it contains a class with the same name. The class has several float variables that represent different stats such as attack speed, critical chance, and armor. It also has two public methods, Add and Sub, that take another StatsModifier object and add or subtract its values from the current object's values.
-
-The logic behind this class is that it provides an easy way to modify a character's stats by simply creating a StatsModifier object with the desired changes and then applying it to the character's existing stats. This can be useful for implementing buffs or debuffs, as well as for calculating the effects of equipment or abilities. The Add and Sub methods make it easy to stack multiple modifiers on top of each other or to remove them as needed.

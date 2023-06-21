@@ -1,3 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\AiStates\PatrolStateMonoBehaviour.cs
-Class: PatrolStateMonoBehaviour
- - GameObject[] waypoints

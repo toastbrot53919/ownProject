@@ -1,4 +1,0 @@
-C:\Users\Toastbrot\Downloads\STRATEGY 01.04.2022\My project\Assets\Scripts\PlayerAndUnitsComponent\AbilityController.cs
-The AbilityController.cs file is a script used to handle abilities for players and units in a Unity game. The script includes a firePoint transform and a list of learned abilities. Additionally, the script also includes a private variable for IStatsProvider and an Awake() function that sets up the IStatsProvider. 
-
-The script also includes a public function called CastAbility which takes in an Ability object and AbilityData to activate the specified ability.

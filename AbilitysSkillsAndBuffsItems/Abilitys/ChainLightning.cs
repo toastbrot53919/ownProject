@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [CreateAssetMenu(menuName = "Abilities/ChainLightningAbility")]
-public class ChainLightning : Ability
+public class ChainLightning : DefaultAbility
 {
     public int maxBounceCount = 5;
     public float bounceRange = 5f;
@@ -14,7 +14,7 @@ public class ChainLightning : Ability
 
     public override void Activate(AbilityData abilityData)
     {
-        Transform firePoint = abilityData.CasterStats.GetComponent<AbilityController>().firePoint;
+        Transform firePoint = abilityData.casterStats.GetComponent<AbilityController>().firePoint;
 
         AbilityObject abilityObject = Instantiate(chainLightningPrefab, firePoint.transform.position, firePoint.transform.rotation).GetComponent<AbilityObject>();
         if(abilityObject == null)
@@ -31,7 +31,7 @@ public class ChainLightning : Ability
         HealthController healthController = target.GetComponent<HealthController>();
         if (healthController != null)
         {
-            healthController.TakeDamage(abilityObject.data.damage, abilityObject.data.CasterStats.gameObject);
+            healthController.TakeDamage(abilityObject.data.damage, abilityObject.data.casterStats.gameObject);
             visualEffectController.SpawnEffect("LightningHitWeak",1.4f,effectUnitPosition.underFeet);
         }
 
@@ -44,7 +44,7 @@ public class ChainLightning : Ability
             GameObject newTarget = null;
             foreach (Collider collider in colliders)
             {
-                if (!hitTargets.Contains(collider.gameObject) && collider.gameObject.GetComponent<HealthController>() != null && collider.gameObject != abilityObject.data.CasterStats.gameObject)
+                if (!hitTargets.Contains(collider.gameObject) && collider.gameObject.GetComponent<HealthController>() != null && collider.gameObject != abilityObject.data.casterStats.gameObject)
                 {
                     newTarget = collider.gameObject;
                     hitTargets.Add(newTarget);
@@ -59,7 +59,7 @@ public class ChainLightning : Ability
                  visualEffectController = target.GetComponent<VisualEffectController>();
                 if (healthController != null)
                 {
-                    healthController.TakeDamage(abilityObject.data.damage, abilityObject.data.CasterStats.gameObject);
+                    healthController.TakeDamage(abilityObject.data.damage, abilityObject.data.casterStats.gameObject);
                     visualEffectController.SpawnEffect("LightningHitWeak",1.4f,effectUnitPosition.underFeet);
                 }
 

@@ -6,8 +6,9 @@ public class FrostBolt : DefaultProjectileAbility
     public Buff chillBuff;
 
 
-    public void OnEnable()
+    public override void  init()
     {
+        base.init();
         // Create Chill buff
         chillBuff = BuffFactory.CreateBuff("Chill", 6f, true, 5);
         chillBuff.statModifier = new StatsModifier
@@ -31,17 +32,17 @@ public class FrostBolt : DefaultProjectileAbility
     {
         base.OnAbilityObjectHit(abilityObject, target);
         Debug.Log("FrostBolt hit");
-        if (abilityObject.data.CasterStats != null)
+        if (abilityObject.data.casterStats != null)
         {
             HealthController targetHealth = target.GetComponent<HealthController>();
             if (targetHealth != null)
             {
                 float damage = abilityObject.data.damage;
-                targetHealth.TakeDamage(damage, abilityObject.data.CasterStats.gameObject);
+                targetHealth.TakeDamage(damage, abilityObject.data.casterStats.gameObject);
 
                 // Apply Chill buff to the target
                 BuffSystem buffSystem = target.GetComponent<BuffSystem>();
-                BuffSystem casterBuffSyste = abilityObject.data.CasterStats.GetComponent<BuffSystem>();
+                BuffSystem casterBuffSyste = abilityObject.data.casterStats.GetComponent<BuffSystem>();
                 if (buffSystem != null)
                 {
                     Debug.Log("Applying Chill buff");

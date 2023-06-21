@@ -6,9 +6,15 @@ public class DefaultAbility : Ability
     {
         abilityName = "Default";
         abilityDescription = "Default";
-
+        if(BaseAbilityStats == null){
+            BaseAbilityStats = new AbilityStats();
+        }
+        if(TotalAbilityStats == null){
+            TotalAbilityStats = new AbilityStats();
+        }
+        init();
     }
-    public void OnEnable(){
+    public override void init(){
         if(BaseAbilityStats == null){
             BaseAbilityStats = new AbilityStats();
         }
@@ -16,7 +22,7 @@ public class DefaultAbility : Ability
             TotalAbilityStats = new AbilityStats();
         }
         if(abilityModifierManager == null){
-            abilityModifierManager = CreateInstance<AbilityModifierManager>();
+            abilityModifierManager = new AbilityModifierManager();
         }
         updateAbilityStats();
     }
@@ -28,4 +34,5 @@ public class DefaultAbility : Ability
     public override void OnAbilityObjectHit(AbilityObject abilityObject, GameObject target)
     {
     }
+
 }

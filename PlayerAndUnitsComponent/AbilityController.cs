@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
-public class AbilityController : MonoBehaviour
+public class AbilityController : MonoBehaviour,ICanStoreAndLoad<AbilityControllerSaveData>
 {
     public Transform firePoint;
     public Transform hitPoint;
@@ -17,6 +17,10 @@ public class AbilityController : MonoBehaviour
         statsProvider = GetComponent<IStatsProvider>();
         lastTimeAbilityUsed = new List<(string, float)>();
         animationController = GetComponent<AnimationController>();
+        foreach (Ability ability in learnedAbilitys)
+        {
+            ability.init();
+        }
     }
     private void Update()
     {
@@ -100,6 +104,30 @@ public class AbilityController : MonoBehaviour
         {
             lastTimeAbilityUsed.Add((abilityName, Time.time));
         }
+    }
+    public void LoadFromSaveData(AbilityControllerSaveData saveData){
+        learnedAbilitys = new List<Ability>();
+        foreach(string abilityName in saveData.learnedAbilitys){
+            learnedAbilitys.Add(AbilityManager.getAbilityByName(abilityName));
+        }
+        lastTimeAbilityUsed = saveData.lastTimeAbilityUsed;
+    }
+    public AbilityControllerSaveData GetSaveData(){
+        return new AbilityControllerSaveData(this);
+    }
+}
+[System.Serializable]
+public class AbilityControllerSaveData{
+    public Vector3 firePointPosition;
+    public Vector3 hitPointPosition;
+    public List<string> learnedAbilitys;
+    public List<(string, float)> lastTimeAbilityUsed;
+    public AbilityControllerSaveData(AbilityController abilityController){
+        learnedAbilitys = new List<string>();
+        foreach(Ability ability in abilityController.learnedAbilitys){
+            learnedAbilitys.Add(ability.name);
+        }
+        lastTimeAbilityUsed = abilityController.lastTimeAbilityUsed;
     }
 }
 

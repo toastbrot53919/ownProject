@@ -92,9 +92,9 @@ public class AbilityObject : MonoBehaviour
             return;
         }
         // Get target HealthController from collided object
-        if (data.CasterStats != null)
+        if (data.casterStats != null)
         {
-            if (data.CasterStats.gameObject.name == collision.gameObject.name)
+            if (data.casterStats.gameObject.name == collision.gameObject.name)
             {
                 return;
             }
@@ -107,7 +107,7 @@ public class AbilityObject : MonoBehaviour
         {
             if (alreadyHit[i].Item1 == collision.gameObject)
             {
-                if (Time.time - alreadyHit[i].Item2 > data.OnHitInterval)
+                if (Time.time - alreadyHit[i].Item2 > data.onHitInterval)
                 {
                     alreadyHitRemoveIndeces.Add(i);
                     break;
@@ -134,9 +134,9 @@ public class AbilityObject : MonoBehaviour
             return;
         }
         // Get target HealthController from collided object
-        if (data.CasterStats != null)
+        if (data.casterStats != null)
         {
-            if (data.CasterStats.gameObject.name == collision.gameObject.name)
+            if (data.casterStats.gameObject.name == collision.gameObject.name)
             {
                 return;
             }
@@ -150,7 +150,7 @@ public class AbilityObject : MonoBehaviour
         {
             if (alreadyHit[i].Item1 == collision.gameObject)
             {
-                if (Time.time - alreadyHit[i].Item2 > data.OnHitInterval)
+                if (Time.time - alreadyHit[i].Item2 > data.onHitInterval)
                 {
                     alreadyHitRemoveIndeces.Add(i);
                     break;

@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour,ICanStoreAndLoad<InventorySaveData>
 {
     public List<Item> items;
-    public QuestSystem questSystem;
+    private QuestSystem questSystem;
       private void Start()
     {
         questSystem = GetComponent<QuestSystem>();
+        items = new List<Item>();
 
     }
 
@@ -29,5 +30,28 @@ public class Inventory : MonoBehaviour
     public bool HasItem(Item item)
     {
         return items.Contains(item);
+    }
+    public InventorySaveData GetSaveData()
+    {
+        return new InventorySaveData(this);
+    }
+    public void LoadFromSaveData(InventorySaveData saveData)
+    {
+        foreach(string itemName in saveData.items){
+            Item item = ItemManager.getItemyString(itemName);
+            if(item != null){
+                items.Add(item);
+            }
+        }
+    }
+}
+[System.Serializable]
+public class InventorySaveData{
+    public List<string> items;
+    public InventorySaveData(Inventory inventory){
+        items = new List<string>();
+        foreach(Item item in inventory.items){
+            items.Add(item.name);
+        }
     }
 }
